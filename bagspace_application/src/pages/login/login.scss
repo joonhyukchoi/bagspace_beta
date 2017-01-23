@@ -1,0 +1,31 @@
+page-login {
+  .login{
+      background: url('../../assets/img/sky_bag.jpg') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+
+  }
+  .logo_pic{
+      width: 60%;
+  }
+
+  .button_facebook{
+    color: black;
+    width: 90%;
+    text-align: left;
+  }
+
+  .button_kakao{
+    background: #FFEB00;
+    color: black;
+    width: 90%;
+    text-align: left;
+  }
+
+  .button_naver{
+    background: #00C63B;
+    color: black;
+    width: 90%;
+  }
+}

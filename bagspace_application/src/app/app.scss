@@ -1,0 +1,77 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// http://ionicframework.com/docs/v2/theming/
+
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.md {
+.special-fab {
+    &.-bottom {
+        bottom: 3px;
+    }
+}
+}
+
+.ios {
+.special-fab {
+    &.-bottom {
+        bottom: 0.1px;
+    }
+}
+}
+
+.font_black{
+    color:black;
+}
+
+.content_center{
+    text-align: center;
+}
+.content_left{
+    text-align: left;
+}
+.content_right{
+    text-align: right;
+}
+
+.list_margin{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+@font-face {
+font-family: AppFont;
+src: url("../assets/font/BMJUA_ttf.ttf");
+}
+
+body, span, button, h1, h2, h3, h4, h5, h6, p {
+font-family: 'AppFont' !important;
+}

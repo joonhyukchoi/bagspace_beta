@@ -1,0 +1,67 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Helper</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h1>자주묻는 질문</h1>
+  <br>
+    <div (click)="reserve_state=!reserve_state" class="list_margin">
+      <ion-row>
+        <ion-col width-90>
+          <h3 class="content_left font_black">예약 요청</h3>
+        </ion-col>
+        <ion-col width-10>
+          <ion-note >
+            <ion-icon *ngIf="reserve_state==true" item-right name="ios-arrow-down"></ion-icon>
+            <ion-icon *ngIf="reserve_state==false" item-right name="ios-arrow-up"></ion-icon>
+          </ion-note>
+        </ion-col>
+      </ion-row>
+      <p *ngIf="reserve_state==false">
+      동해물과 백두산이 마르고 닳도록 하나님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+      </p>
+    </div>
+    <hr>
+
+    <div (click)="payment_state=!payment_state" class="list_margin">
+      <ion-row>
+        <ion-col width-90>
+          <h3 class="content_left font_black">결제 수단</h3>
+        </ion-col>
+        <ion-col width-10>
+          <ion-note >
+            <ion-icon *ngIf="payment_state==true" item-right name="ios-arrow-down"></ion-icon>
+            <ion-icon *ngIf="payment_state==false" item-right name="ios-arrow-up"></ion-icon>
+          </ion-note>
+        </ion-col>
+      </ion-row>
+      <p *ngIf="payment_state==false">
+      동해물과 백두산이 마르고 닳도록 하나님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+      </p>
+    </div>
+    <hr>
+
+    <div (click)="fee_state=!fee_state" class="list_margin">
+      <ion-row>
+        <ion-col width-90>
+          <h3 class="content_left font_black">요금과 수수료</h3>
+        </ion-col>
+        <ion-col width-10>
+          <ion-note >
+            <ion-icon *ngIf="fee_state==true" item-right name="ios-arrow-down"></ion-icon>
+            <ion-icon *ngIf="fee_state==false" item-right name="ios-arrow-up"></ion-icon>
+          </ion-note>
+        </ion-col>
+      </ion-row>
+      <p *ngIf="fee_state==false">
+      동해물과 백두산이 마르고 닳도록 하나님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+      </p>
+    </div>
+    <hr>
+
+ 
+</ion-content>

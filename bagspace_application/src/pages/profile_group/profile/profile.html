@@ -1,0 +1,50 @@
+<ion-content padding>
+  <br>
+  <ion-grid>
+   <ion-row>
+     <ion-col width-25>
+      <ion-avatar >
+        <img class='profile_pic' src="assets/img/bagspace.png">
+      </ion-avatar> 
+     </ion-col>
+     <ion-col width-75>
+      <h1>Youjun Lee</h1>
+      <p>&nbsp;&nbsp; 프로필 수정</p>
+     </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-list>
+    <ion-item (click)="openPage(invite)">
+    <br>
+     <ion-icon name="person-add" item-left></ion-icon>
+     <h1 class="font_black">친구 초대하기</h1>
+     <br>
+    </ion-item>
+    <ion-item (click)="openPage(settings)">
+    <br>
+     <ion-icon name="settings" item-left></ion-icon>
+     <h1 class="font_black">환경설정</h1>
+    <br>
+    </ion-item>
+    <ion-item>
+    <br>
+     <ion-icon name="plane" item-left></ion-icon>
+     <h1 class="font_black">여행지 등록</h1>
+    <br>
+    </ion-item>
+    <ion-item (click)="openPage(helper)">
+    <br>
+     <ion-icon name="help" item-left></ion-icon>
+     <h1 class="font_black">도움말과 지원</h1>
+    <br>
+    </ion-item>
+    <ion-item (click)="openPage(feedback)">
+    <br>
+     <ion-icon name="mail" item-left></ion-icon>
+     <h1 class="font_black">피드백 남기기</h1>
+    <br>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

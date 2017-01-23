@@ -1,0 +1,22 @@
+page-feedback {
+   .styled-select select{
+   background: transparent;
+   border: none;
+  
+   height: 100%;
+   color: lightslategray;
+   width: 100%;
+   margin-left:10px;
+    }
+    .feedback_label{
+        color: black;
+       margin:0px;
+      padding:0px;
+    
+    }
+    .feedback_submit{
+         margin:0px;
+         width:90%;
+         color:black;
+     }
+}

@@ -1,0 +1,40 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Setting</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+ <ion-list inset>
+    <ion-item class="list_margin">
+      <h2 class="content_left font_black">알림(非)</h2>
+      <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+
+    <ion-item class="list_margin" >
+      <h2 class="content_left font_black">위치서비스(非)</h2>
+       <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+    
+    <ion-item class="list_margin">
+     <h2 class="content_left font_black">통화단위(非)</h2>
+     <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+    
+    <ion-item (click)="openModal(rule)" class="list_margin">
+     <h2 class="content_left font_black">서비스 약관(활성)</h2>
+     <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,62 @@
+<!--
+  Generated template for the Category page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar [color]="primary">
+    <ion-title>Category</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content  class="action-sheets-basic-page"> 
+	
+    <section name="content">
+    <div class=" list_category">
+    <div class="item1_category">
+      <div class="item_top_category" (click)="onlyone(1);">
+       <p  class= "item_name_category" >화장품 <ion-icon name="person-add" item-left></ion-icon></p>
+        <p  class="icon_category" >
+        <span *ngIf="isActive1==false"  class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+         <span *ngIf="isActive1==true"  class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span></p>      
+      </div>
+      <ng-container *ngIf="isActive1==true">
+       <div *ngFor="let cosmetic of cosmetics" class = "item_category" (click)="goback(isn)">
+           {{cosmetic}}
+       </div>
+      </ng-container>
+      </div>
+       <div class="item1_category">
+      <div class="item_top_category" (click)="onlyone(2);">
+        <p  class= "item_name_category" >생활용품 </p>
+        <p  class="icon_category" >
+         <span *ngIf="isActive2==false"  class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+         <span *ngIf="isActive2==true"  class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span></p>         
+      </div>
+      <ng-container *ngIf="isActive2==true">
+       <div *ngFor="let daily_supply of daily_supplies" class = "item_category" (click)="goback(asdf)">
+           {{daily_supply}}
+       </div>
+      </ng-container>
+      </div>
+     <div class="item1_category">
+      <div class="item_top_category" (click)="onlyone(3);">
+        <p  class= "item_name_category" >옷 </p>
+        <p  class="icon_category" >
+          <span *ngIf="isActive3==false"  class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+         <span *ngIf="isActive3==true"  class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span></p>           
+      </div>
+        <ng-container *ngIf="isActive3==true">
+       <div *ngFor="let cloth of clothes" class = "item_category" (click)="goback(asdf)">
+           {{cloth}}
+           
+       </div>
+      </ng-container>
+      </div>
+</div>
+    
+</section>
+ </ion-content> 
+

@@ -1,0 +1,43 @@
+<ion-content>
+     <ion-navbar [color]="isAndroid ? 'danger' : 'primary'">
+          <ion-searchbar  *ngIf="search_click=='close'" (click)="search_click='open'" showCancelButton placeholder="어디로 가시나요?" value="{{date|date}}"></ion-searchbar>
+          <div *ngIf="search_click=='open'" (click)="search_click='close'" class="font_black content_center" ><ion-icon name="ios-arrow-up"></ion-icon></div>
+     </ion-navbar>
+    
+          <div class="tab_back"  [@Title]="search_click"  [@SlidMenu]="search_click">
+          <div *ngIf="search_click=='open'" (click)="showCalendar()" class="cal-button"><ion-icon item-left large name="md-calendar"></ion-icon>날짜</div>  
+          <div *ngIf="search_click=='open'" class="dep-button"><ion-icon item-left name="md-globe"></ion-icon>도착지</div>
+          </div>
+    <ion-slides pager autoplay="3000" loop class="home_slide">
+        <ion-slide>
+            <h1>Slide 1</h1>
+        </ion-slide>
+        <ion-slide>
+            <h1>Slide 2</h1>
+        </ion-slide>
+        <ion-slide>
+            <h1>Slide 3</h1>
+        </ion-slide>
+    </ion-slides>
+
+    <ion-card padding>
+        <ion-item>
+        <img item-left class="home_pic" src="assets/img/bagspace.png">
+        <h1 class="font_black">iPhone7외 2개</h1>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ios-navigate" item-left large></ion-icon>
+            <h2 class="font_black">France, Paris, WI 53703</h2>
+            <p>bagspace 민박</p>
+        </ion-item>
+
+        <ion-item>
+            <span item-left>Due: 2017/2/2</span>
+            <button ion-button icon-left clear item-right>
+            <ion-icon large name="arrow-round-forward"></ion-icon>
+            </button>
+        </ion-item>
+    </ion-card>
+    <img src="https://s3.ap-northeast-2.amazonaws.com/bagspace/product_pic/bagspace">
+
+</ion-content>
