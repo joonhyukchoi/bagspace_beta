@@ -1,0 +1,56 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>receiver-place</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+<!-- 라벨 -->
+  <ion-label color="primary" class="selectPlace">국가와 도시를 선택해주세요</ion-label>
+<!-- 국가와 도시 -->
+  <ion-row style = "height : 50%">
+    <ion-col width-50>
+<!-- 국가 -->
+    <ion-list>
+    <ion-list-header class="receiver-place-header">국가 선택</ion-list-header>
+      <div *ngFor="let country of countries;">
+      <button class=".font_black" ion-item detail-push (click)="countryClick($event, country);test()">
+        {{ country }}
+      </button>
+      </div>
+    </ion-list>
+    </ion-col>
+<!-- 도시 -->
+    <ion-col width-50>
+    <ion-list>
+    <ion-list-header class="receiver-place-header">도시 선택</ion-list-header>
+      <span *ngFor="let city of cities">
+      <button class=".font_black" ion-item detail-push (click)="cityClick(city)">
+        {{ city }}
+      </button>
+      </span>  
+    </ion-list>
+    </ion-col>
+    </ion-row>
+<!-- 랜드 마크-->
+    <ion-label color="primary" class="selectPlace">랜드마크를 선택해주세요</ion-label>
+    <ion-row style="height: 50%">
+      <ion-list style="width:100%; text-align: center">
+      <ion-list-header class="receiver-place-header">랜드마크 선택</ion-list-header>
+        <span *ngFor="let landmark of landmarks">
+        <button class=".font_black" ion-item detail-push (click)="landmarkClick(landmark)">
+        {{ landmark }}
+        </button>
+        </span>  
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>
+
+<ion-footer>
+<!--다음 버튼-->
+  <button class=".font_black" ion-button full class="next" medium color="light" (click)="moveDate()">다음</button>
+</ion-footer>

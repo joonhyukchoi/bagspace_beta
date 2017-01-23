@@ -9,12 +9,13 @@ import { SettingPage } from '../../pages/profile_group/setting/setting';
 import { InvitePage } from '../../pages/profile_group/invite/invite';
 import { FeedbackPage } from '../../pages/profile_group/feedback/feedback';
 import { RulePage } from '../../pages/profile_group/setting_group/rule/rule';
+import { MoverPage } from '../../pages/profile_group/mover/mover';
 
 
 @NgModule({
-  declarations: [ProfilePage, HelperPage, SettingPage, InvitePage, FeedbackPage, RulePage],
+  declarations: [ProfilePage, HelperPage, SettingPage, InvitePage, FeedbackPage, RulePage, MoverPage],
   imports: [IonicModule, CommonModule, DatePickerModule],
-  entryComponents: [ProfilePage, HelperPage, SettingPage, InvitePage, FeedbackPage, RulePage],
+  entryComponents: [ProfilePage, HelperPage, SettingPage, InvitePage, FeedbackPage, RulePage, MoverPage],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class ProfileModule {}
