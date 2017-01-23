@@ -4,18 +4,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="receiver-date-item">
+<ion-content padding >
    <ion-grid>
-      <ion-label color="primary" class="selectPlace">기한을 선택해주세요</ion-label>
+      <ion-label color="primary" class="font_black">기한을 선택해주세요</ion-label>
 
     <ion-list>
       <ion-list-header>기한 날짜</ion-list-header>
       <ion-item class="font_black" (click)="showCalendar()">
       <div *ngIf="!isClick">
-      <ion-note>날짜를 설정하세요</ion-note>
+      <p class="font_black">날짜를 설정하세요</p>
       </div>
       <ion-icon name="calendar" item-right large></ion-icon>
-      {{selectedDate}}
+      <p class="font_black">{{selectedDate}}</p>
       </ion-item>
       <br>
     </ion-list>

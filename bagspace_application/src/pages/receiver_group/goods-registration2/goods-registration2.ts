@@ -19,7 +19,7 @@ export class GoodsRegistration2Page {
     console.log('ionViewDidLoad GoodsRegistration2Page');
   }
 goback(){
- this.navCtrl.popTo( this.navCtrl.getByIndex(1));
+ this.navCtrl.popTo( this.navCtrl.getByIndex(3));
   
 }
 }

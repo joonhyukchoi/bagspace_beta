@@ -29,4 +29,7 @@ goCategoryPage(){
 add_good(good:string){
   
 }
+goback(){
+   this.navCtrl.popToRoot();
+}
 }
