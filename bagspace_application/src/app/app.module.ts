@@ -18,7 +18,7 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
   ],
   imports: [
     IonicModule.forRoot(MyApp), DatePickerModule,
-    ProfileModule, TabModule,ReceiverModule
+    ProfileModule, TabModule, ReceiverModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -121,9 +121,6 @@ export class ReceiverPlacePage {
 
   }
 
-  test(){
-    console.log("test");
-  }
 
   //도시 클릭 시
   cityClick(city: string) {

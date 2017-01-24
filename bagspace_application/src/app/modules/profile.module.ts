@@ -14,7 +14,7 @@ import { MoverPage } from '../../pages/profile_group/mover/mover';
 
 @NgModule({
   declarations: [ProfilePage, HelperPage, SettingPage, InvitePage, FeedbackPage, RulePage, MoverPage],
-  imports: [IonicModule, CommonModule, DatePickerModule],
+  imports: [IonicModule, CommonModule],
   entryComponents: [ProfilePage, HelperPage, SettingPage, InvitePage, FeedbackPage, RulePage, MoverPage],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
