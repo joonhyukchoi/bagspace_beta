@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ScheduleModule } from 'primeng/primeng';
 import { AlertController } from 'ionic-angular';
 //import {Calendar} from 'ionic-native';
 
