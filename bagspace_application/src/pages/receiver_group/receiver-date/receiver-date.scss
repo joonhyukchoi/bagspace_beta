@@ -1,15 +1,16 @@
 page-receiver-date{
-    .receiver-date-item{
-        margin-top : 10px;
-        height: 100px;
-    }
 
-    .receiver-date-header{
+    .receiver-date_header{
         font-weight : bold !important;
-        font-size : 16px !important;
+        font-size : 18px !important;
         text-align: center;
         background-color : black !important;
-        color : white !important;
+        //color : white !important;
+    }
+    
+    .receiver-date_height{
+        margin-top : 10px;
+        height: 100px;
     }
 
     .font_black{

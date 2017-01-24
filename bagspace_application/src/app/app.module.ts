@@ -9,6 +9,7 @@ import { ProfileModule } from './modules/profile.module';
 import { TabModule } from './modules/tab.module';
 import { ReceiverModule } from './modules/receiver.module';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +19,9 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
   ],
   imports: [
     IonicModule.forRoot(MyApp), 
-    ProfileModule, TabModule,ReceiverModule
+    ProfileModule, TabModule,ReceiverModule,
+    IonicModule.forRoot(MyApp),
+    ProfileModule, TabModule, ReceiverModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

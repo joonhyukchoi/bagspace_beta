@@ -6,20 +6,15 @@
 
 <ion-content padding>
    <ion-grid>
-      <ion-label color="primary" class="selectPlace">도착일을 선택해주세요</ion-label>
-   <!--
-   <span ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
-      <span>{{localDate | date}} <ion-icon name="clipboard" item-left ></ion-icon> </span>
-  </span>
-  -->
+      <ion-label color="primary" class="font_black">도착일을 선택해주세요</ion-label>
     <ion-list>
-      <ion-list-header>도착 날짜</ion-list-header>
+      <ion-list-header class="mover_header">도착 날짜</ion-list-header>
       <ion-item (click)="showCalendar()">
       <div *ngIf="!isClick">
       <ion-note>날짜를 설정하세요</ion-note>
       </div>
       <ion-icon name="calendar" item-right large></ion-icon>
-      {{selectedDate}}
+       <p class="font_black"> {{selectedDate}} </p>
       </ion-item>
       <br>
     </ion-list>
@@ -29,5 +24,5 @@
 
 <ion-footer>
   <!--다음 버튼-->
-  <button ion-button full class="next" medium color="light" (click)="moveNext()">신청하기</button>
+  <button ion-button full class="mover_next" medium color="light" (click)="moveNext()">신청하기</button>
 </ion-footer>
