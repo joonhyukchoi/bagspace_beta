@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-//import {Calendar} from 'ionic-native';
 
 //ionic2-date-picker
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { GoodsRegistrationPage } from '../goods-registration/goods-registration';
 
 @Component({
   selector: 'page-receiver-date',
@@ -40,15 +40,10 @@ export class ReceiverDatePage {
   }
 
   //다음 버튼
+  
   moveNext(){
-    if(this.selectedDate != null){
-      this.navCtrl.push(ReceiverDatePage);
-    }
-    else{
-      this.calendarAlert();
-    }
+  this.navCtrl.push(GoodsRegistrationPage);
   }
-
   calendarAlert() {
     let alert = this.alertCtrl.create({
       title: '',

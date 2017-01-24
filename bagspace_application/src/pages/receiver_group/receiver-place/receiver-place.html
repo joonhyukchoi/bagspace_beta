@@ -8,7 +8,7 @@
 <ion-content>
   <ion-grid>
 <!-- 라벨 -->
-  <ion-label color="primary" class="font_black">국가와 도시를 선택해주세요</ion-label>
+  <ion-label color="primary"class="font_black">국가와 도시를 선택해주세요</ion-label>
 <!-- 국가와 도시 -->
   <ion-row style = "height : 50%">
     <ion-col width-50>
@@ -16,9 +16,9 @@
     <ion-list>
     <ion-list-header class="receiver-place_header">국가 선택</ion-list-header>
       <div *ngFor="let country of countries;">
-      <button ion-item detail-push (click)="countryClick($event, country)">
-       <p class="font_black"> {{ country }} </p>
-      </button>
+        <button ion-item detail-push (click)="countryClick($event, country)">
+        <p class="font_black"> {{ country }} </p>
+        </button>
       </div>
     </ion-list>
     </ion-col>
@@ -27,9 +27,9 @@
     <ion-list>
     <ion-list-header class="receiver-place_header">도시 선택</ion-list-header>
       <span *ngFor="let city of cities">
-      <button ion-item detail-push (click)="cityClick(city)">
-        <p class="font_black"> {{ city }} </p>
-      </button>
+        <button ion-item detail-push (click)="cityClick(city)">
+          <p class="font_black"> {{ city }} </p>
+        </button>
       </span>  
     </ion-list>
     </ion-col>
@@ -40,9 +40,9 @@
       <ion-list style="width:100%; text-align: center">
       <ion-list-header class="receiver-place_header">랜드마크 선택</ion-list-header>
         <span *ngFor="let landmark of landmarks">
-        <button ion-item detail-push (click)="landmarkClick(landmark)">
-         <p class="font_black"> {{ landmark }} </p>
-        </button>
+          <button ion-item detail-push (click)="landmarkClick(landmark)">
+          <p class="font_black"> {{ landmark }} </p>
+          </button>
         </span>  
       </ion-list>
     </ion-row>
