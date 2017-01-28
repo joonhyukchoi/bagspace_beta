@@ -9,11 +9,11 @@ import { ProfileModule } from './modules/profile.module';
 import { TabModule } from './modules/tab.module';
 import { ReceiverModule } from './modules/receiver.module';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { NaverLoginPage } from '../pages/naver-login/naver-login';
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    LoginPage,
+    MyApp, HomePage,
+    LoginPage, NaverLoginPage,
     DatePicker
   ],
   imports: [
@@ -24,7 +24,7 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
+    LoginPage, NaverLoginPage,
     DatePicker
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
