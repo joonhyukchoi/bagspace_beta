@@ -1,31 +1,11 @@
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-    <script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('08a3a51604ddfcecf3e49d6c853f2ef8');
-    function loginWithKakao() {
-      // 로그인 창을 띄웁니다.
-      Kakao.Auth.login({
-        success: function(authObj) {
-          alert(JSON.stringify(authObj));
-        },
-        fail: function(err) {
-          alert(JSON.stringify(err));
-        }
-      });
-    };
-
-    </script>
-
 <ion-content class="login">
   <br><br><br><br>
   <p class="content_center"><img align="center" class="logo_pic" src="assets/img/bagspace.png"></p>
   <br><br>
   <div class="content_center">
-    <a id="custom-login-btn" href="javascript:loginWithKakao()"><button ion-button large icon-left class="button_kakao"><ion-icon name="text"></ion-icon>카카톡 로그인</button></a>
+    <button  (click)="doKtLogin()" ion-button large icon-left class="button_kakao"><ion-icon name="text"></ion-icon>카카톡 로그인</button>
     <button ion-button large icon-left class="button_naver"><ion-icon name="school"></ion-icon>네이버 로그인&nbsp;&nbsp;&nbsp;&nbsp;</button>
-    <button (click)="doFbLogin()" ion-button large icon-left class="button_facebook"><ion-icon name="logo-facebook"></ion-icon>페이스북 로그인</button>    
+    <button  (click)="doFbLogin()" ion-button large icon-left class="button_facebook"><ion-icon name="logo-facebook"></ion-icon>페이스북 로그인</button>    
     <button (click)="naver()" ion-button large icon-left class="button_google"><ion-icon name="logo-google"></ion-icon>구글 로그인</button>
  
   </div>
