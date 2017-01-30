@@ -1,9 +1,10 @@
-declare var cordova: any
+
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, Platform } from 'ionic-angular';
 import { Facebook, NativeStorage, InAppBrowser} from 'ionic-native';
 import { ProfilePage } from '../profile_group/profile/profile';
-
+declare var cordova: any
+declare var KakaoTalk: any
 /*
   Generated class for the Login page.
 
@@ -23,7 +24,11 @@ export class LoginPage {
     FB_APP_ID: number = 703053959855280;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public modalCtrl: ModalController) {
-       Facebook.browserInit(this.FB_APP_ID, "v2.8");}
+       Facebook.browserInit(this.FB_APP_ID, "v2.8");
+      
+    
+  
+      }
 
     doFbLogin(){
       let permissions = new Array();
@@ -74,10 +79,10 @@ export class LoginPage {
     this.browser.show();
   }
   
+
   doKtLogin(){
-      if (typeof cordova !== 'undefined') {
-  cordova.plugins.KakaoTalk.login(
-      
+if (typeof cordova !== 'undefined') {
+  KakaoTalk.login(
       function (result) {
         console.log('Successful login!');
         console.log(result);
@@ -86,9 +91,10 @@ export class LoginPage {
         console.log('Error logging in');
         console.log(message);
       }
-  );
-  } 
-  }
+  ); }
+ 
+  };   
+
 }  
 
 
