@@ -13,13 +13,19 @@ import { GoodsRegistrationPage } from '../goods-registration/goods-registration'
 })
 export class ReceiverDatePage {
 
+  selected_Country: string;
+  selected_City: string;
+  selected_Landmark: string;
+
   selectedDate : any = null;
   //달력 날짜 선택 확인
   isClick : boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
   public alertCtrl: AlertController) {
-    
+    this.selected_Landmark = navParams.get("landmark");
+    this.selected_Country = navParams.get("country");
+    this.selected_City = navParams.get("city");
      this.datePicker.onDateSelected.subscribe( 
       (date) => {
         this.selectedDate = date;
@@ -42,6 +48,9 @@ export class ReceiverDatePage {
   //다음 버튼
   
   moveNext(){
+    if(this.isClick==false)
+    this.calendarAlert();
+  else
   this.navCtrl.push(GoodsRegistrationPage);
   }
   calendarAlert() {

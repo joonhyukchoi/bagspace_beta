@@ -17,6 +17,10 @@ export class ReceiverPlacePage {
   isLandmarkClick : boolean = false;
   flag: Array<boolean> = [];
 
+  selected_Country: string;
+  selected_City: string;
+  selected_Landmark: string;
+
   countries = [
     '대한민국',
     '중국',
@@ -118,7 +122,8 @@ export class ReceiverPlacePage {
     else if(country == "이스라엘"){
       this.cities = this.israel;
     }
-
+ this.selected_Country= country;
+  
   }
 
 
@@ -143,19 +148,26 @@ export class ReceiverPlacePage {
     else if(city == "포항"){
       this.landmarks = this.pohang;
     }
+
+     
+  this.selected_City=city;
+  
   }
 
     landmarkClick(landmark:string){
 
       this.isLandmarkClick = true;
       console.log(this.isCountryClick, this.isCityClick, this.isLandmarkClick);
+
+      
+  this.selected_Landmark= landmark;
     }
 
   //다음 버튼
   moveDate(){
 
     if( (this.isCityClick==true) && (this.isLandmarkClick == true) )
-      this.navCtrl.push(ReceiverDatePage);
+      this.navCtrl.push(ReceiverDatePage,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark});
     else if(this.isCityClick == true){
       this.landmarkAlert();
     }
