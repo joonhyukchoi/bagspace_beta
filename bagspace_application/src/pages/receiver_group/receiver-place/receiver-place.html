@@ -15,10 +15,11 @@
 <!-- 국가 -->
     <ion-list>
     <ion-list-header class="receiver-place_header">국가 선택</ion-list-header>
-      <div *ngFor="let country of countries;">
-        <button ion-item detail-push (click)="countryClick($event, country)">
-        <p class="font_black"> {{ country }} </p>
-        </button>
+      <div *ngFor="let country of countries; let idx = index">
+        <button [class.active]="country['active']" ion-item detail-push 
+          (click)="countryClick(country, idx, countries)">
+        <p class="font_black"> {{ country.name }} </p>
+        </button>       
       </div>
     </ion-list>
     </ion-col>
@@ -26,11 +27,12 @@
     <ion-col width-50>
     <ion-list>
     <ion-list-header class="receiver-place_header">도시 선택</ion-list-header>
-      <span *ngFor="let city of cities">
-        <button ion-item detail-push (click)="cityClick(city)">
-          <p class="font_black"> {{ city }} </p>
+      <div *ngFor="let city of cities; let idx = index">
+        <button [class.active]="city['active']" ion-item detail-push 
+        (click)="cityClick(city, idx, cities)">
+          <p class="font_black"> {{ city.name }} </p>
         </button>
-      </span>  
+      </div>  
     </ion-list>
     </ion-col>
     </ion-row>
@@ -39,11 +41,12 @@
     <ion-row style="height: 50%">
       <ion-list style="width:100%; text-align: center">
       <ion-list-header class="receiver-place_header">랜드마크 선택</ion-list-header>
-        <span *ngFor="let landmark of landmarks">
-          <button ion-item detail-push (click)="landmarkClick(landmark)">
-          <p class="font_black"> {{ landmark }} </p>
+        <div *ngFor="let landmark of landmarks; let idx = index">
+          <button [class.active]="landmark['active']" ion-item detail-push 
+          (click)="landmarkClick(landmark, idx, landmarks)">
+          <p class="font_black"> {{ landmark.name }} </p>
           </button>
-        </span>  
+        </div>  
       </ion-list>
     </ion-row>
   </ion-grid>
