@@ -1,6 +1,11 @@
 
 page-receiver-place{
 
+    div > button.active { 
+        background-color:blue; 
+        color:white 
+    }
+
     .receiver-place_header{
         font-weight : bold !important;
         font-size : 20px !important;

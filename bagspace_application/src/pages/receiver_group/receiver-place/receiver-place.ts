@@ -12,163 +12,183 @@ export class ReceiverPlacePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
 
+  country_Index : number = -1;
+  city_Index : number = -1;
+  landmark_Index : number = -1;
+
   isCountryClick : boolean = false;
   isCityClick : boolean = false;
   isLandmarkClick : boolean = false;
-  flag: Array<boolean> = [];
-
-  selected_Country: string;
-  selected_City: string;
-  selected_Landmark: string;
+  
+  blank = [
+    { name: ' ' },
+    { name: ' ' },
+    { name: ' ' },
+    { name: ' ' }
+  ];
 
   countries = [
-    '대한민국',
-    '중국',
-    '일본',
-    '이스라엘'
+    { name: '대한민국' },
+    { name: '중국' },
+    { name: '일본' },
+    { name: '이스라엘' }
   ];
 
   cities = [
-    '',
-    '',
-    '',
-    ''
-  ]
+    { name: ' ' },
+    { name: ' ' },
+    { name: ' ' },
+    { name: ' ' }
+  ];
 
   landmarks = [
-    '',
-    '',
-    '',
-    ''
-  ]
+    { name: ' ' },
+    { name: ' ' },
+    { name: ' ' },
+    { name: ' ' }
+  ];
 
   korea = [
-    '서울',
-    '대전',
-    '부산',
-    '포항'
+    { name: '서울' },
+    { name: '대전' },
+    { name: '부산' },
+    { name: '포항' }
   ];
   
   //korea landmarks
   seoul = [
-    'seoul1',
-    'seoul2',
-    'seoul3',
-    'seoul4'
-  ]
+    { name: 'seoul1' },
+    { name: 'seoul2' },
+    { name: 'seoul3' },
+    { name: 'seoul4' }
+  ];
 
   daejeon = [
-    'daejeon1',
-    'daejeon2',
-    'daejeon3',
-    'daejeon4'
+    { name: 'daejeon1' },
+    { name: 'daejeon2' },
+    { name: 'daejeon3' },
+    { name: 'daejeon4' },
   ]
 
   pohang = [
-    'pohang1',
-    'pohang2',
-    'pohang3',
-    'pohang4'
+    { name: 'pohang1' },
+    { name: 'pohang2' },
+    { name: 'pohang3' },
+    { name: 'pohang4' },
   ]
 
   busan = [
-    'busan1',
-    'busan2',
-    'busan3',
-    'busan4'
+    { name: 'busan1' },
+    { name: 'busan2' },
+    { name: 'busan3' },
+    { name: 'busan4' },
   ]
 
   // ...
 
-  china =[
-    '상하이',
-    '베이징',
-    '항저우',
-    '난징'
+  china = [
+    { name: '상하이' },
+    { name: '베이징' },
+    { name: '항저우' },
+    { name: '난징' }
   ];
-
+  
   japan = [
-    '오사카',
-    '도쿄',
-    '교토',
-    '후쿠오카'
+    { name: '오사카' },
+    { name: '도쿄' },
+    { name: '교토' },
+    { name: '후쿠오카' }
   ];
-
+  
   israel = [
-    '예루살렘',
-    '텔아이브',
-    '하이파',
-    '에일라트'
+    { name: '예루살렘' },
+    { name: '텔아이브' },
+    { name: '하이파' },
+    { name: '에일라트' }
   ];
 
   //국가 클릭 시
-  countryClick(event, country){
+  countryClick(country, idx, countries){
     
-    if(this.isCityClick == true)
-      this.isCityClick = false;
+    if(this.city_Index != -1){
+      this.cities[this.city_Index]['active'] = false;
+      this.city_Index = -1;
+    }
+    if(this.landmark_Index != -1){
+      this.landmarks[this.landmark_Index]['active'] = false;
+      this.landmark_Index = -1;    
+    }
+    //기존에 다른 국가가 선택되어 있을 시, 마우스 클릭 후 CSS 처리 취소
+    if(this.country_Index != -1)
+      this.countries[this.country_Index]['active'] = false;
     
-    this.isCountryClick = true;
-    console.log(this.isCountryClick, this.isCityClick, this.isLandmarkClick);
+    country['active'] = !country['active'];
+    this.country_Index = idx;
 
-    if(country=="대한민국"){
-      this.cities = this.korea;
+    this.landmarks = this.blank;
+
+    switch(country.name){
+      case "대한민국":
+        this.cities = this.korea;
+        break;
+      case "중국":
+        this.cities = this.china;
+        break;
+      case "일본":
+        this.cities = this.japan;
+        break;
+      case "이스라엘":
+        this.cities = this.israel;
+        break;
     }
-    else if(country == "중국"){
-      this.cities = this.china;
-    }
-    else if(country == "일본"){
-      this.cities = this.japan;
-    }
-    else if(country == "이스라엘"){
-      this.cities = this.israel;
-    }
- this.selected_Country= country;
-  
   }
-
 
   //도시 클릭 시
-  cityClick(city: string) {
+  cityClick(city, idx, cities) {
 
-    if(this.isLandmarkClick == true)
-      this.isLandmarkClick = false;
-    this.isCityClick = true;
+    if(this.landmark_Index != -1){
+        this.landmarks[this.landmark_Index]['active'] = false;
+        this.landmark_Index = -1;
+    }
+    if(this.city_Index != -1)
+      this.cities[this.city_Index]['active'] = false;
+    
+    city['active'] = !city['active'];
+    this.city_Index = idx;
 
-    console.log(this.isCountryClick, this.isCityClick, this.isLandmarkClick);
 
-    if(city=="서울"){
-      this.landmarks = this.seoul;
-    }
-    else if(city == "대전"){
-      this.landmarks = this.daejeon;
-    }
-    else if(city == "부산"){
-      this.landmarks = this.busan;
-    }
-    else if(city == "포항"){
-      this.landmarks = this.pohang;
+    switch(city.name){
+      case "서울":
+        this.landmarks = this.seoul;
+        break;
+      case "대전":
+        this.landmarks = this.daejeon;
+        break;
+      case "부산":
+        this.landmarks = this.busan;
+        break;
+      case "포항":
+        this.landmarks = this.pohang;
+        break;
     }
 
-     
-  this.selected_City=city;
-  
   }
 
-    landmarkClick(landmark:string){
+    landmarkClick(landmark, idx, landmarks){
 
-      this.isLandmarkClick = true;
-      console.log(this.isCountryClick, this.isCityClick, this.isLandmarkClick);
-
+      if(this.landmark_Index != -1)
+        this.landmarks[this.landmark_Index]['active'] = false;
       
-  this.selected_Landmark= landmark;
+      landmark['active']= !landmark['active'];
+      this.landmark_Index = idx;
     }
 
   //다음 버튼
   moveDate(){
 
-    if( (this.isCityClick==true) && (this.isLandmarkClick == true) )
-      this.navCtrl.push(ReceiverDatePage,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark});
-    else if(this.isCityClick == true){
+    if( (this.city_Index != -1) && (this.landmark_Index != -1) )
+      this.navCtrl.push(ReceiverDatePage);
+    else if(this.city_Index != -1){
       this.landmarkAlert();
     }
     else{
