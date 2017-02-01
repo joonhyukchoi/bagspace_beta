@@ -3,10 +3,10 @@
   "app_id": "c58e8d68",
   "v2": true,
   "typescript": true,
-   "proxies":[
+  "proxies": [
     {
-      "path":"/mongo_test",
-      "proxyUrl":"http://thebagspace.com/mongo_test"
+      "path": "/mongo_test",
+      "proxyUrl": "http://thebagspace.com/mongo_test"
     }
   ]
 }
