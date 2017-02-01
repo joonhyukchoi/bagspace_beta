@@ -21,37 +21,36 @@
   <li *ngFor="let hero of heroes">
   {{ hero }}
 </li>-->
-
-<div *ngFor="let good of goods" >
-   <ion-card  padding >
-      
-            <button ion-button  clear >
+<div *ngFor="let item of data">
+    <ion-card padding>
+       <button ion-button  clear >
             <ion-icon large name="close"></ion-icon>
             </button>
-        
-        <ion-item (click)="goCategoryPage()">
-         
+            <div>
+        <ion-item>
         <img item-left class="home_pic" src="assets/img/bagspace.png">
-        <h1 class="font_black">iPhone7외 2개</h1>
-        <br>
-        
-         
+        <h1 class="font_black">{{item.selected_Object_name}}</h1>
         </ion-item>
-       
-            
-      
+        <ion-item>
+            <ion-icon name="ios-navigate" item-left large></ion-icon>
+            <h2 class="font_black">{{item.selected_Country}},{{item.selected_City}}</h2>
+            <p>{{item.selected_Landmark}}</p>
+        </ion-item>
 
-       
+        <ion-item>
+            <span item-left>{{item.selected_Date}}</span>
+            <button ion-button icon-left clear item-right>
+            <ion-icon large name="arrow-round-forward"></ion-icon>
+            </button>
+        </ion-item>
+        </div>
     </ion-card>
 </div>
+
 <button ion-button block large color="light" (click)="goCategoryPage()">+</button>
-
-
-
-
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-   <button class="background_color2" ion-button block large color="light">확인</button>
+   <button class="background_color2" ion-button block large color="light" (click)="goback()">확인</button>
   </ion-toolbar>
 </ion-footer>

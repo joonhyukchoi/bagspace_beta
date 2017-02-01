@@ -2,5 +2,11 @@
   "name": "bagspace_application",
   "app_id": "c58e8d68",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/mongo_test",
+      "proxyUrl": "http://thebagspace.com/mongo_test"
+    }
+  ]
 }

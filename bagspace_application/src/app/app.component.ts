@@ -7,6 +7,7 @@ import { IconPage } from '../pages/tabs_group/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  
   rootPage = IconPage;
 
   constructor(platform: Platform) {

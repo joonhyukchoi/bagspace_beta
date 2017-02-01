@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core';  
+import { NavController, NavParams } from 'ionic-angular';
+import { LoginPage } from '../../login/login';
 import { ProfilePage } from '../../profile_group/profile/profile';
 import { CategoryPage } from '../../receiver_group/category/category';
-import { GoodsRegistrationPage } from '../../receiver_group/goods-registration/goods-registration';
-import { NavController, NavParams } from 'ionic-angular';
+import { ReceiverPlacePage } from '../../receiver_group/receiver-place/receiver-place';
+
 
 @Component({
   template: `
@@ -18,9 +20,11 @@ export class TabsPage {
     constructor(public navCtrl: NavController, public navParams: NavParams) {}
   rootPage = TabsPage;
   profilePage = ProfilePage;
+  loginpage=LoginPage;
   categoryPage = CategoryPage;
-  goods_registrationPage = GoodsRegistrationPage;
+  receiver_place_page = ReceiverPlacePage;
+
   go_register_page(){
-  this.navCtrl.push(GoodsRegistrationPage);
+  this.navCtrl.push(ReceiverPlacePage);
   }
 }

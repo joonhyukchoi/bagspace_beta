@@ -1,15 +1,15 @@
-<ion-content padding>
+<ion-content  padding> <!--ngIf='userReady'-->
   <br>
   <ion-grid>
    <ion-row>
      <ion-col width-25>
-      <ion-avatar >
-        <img class='profile_pic' src="assets/img/bagspace.png">
+      <ion-avatar>   <!--ngIf='userReady'-->
+        <img class='profile_pic'> <!--[src]="user.picture"-->
       </ion-avatar> 
      </ion-col>
      <ion-col width-75>
-      <h1>Youjun Lee</h1>
-      <p>&nbsp;&nbsp; 프로필 수정</p>
+      <h1>Youjun</h1><!-- {{user.name}}-->
+      <p>&nbsp;&nbsp; 프로필 수정dm</p>
      </ion-col>
     </ion-row>
   </ion-grid>
@@ -46,5 +46,4 @@
     <br>
     </ion-item>
   </ion-list>
-
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { NavController,NavParams} from 'ionic-angular';
-
+import { AlertController } from 'ionic-angular';
 import { GoodsRegistration2Page } from '../goods-registration2/goods-registration2';
 
 /*
@@ -15,7 +15,11 @@ import { GoodsRegistration2Page } from '../goods-registration2/goods-registratio
 })
 
 export class CategoryPage {
-  
+  selected_Country: string;
+  selected_City: string;
+  selected_Landmark: string;
+  selected_Date : Date = null;
+  selected_Category:string;
   cosmetics=["스킨","로션","수분크림"];
   daily_supplies=["과자","물","쌀"];
   clothes=["장갑","신발","코트"];
@@ -23,7 +27,11 @@ export class CategoryPage {
  public isActive2: boolean = false;
  public isActive3: boolean = false;
  myclass: string="on";
-     constructor(public navCtrl: NavController,public navParams: NavParams) {
+     constructor(public navCtrl: NavController,public navParams: NavParams, public alertCtrl: AlertController) {
+    this.selected_Landmark = navParams.get("landmark");
+    this.selected_Country = navParams.get("country");
+    this.selected_City = navParams.get("city");
+    this.selected_Date = navParams.get("date");
   
   }
  onlyone(isActive:number){
@@ -46,9 +54,9 @@ export class CategoryPage {
  }
 
 goback(good:string){
-  
-  
-  this.navCtrl.push(GoodsRegistration2Page);
+  this.selected_Category = good;
+  this.navCtrl.push(GoodsRegistration2Page,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark,date:this.selected_Date,category:this.selected_Category});
 }
+
 
  } 
