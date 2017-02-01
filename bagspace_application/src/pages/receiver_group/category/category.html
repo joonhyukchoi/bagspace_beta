@@ -12,7 +12,6 @@
 
 
 <ion-content  class="action-sheets-basic-page"> 
-	
     <section name="content">
     <div class=" list_category">
     <div class="item1_category">
@@ -23,7 +22,7 @@
          <span *ngIf="isActive1==true"  class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span></p>      
       </div>
       <ng-container *ngIf="isActive1==true">
-       <div *ngFor="let cosmetic of cosmetics" class = "item_category" (click)="goback(isn)">
+       <div *ngFor="let cosmetic of cosmetics" class = "item_category" (click)="goback(cosmetic)">
            {{cosmetic}}
        </div>
       </ng-container>
@@ -36,7 +35,7 @@
          <span *ngIf="isActive2==true"  class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span></p>         
       </div>
       <ng-container *ngIf="isActive2==true">
-       <div *ngFor="let daily_supply of daily_supplies" class = "item_category" (click)="goback(asdf)">
+       <div *ngFor="let daily_supply of daily_supplies" class = "item_category" (click)="goback(daily_supply)">
            {{daily_supply}}
        </div>
       </ng-container>
@@ -49,7 +48,7 @@
          <span *ngIf="isActive3==true"  class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span></p>           
       </div>
         <ng-container *ngIf="isActive3==true">
-       <div *ngFor="let cloth of clothes" class = "item_category" (click)="goback(asdf)">
+       <div *ngFor="let cloth of clothes" class = "item_category" (click)="goback(cloth)">
            {{cloth}}
            
        </div>

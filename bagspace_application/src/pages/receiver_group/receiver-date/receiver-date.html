@@ -16,7 +16,7 @@
       <p class="font_black">날짜를 설정하세요</p>
       </div>
       <ion-icon name="calendar" item-right large></ion-icon>
-      <p class="font_black">{{selectedDate}}</p>
+      <p class="font_black">{{selected_Date}}</p>
       </ion-item>
       <br>
     </ion-list>
@@ -26,8 +26,6 @@
 
 <ion-footer>
   <!--다음 버튼-->
-  <div>{{selected_Country}}</div>
-  <div>{{selected_City}}</div>
-  <div>{{selected_Landmark}}</div>
+ 
   <button ion-button full medium color="light" (click)="moveNext()">다음</button>
 </ion-footer>
