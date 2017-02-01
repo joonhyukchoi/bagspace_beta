@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';  
-import { GoodsRegistrationPage } from '../../receiver_group/goods-registration/goods-registration';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../../login/login';
 import { ProfilePage } from '../../profile_group/profile/profile';
