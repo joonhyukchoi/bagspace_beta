@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker'; //ionic2-date-picker
-import { GoodsRegistrationPage } from '../receiver_group/goods-registration/goods-registration';
+
+//ionic2-date-picker
+import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { GoodsRegistrationPage } from '../goods-registration/goods-registration';
 
 @Component({
-  selector: 'page-mover-apply',
-  templateUrl: 'mover-apply.html',
+  selector: 'page-receiver-date',
+  templateUrl: 'receiver-date.html',
   providers: [ DatePicker ]
 })
 export class ReceiverDatePage {
@@ -21,7 +23,9 @@ export class ReceiverDatePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
   public alertCtrl: AlertController) {
-    
+    this.selected_Landmark = navParams.get("landmark");
+    this.selected_Country = navParams.get("country");
+    this.selected_City = navParams.get("city");
      this.datePicker.onDateSelected.subscribe( 
       (date) => {
         this.selected_Date = new Date(date);
@@ -42,14 +46,13 @@ export class ReceiverDatePage {
   }
 
   //다음 버튼
+  
   moveNext(){
-
     if(this.isClick==false)
     this.calendarAlert();
   else
   this.navCtrl.push(GoodsRegistrationPage,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark,date:this.selected_Date});
   }
-
   calendarAlert() {
     let alert = this.alertCtrl.create({
       title: '',
@@ -58,6 +61,5 @@ export class ReceiverDatePage {
     });
     alert.present();
   }
-
 
 }
