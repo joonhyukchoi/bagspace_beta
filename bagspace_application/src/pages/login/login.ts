@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, Platform } from 'ionic-angular';
-import { Facebook, NativeStorage, InAppBrowser} from 'ionic-native';
+import { NavController, NavParams, Platform } from 'ionic-angular';
+import { Facebook, NativeStorage} from 'ionic-native';
 import { ProfilePage } from '../profile_group/profile/profile';
 declare var cordova: any
 declare var KakaoTalk: any
@@ -23,7 +23,7 @@ export class LoginPage {
 
     FB_APP_ID: number = 703053959855280;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public modalCtrl: ModalController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
        Facebook.browserInit(this.FB_APP_ID, "v2.8");
       
     
@@ -62,39 +62,33 @@ export class LoginPage {
         console.log(error);
       });
     }
-
-
-  openModal(page) {
-    let modal = this.modalCtrl.create(page);
-    modal.present();
-  }
-  
- naver(){window.open("http://thebagspace.com/login",  "_blank", "location=yes");}
-
-  browser: InAppBrowser;
-  url:string ='http://ionicframework.com/docs/v2/native/inappbrowser/';
-  openBrowser() {
-    let options ='location=no,toolbar=yes,hidden=no';
-    this.browser= new InAppBrowser(this.url,'_blank',options);
-    this.browser.show();
-  }
-  
-
+    
   doKtLogin(){
-if (typeof cordova !== 'undefined') {
-  KakaoTalk.login(
-      function (result) {
-        console.log('Successful login!');
-        console.log(result);
-      },
-      function (message) {
-        console.log('Error logging in');
-        console.log(message);
+    let nav = this.navCtrl;
+    if (typeof cordova !== 'undefined') {
+      KakaoTalk.login()
+          .then(function (result) {
+            
+            NativeStorage.setItem('user',
+            {
+            name: result.id,
+            gender: result.nickname,
+            picture: result.profile_image
+          }),
+          function(){
+            nav.push(ProfilePage);
+          }, function (error) {
+            console.log(error);
+          }
+          },
+          function (message) {
+            console.log('Error logging in');
+            console.log(message);
+          })
       }
-  ); }
- 
-  };   
-
+    };   
+  
+  naver(){window.open("http://thebagspace.com/login",  "_blank", "location=yes");}  
 }  
 
 
