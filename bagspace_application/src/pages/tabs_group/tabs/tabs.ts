@@ -23,7 +23,6 @@ export class TabsPage {
   profilePage = ProfilePage;
   loginpage=LoginPage;
   categoryPage = CategoryPage;
-  
   receiver_place_page = ReceiverPlacePage;
 
   go_register_page(){
