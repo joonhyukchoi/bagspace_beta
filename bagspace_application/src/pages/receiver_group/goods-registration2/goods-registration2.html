@@ -17,16 +17,16 @@
 <ion-list>
   <ion-item>
     <ion-label color="primary">물품명</ion-label>
-    <ion-input placeholder="ex)iphon7"></ion-input>
+    <ion-input [(ngModel)]="selected_Object_name" placeholder="ex)iphon7"></ion-input>
   </ion-item>
    <ion-item>
     <ion-label color="primary">url주소</ion-label>
-    <ion-input type="url" placeholder="ex)http://ionicframework.com/docs/v2/api/components/input/Input/"></ion-input>
+    <ion-input [(ngModel)]="selected_Url" type="url" placeholder="ex)http://ionicframework.com/docs/v2/api/components/input/Input/"></ion-input>
   </ion-item>
 
   <ion-card>
   <ion-card-header>
-   <p class="font_color2"> Explore Nearby</p>
+   <p class="font_color2"> 사진을 추가하세요</p>
   </ion-card-header>
 
   <ion-list >
@@ -39,11 +39,11 @@
 
   <ion-item>
     <ion-label color="primary">배달비</ion-label>
-    <ion-input type="number" placeholder="ex)7,000$"></ion-input>
+    <ion-input [(ngModel)]="selected_Delivery_charge" type="number" placeholder="ex)7,000$"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label color="primary">물품정가비 </ion-label>
-    <ion-input type="number" placeholder="ex)7,000$"></ion-input>
+    <ion-input [(ngModel)]="selected_Price" type="number" placeholder="ex)7,000$"></ion-input>
   </ion-item>
 
   

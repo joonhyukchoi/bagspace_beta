@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import { IconPage } from '../pages/tabs_group/tabs/tabs';
+//import { IconPage } from '../pages/tabs_group/tabs/tabs';
+
+//working
+import { ChatRoomPage } from '../pages/mover-apply/chat-room/chat-room';
+//import { MoverApplyPage } from '../pages/mover-apply/mover-apply';
+import { ReceiverPlacePage } from '../pages/receiver_group/receiver-place/receiver-place';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = IconPage;
+  
+  //rootPage = ReceiverPlacePage;
+  //rootPage = IconPage;
+  rootPage = ChatRoomPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

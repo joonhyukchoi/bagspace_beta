@@ -1,0 +1,61 @@
+page-chat-room {
+
+    //Header
+    .chat-room_header{
+    }
+
+    //Content
+    .chat-room_content{
+        margin-top: 0px;
+        border: 0px;
+        background-color: lightskyblue;
+        overflow-x: hidden;    
+    }
+    
+    //Angular2AutoScroll를 이용하여 AutoScroll 적용
+    .chat-room_messages{
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    .chat-room_message-button{
+        background-color: yellow !important;
+        color : black;
+    }
+
+    .chat-room_time-align{
+        text-align: right !important;
+    }
+
+    //Footer
+    .chat-room_footer{
+        height: 10%;
+        background-color: blue !important;   
+    }
+    
+    .chat-room_footer-row{
+        background-color: white;
+    }
+
+    .chat-room_footer-navbar{
+        padding:0px;
+    }
+
+    .chat-room_footerButton{
+        background-color: #fff;
+    }
+
+    .chat-room_textarea{
+        margin: 5px;
+        background-color: white;
+    }
+    
+    .chat-room_width{
+        padding: 0px;
+    }
+
+    .chat-room_sendButton{
+      margin-top: 5px;
+      margin-left: 0px;
+    }
+}
