@@ -8,8 +8,18 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker'; //ionic2-dat
   templateUrl: 'mover-apply.html',
   providers: [ DatePicker ]
 })
+<<<<<<< HEAD:bagspace_application/src/pages/mover-apply/mover-apply.ts
 export class MoverApplyPage {
   selectedDate : any = null;
+=======
+export class ReceiverDatePage {
+
+  selected_Country: string;
+  selected_City: string;
+  selected_Landmark: string;
+
+  selected_Date : Date = null;
+>>>>>>> ca5ed2dd535a48b066dad022c3166a62b69207fb:bagspace_application/src/pages/receiver_group/receiver-date/receiver-date.ts
   //달력 날짜 선택 확인
   isClick : boolean = false;
 
@@ -18,7 +28,7 @@ export class MoverApplyPage {
     
      this.datePicker.onDateSelected.subscribe( 
       (date) => {
-        this.selectedDate = date;
+        this.selected_Date = new Date(date);
         //console.log(date);
         this.isDateSelect();
     });
@@ -30,19 +40,26 @@ export class MoverApplyPage {
   }
 
   isDateSelect(){
-    if(this.selectedDate != null){
+    if(this.selected_Date != null){
       this.isClick = true;
     }
   }
 
   //다음 버튼
   moveNext(){
+<<<<<<< HEAD:bagspace_application/src/pages/mover-apply/mover-apply.ts
     if(this.selectedDate != null){
       //this.navCtrl.push(ReceiverDatePage);
     }
     else{
       this.calendarAlert();
     }
+=======
+    if(this.isClick==false)
+    this.calendarAlert();
+  else
+  this.navCtrl.push(GoodsRegistrationPage,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark,date:this.selected_Date});
+>>>>>>> ca5ed2dd535a48b066dad022c3166a62b69207fb:bagspace_application/src/pages/receiver_group/receiver-date/receiver-date.ts
   }
 
   calendarAlert() {
