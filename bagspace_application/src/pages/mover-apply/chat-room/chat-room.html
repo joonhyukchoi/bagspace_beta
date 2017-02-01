@@ -13,10 +13,10 @@
 <ion-content class="chat-room_content" padding>
   <div class="chat-room_messages" angular2-auto-scroll lock-y-offset="10" observe-attributes>
     <div *ngFor="let message of messages;">
-      <div align="right" class="chat-room_message-align" *ngIf="message">
+      <div align="right" *ngIf="message">
+        <span>{{currentTime | date:'shortTime'}}</span>
         <button class="chat-room_message-button" ion-button>{{message}}</button>
       </div>
-        <span class="time">{{message.createdAt| date:"hh:mm:ss" }}</span>
     </div>
   </div>
 </ion-content>

@@ -8,34 +8,29 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ChatRoomPage {
 
-  /** 변수 **/
-  count = 0;
   isClick : boolean = false;
 
+  //기본 유저 정보
+  userId:any;
+
   //메시지 
-  inputMessage : any ='';
-  
-  messages : any[] = [];
-  /*
-  = 
-  {
-    id: '',
-    msg: '',
-    time: ''
-  };
- */
-  
+  inputMessage: any = '';
+  messages: any[]= [];
+  currentTime: Date;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   
   send(){
     var msg = this.inputMessage;
-    var currentTime = ""; // 현재 시간 저장
+    
+    // 현재 시간 저장
+    this.currentTime = new Date();
+    var curTime = this.currentTime; 
+    
     //메시지 전송 후, messages에 저장
     this.messages.push(msg);
-    //this.messages.push(); todo : 시간 저장
-    console.log(msg);
-
+    
     //전송 후 inputMessage 빈 칸 만들어 주기
     this.inputMessage = '';
   }
