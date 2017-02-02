@@ -45,7 +45,7 @@ goback(){
         this.data.selected_Delivery_charge=this.selected_Delivery_charge;
         this.data.selected_Price=this.selected_Price;
      var headers = new Headers({'Content-Type': 'application/json'})
-    this.http.post('/mongo_test/delivery', this.data,{headers: headers})
+    this.http.post('http://thebagspace.com/mongo_test/delivery', this.data,{headers: headers})
     .subscribe(
       data=> {
         this.data = data.json();
