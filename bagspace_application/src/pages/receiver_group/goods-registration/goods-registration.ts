@@ -46,7 +46,7 @@ goback(){
 }
 
 getList(){
-  this.http.get('/mongo_test/delivery')
+  this.http.get('http://thebagspace.com/mongo_test/delivery')
   .subscribe(
     data=>{
       this.data = data.json();
