@@ -9,13 +9,14 @@ import { ProfileModule } from './modules/profile.module';
 import { TabModule } from './modules/tab.module';
 import { ReceiverModule } from './modules/receiver.module';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
-
+import { ChatRoomPage } from '../pages/mover-apply/chat-room/chat-room';
 
 @NgModule({
   declarations: [
     MyApp, HomePage,
     LoginPage,
-    DatePicker
+    DatePicker,
+    ChatRoomPage
   ],
   imports: [
     IonicModule.forRoot(MyApp), 
@@ -26,7 +27,8 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
     MyApp,
     HomePage,
     LoginPage,
-    DatePicker
+    DatePicker,
+    ChatRoomPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

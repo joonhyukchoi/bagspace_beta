@@ -1,36 +1,48 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-//import { Angular2AutoScroll } from 'angular2-auto-scroll/lib/angular2-auto-scroll.directive';
 
 @Component({
   selector: 'page-chat-room',
-  templateUrl: 'chat-room.html'
+  templateUrl: 'chat-room.html',
 })
 export class ChatRoomPage {
 
   isClick : boolean = false;
 
   //기본 유저 정보
-  userId:any;
+  myId:string = '123';
+  userId:string = '';
 
   //메시지 
-  inputMessage: any = '';
-  messages: any[]= [];
-  currentTime: Date;
+  inputMessage: string = '';
+  inputMessageTime: Date = null;
+
+  showMessage: string ='';
+
+  //데이터베이스 data
+  data:any[]=[
+    {userId: '123', messageText: 'test1', messageTime: '123'},
+    {userId: '234', messageText: 'test2', messageTime: '234'}
+  ]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   
   send(){
-    var msg = this.inputMessage;
     
-    // 현재 시간 저장
-    this.currentTime = new Date();
-    var curTime = this.currentTime; 
+    // 메시지 전송 시간 저장
+    this.inputMessageTime = new Date();
+    //테스트용
+    this.showMessage = this.inputMessage;
+
+    /*DB로 전송
+    this.data.messageText = this.inputMessage;
+    this.data.messageTime = this.inputMessageTime;
     
-    //메시지 전송 후, messages에 저장
-    this.messages.push(msg);
-    
+    ...
+
+    */
+
     //전송 후 inputMessage 빈 칸 만들어 주기
     this.inputMessage = '';
   }
