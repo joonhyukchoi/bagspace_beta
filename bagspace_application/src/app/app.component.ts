@@ -9,8 +9,7 @@ import { ChatRoomPage } from '../pages/mover-apply/chat-room/chat-room';
 })
 export class MyApp {
   
-  //rootPage = IconPage;
-  rootPage = ChatRoomPage;
+  rootPage = IconPage;
   
   constructor(platform: Platform) {
     platform.ready().then(() => {
