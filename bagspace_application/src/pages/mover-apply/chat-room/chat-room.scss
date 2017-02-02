@@ -9,7 +9,6 @@ page-chat-room {
         margin-top: 0px;
         border: 0px;
         background-color: lightskyblue;
-        overflow-x: hidden;    
     }
     
     //Angular2AutoScroll를 이용하여 AutoScroll 적용
@@ -18,8 +17,13 @@ page-chat-room {
         height: 100%;
     }
 
-    .chat-room_message-button{
+    .chat-room_my-message > button{
         background-color: yellow !important;
+        color : black;
+    }
+
+    .chat-room_opponent-message > button{
+        background-color: white !important;
         color : black;
     }
 
@@ -44,6 +48,10 @@ page-chat-room {
     .chat-room_textarea{
         margin: 5px;
         background-color: white;
+    }
+
+    .chat-room_textarea > textarea {
+       
     }
     
     .chat-room_width{
