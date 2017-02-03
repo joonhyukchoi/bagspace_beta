@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CategoryPage } from '../category/category';
-import {Http} from '@angular/http'
+import {Http, Headers} from '@angular/http'
 
 /*
   Generated class for the GoodsRegistration page.
@@ -15,6 +15,7 @@ import {Http} from '@angular/http'
 })
 export class GoodsRegistrationPage {
   data;
+  save_data:any={state:""};
   selected_Country: string;
   selected_City: string;
   selected_Landmark: string;
@@ -42,11 +43,21 @@ goCategoryPage(){
 }
 
 goback(){
-   this.navCtrl.popToRoot();
+   this.save_data.state = 1;
+   var headers = new Headers({'Content-Type': 'application/json'})
+     this.http.put('/mongo_test/delivery/0', this.save_data,{headers: headers})
+    .subscribe(
+      data=> {
+        this.save_data = data.json();
+        alert("등록되었습니다.");
+        this.navCtrl.popToRoot();
+      }
+    )
+   
 }
 
 getList(){
-  this.http.get('http://thebagspace.com/mongo_test/delivery')
+  this.http.get('/mongo_test/delivery/register')
   .subscribe(
     data=>{
       this.data = data.json();

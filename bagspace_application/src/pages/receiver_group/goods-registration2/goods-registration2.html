@@ -30,10 +30,11 @@
   </ion-card-header>
 
   <ion-list >
-    <button class="background_color"  ion-item>
+    <button class="background_color"  ion-item (click)="takePicture()" *ngIf="!base64Image">
       <ion-icon  name="camera" item-left></ion-icon>
       <p class="font_color1">+</p>
     </button>
+    <img (click)="takePicture()" [src]="base64Image" *ngIf="base64Image" />
   </ion-list>
   </ion-card>
 
