@@ -14,20 +14,16 @@
   <div class="chat-room_messages" angular2-auto-scroll lock-y-offset="10" observe-attributes>
  
     <div *ngFor="let message of data;">
-      <div align="right" class="chat-room_my-message" *ngIf="message && myId==message.userId">
+        <div align="right" class="chat-room_my-message" *ngIf="message && myId==message.id">
         <span>{{message.messageTime | date:'shortTime'}}</span>
         <button ion-button>{{message.messageText}}</button>
       </div>
-      <div align="left" class="chat-room_opponent-message" *ngIf="message && myId!=message.userId">
+    <div align="left" class="chat-room_opponent-message" *ngIf="message && myId!=message.id">
         <button ion-button>{{message.messageText}}</button>
         <span>{{message.messageTime | date:'shortTime'}}</span>
       </div>
     </div>
-<!-- 테스트용 -->
-    <div align="right" class="chat-room_my-message" *ngIf="inputMessageTime">
-      <span>{{inputMessageTime | date:'shortTime'}}</span>
-      <button ion-button>{{showMessage}}</button>
-    </div>
+
   </div>
 </ion-content>
  
