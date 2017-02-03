@@ -16,9 +16,9 @@ export class ReceiverPlacePage {
   city_Index : number = -1;
   landmark_Index : number = -1;
 
-  isCountryClick : boolean = false;
-  isCityClick : boolean = false;
-  isLandmarkClick : boolean = false;
+  selected_Country: string;
+  selected_City: string;
+  selected_Landmark: string;
   
   blank = [
     { name: ' ' },
@@ -124,8 +124,10 @@ export class ReceiverPlacePage {
     
     country['active'] = !country['active'];
     this.country_Index = idx;
-
     this.landmarks = this.blank;
+
+    //date 페이지로 넘김
+    this.selected_Country = country;
 
     switch(country.name){
       case "대한민국":
@@ -156,6 +158,8 @@ export class ReceiverPlacePage {
     city['active'] = !city['active'];
     this.city_Index = idx;
 
+    //date 페이지로 넘김
+    this.selected_City = city;
 
     switch(city.name){
       case "서울":
@@ -174,20 +178,24 @@ export class ReceiverPlacePage {
 
   }
 
-    landmarkClick(landmark, idx, landmarks){
+  landmarkClick(landmark, idx, landmarks){
 
-      if(this.landmark_Index != -1)
-        this.landmarks[this.landmark_Index]['active'] = false;
-      
-      landmark['active']= !landmark['active'];
-      this.landmark_Index = idx;
-    }
+    if(this.landmark_Index != -1)
+      this.landmarks[this.landmark_Index]['active'] = false;
+    
+    landmark['active']= !landmark['active'];
+    this.landmark_Index = idx;
+
+    //date 페이지로 넘김
+    this.selected_Landmark = landmark;
+  }
 
   //다음 버튼
   moveDate(){
 
     if( (this.city_Index != -1) && (this.landmark_Index != -1) )
-      this.navCtrl.push(ReceiverDatePage);
+      this.navCtrl.push(ReceiverDatePage, {city:this.selected_City,country:this.selected_Country
+        ,landmark:this.selected_Landmark});
     else if(this.city_Index != -1){
       this.landmarkAlert();
     }
