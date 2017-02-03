@@ -3,6 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { IconPage } from '../pages/tabs_group/tabs/tabs';
 import { ChatRoomPage } from '../pages/mover-apply/chat-room/chat-room';
+import { ReceiverDetailPage } from '../pages/receiver_group/receiver-detail/receiver-detail';
 
 @Component({
   templateUrl: 'app.html'
@@ -10,6 +11,7 @@ import { ChatRoomPage } from '../pages/mover-apply/chat-room/chat-room';
 export class MyApp {
   
   rootPage = IconPage;
+  //rootPage = ReceiverDetailPage;
   
   constructor(platform: Platform) {
     platform.ready().then(() => {

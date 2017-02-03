@@ -1,5 +1,7 @@
 import { Component, trigger, state, style, transition, animate } from '@angular/core';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { NavController, NavParams } from 'ionic-angular';
+import { ReceiverDetailPage } from '../../receiver_group/receiver-detail/receiver-detail';
 
 @Component({
   selector: 'page-upper-tabs',
@@ -21,7 +23,7 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 export class UpperTabsPage {   
 search_click:string='close';
 date:Date;
- constructor(public datePicker: DatePicker) {
+ constructor(public datePicker: DatePicker, public navCtrl: NavController, public navParams: NavParams) {
 
     this.datePicker.onDateSelected.subscribe( 
       (date) => {
@@ -29,7 +31,13 @@ date:Date;
         this.date=new Date(date);
     });
   }
+
   showCalendar(){
     this.datePicker.showCalendar();
   }
+
+  goDetailPage(){
+    this.navCtrl.push(ReceiverDetailPage);
+  }
+
 }

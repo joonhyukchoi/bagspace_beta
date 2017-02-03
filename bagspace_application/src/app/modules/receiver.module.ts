@@ -6,19 +6,19 @@ import { GoodsRegistrationPage } from '../../pages/receiver_group/goods-registra
 import { GoodsRegistration2Page } from '../../pages/receiver_group/goods-registration2/goods-registration2';
 import { ReceiverDatePage } from '../../pages/receiver_group/receiver-date/receiver-date';
 import { ReceiverPlacePage } from '../../pages/receiver_group/receiver-place/receiver-place';
-
+import { ReceiverDetailPage } from '../../pages/receiver_group/receiver-detail/receiver-detail';
 
 @NgModule({
   declarations: [
     CategoryPage,
     GoodsRegistrationPage, GoodsRegistration2Page,
-    ReceiverDatePage, ReceiverPlacePage
+    ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage
   ],
   imports: [IonicModule, CommonModule],
   entryComponents: [
     CategoryPage,
     GoodsRegistrationPage, GoodsRegistration2Page,
-    ReceiverDatePage, ReceiverPlacePage
+    ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage
     ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
