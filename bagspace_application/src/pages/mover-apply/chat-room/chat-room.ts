@@ -20,10 +20,8 @@ export class ChatRoomPage {
   showMessage: string ='';
 
   //데이터베이스 data
-  data:any[]=[
-    {userId: '123', messageText: 'test1', messageTime: '123'},
-    {userId: '234', messageText: 'test2', messageTime: '234'}
-  ]
+  data:any= {userId: '123', messageText: 'test1', messageTime: '123'}
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
