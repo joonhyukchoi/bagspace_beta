@@ -28,7 +28,7 @@
             </button>
             <div>
         <ion-item>
-        <img item-left class="home_pic" src="assets/img/bagspace.png">
+        <img item-left class="home_pic" [src]=item.selected_Picture *ngIf=item.selected_Picture />
         <h1 class="font_black">{{item.selected_Object_name}}</h1>
         </ion-item>
         <ion-item>
@@ -38,7 +38,7 @@
         </ion-item>
 
         <ion-item>
-            <span item-left>{{item.selected_Date}}</span>
+            <span item-left>Due:{{item.selected_Date|date:'yy년 MM월 dd일'}}</span>
             <button ion-button icon-left clear item-right>
             <ion-icon large name="arrow-round-forward"></ion-icon>
             </button>

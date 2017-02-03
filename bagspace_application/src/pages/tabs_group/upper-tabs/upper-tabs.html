@@ -33,11 +33,36 @@
 
         <ion-item>
             <span item-left>Due: 2017/2/2</span>
-            <button ion-button icon-left clear item-right>
+            <button ion-button icon-left clear item-right (click)="getList()">
             <ion-icon large name="arrow-round-forward"></ion-icon>
             </button>
         </ion-item>
     </ion-card>
+    <div *ngFor="let item of data">
+    <ion-card padding>
+       <button ion-button  clear >
+            <ion-icon large name="close"></ion-icon>
+            </button>
+            <div>
+        <ion-item>
+        <img item-left class="home_pic" [src]=item.selected_Picture *ngIf=item.selected_Picture />
+        <h1 class="font_black">{{item.selected_Object_name}}</h1>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ios-navigate" item-left large></ion-icon>
+            <h2 class="font_black">{{item.selected_Country}},{{item.selected_City}}</h2>
+            <p>{{item.selected_Landmark}}</p>
+        </ion-item>
+
+        <ion-item>
+            <span item-left>Due:{{item.selected_Date|date:'yy년 MM월 dd일'}}</span>
+            <button ion-button icon-left clear item-right>
+            <ion-icon large name="arrow-round-forward"></ion-icon>
+            </button>
+        </ion-item>
+        </div>
+    </ion-card>
+</div>
     <img src="https://s3.ap-northeast-2.amazonaws.com/bagspace/product_pic/bagspace">
 
 </ion-content>
