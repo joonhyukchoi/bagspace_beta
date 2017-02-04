@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker'; //ionic2-date-picker
-import { GoodsRegistrationPage } from '../receiver_group/goods-registration/goods-registration';
+import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 
 @Component({
   selector: 'page-mover-apply',
   templateUrl: 'mover-apply.html',
   providers: [ DatePicker ]
 })
-export class ReceiverDatePage {
+export class MoverApplyPage {
 
   selected_Country: string;
   selected_City: string;
@@ -25,7 +24,6 @@ export class ReceiverDatePage {
      this.datePicker.onDateSelected.subscribe( 
       (date) => {
         this.selected_Date = new Date(date);
-        //console.log(date);
         this.isDateSelect();
     });
 
@@ -41,15 +39,6 @@ export class ReceiverDatePage {
     }
   }
 
-  //다음 버튼
-  moveNext(){
-
-    if(this.isClick==false)
-    this.calendarAlert();
-  else
-  this.navCtrl.push(GoodsRegistrationPage,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark,date:this.selected_Date});
-  }
-
   calendarAlert() {
     let alert = this.alertCtrl.create({
       title: '',
@@ -59,5 +48,37 @@ export class ReceiverDatePage {
     alert.present();
   }
 
+  //신청하기 버튼
+  join() {
+    if(this.isClick==false)
+      this.calendarAlert();
+    else{
+        let confirm = this.alertCtrl.create({
+          title: '정말 참여하시겠습니까?',
+          message: '',
+          buttons: [
+            {
+              text: '참여하기',
+              handler: () => {
+                this.successMessage();
+              }
+            },
+            {
+              text: '취소',
+              handler: () => {
+              }
+            }
+          ]
+        });
+        confirm.present();
+      }
+    }
+  successMessage(){
+      let success = this.alertCtrl.create({
+      title: '신청되었습니다.',
+      message: ''
+      });
+    success.present();
+  }
 
 }
