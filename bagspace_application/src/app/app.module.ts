@@ -9,16 +9,12 @@ import { ProfileModule } from './modules/profile.module';
 import { TabModule } from './modules/tab.module';
 import { ReceiverModule } from './modules/receiver.module';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
-import { ChatRoomPage } from '../pages/mover-apply/chat-room/chat-room';
-import { MoverApplyPage } from '../pages/mover-apply/mover-apply';
 
 @NgModule({
   declarations: [
     MyApp, HomePage,
     LoginPage,
     DatePicker,
-    ChatRoomPage,
-    MoverApplyPage
   ],
   imports: [
     IonicModule.forRoot(MyApp), 
@@ -30,8 +26,6 @@ import { MoverApplyPage } from '../pages/mover-apply/mover-apply';
     HomePage,
     LoginPage,
     DatePicker,
-    ChatRoomPage,
-    MoverApplyPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

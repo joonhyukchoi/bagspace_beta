@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { ChatRoomPage } from '../../mover-apply/chat-room/chat-room';
-import { MoverApplyPage } from '../../mover-apply/mover-apply';
+import { ChatRoomPage } from '../chat-room/chat-room';
+import { MoverApplyPage } from '../mover-apply/mover-apply';
 
 @Component({
   selector: 'page-receiver-detail',
