@@ -16,7 +16,7 @@
       </ion-row>
       </ion-card-header>
     <ion-item>
-      <img src="{{item.item_Picture}}">
+     <img item-left class="home_pic" [src]=detail.selected_Picture *ngIf=detail.selected_Picture />
     </ion-item>
     <ion-card-content>
 <!--물품 설명 리스트-->

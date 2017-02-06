@@ -21,25 +21,11 @@ export class ReceiverDetailPage {
   ]
   //통합 : 물품 목록, 날짜, 장소, 총 가격
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public http:Http) {
-    this.test();
     this.selected_id = navParams.get("id");
     this.getItem();
   }
 
-  //test
-  test(){
-    this.data[0].item_Name = '초콜릿';
-    this.data[0].item_Picture = '../../assets/img/notebook_test.jpg';
-    this.data[0].item_Link = 'www.notebook.com';
-    this.data[0].item_Price = '2000000';
-    this.data[0].item_Benefit = '20000';
-
-    this.data[1].item_Name = 'Kitkat';
-    this.data[1].item_Picture = '../../assets/img/kitkat_test.jpg';
-    this.data[1].item_Link = 'www.kitkat.com';
-    this.data[1].item_Price = '20000';
-    this.data[1].item_Benefit = '200';
-  }
+ 
 
   goChatRoom(){
     this.navCtrl.push(ChatRoomPage);
@@ -62,7 +48,7 @@ export class ReceiverDetailPage {
     map.present();
   }
 getItem(){
-  this.http.get('/mongo_test/delivery/detail/'+this.selected_id)
+  this.http.get('http://thebagspace.com/mongo_test/delivery/detail/'+this.selected_id)
   .subscribe(
     data=>{
       this.item = data.json();
