@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ChatRoomPage } from '../../mover-apply/chat-room/chat-room';
 import { AlertController } from 'ionic-angular';
+import { ChatRoomPage } from '../chat-room/chat-room';
+import { MoverApplyPage } from '../mover-apply/mover-apply';
 
 @Component({
   selector: 'page-receiver-detail',
@@ -43,32 +44,7 @@ export class ReceiverDetailPage {
   } 
 
   join() {
-    let confirm = this.alertCtrl.create({
-      title: '정말 참여하시겠습니까?',
-      message: '',
-      buttons: [
-        {
-          text: '참여하기',
-          handler: () => {
-            this.success();
-          }
-        },
-        {
-          text: '취소',
-          handler: () => {
-          }
-        }
-      ]
-    });
-    confirm.present();
-  }
-
-  success(){
-    let success = this.alertCtrl.create({
-      title: '참여되었습니다.',
-      message: '',
-    });
-    success.present();
+     this.navCtrl.push(MoverApplyPage);
   }
 
   //todo : map 기능 추가

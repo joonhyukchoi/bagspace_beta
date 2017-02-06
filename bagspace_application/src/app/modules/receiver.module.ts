@@ -7,16 +7,18 @@ import { GoodsRegistration2Page } from '../../pages/receiver_group/goods-registr
 import { ReceiverDatePage } from '../../pages/receiver_group/receiver-date/receiver-date';
 import { ReceiverPlacePage } from '../../pages/receiver_group/receiver-place/receiver-place';
 import { ReceiverDetailPage } from '../../pages/receiver_group/receiver-detail/receiver-detail';
+import { ChatRoomPage } from '../../pages/receiver_group/chat-room/chat-room';
+import { MoverApplyPage } from '../../pages/receiver_group/mover-apply/mover-apply';
 
 @NgModule({
   declarations: [
-    CategoryPage,
+    CategoryPage, ChatRoomPage, MoverApplyPage,
     GoodsRegistrationPage, GoodsRegistration2Page,
     ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage
   ],
   imports: [IonicModule, CommonModule],
   entryComponents: [
-    CategoryPage,
+    CategoryPage, ChatRoomPage, MoverApplyPage,
     GoodsRegistrationPage, GoodsRegistration2Page,
     ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage
     ],
