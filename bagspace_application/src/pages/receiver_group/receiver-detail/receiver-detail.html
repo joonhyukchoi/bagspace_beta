@@ -5,13 +5,14 @@
 </ion-header>
 
 <ion-content padding>
-  
-<div *ngFor="let item of data">   
+
+
+<div *ngFor="let detail of item">   
   <ion-card>
       <ion-card-header>
       <ion-row>
         <ion-col width-30><h2>상품명 :</h2></ion-col>
-        <ion-col width-70><h2>{{item.item_Name}}</h2></ion-col>
+        <ion-col width-70><h2>{{detail.selected_Object_name}}</h2></ion-col>
       </ion-row>
       </ion-card-header>
     <ion-item>
@@ -23,29 +24,28 @@
 <!--링크-->
         <ion-item>
           <ion-row>
-            <ion-col width-20><p>링크(Option) :</p></ion-col>
-            <ion-col width-80><p>{{item.item_Link}}</p></ion-col>
+            <ion-col width-10><p>링크 :</p></ion-col>
+            <ion-col width-90><p>{{detail.selected_Url}}</p></ion-col>
           </ion-row>
         </ion-item>
 <!--구매 가격-->
          <ion-item>
           <ion-row>
             <ion-col width-10><p>구매 가격 :</p></ion-col>
-            <ion-col width-90><p>{{item.item_Price | currency:'KRW':true}}</p></ion-col>
+            <ion-col width-90><p>{{detail.selected_Price | currency:'KRW':true}}</p></ion-col>
           </ion-row>
         </ion-item>
 <!-- 수익금 -->
          <ion-item>
           <ion-row>
             <ion-col width-10><p>여행자 수익금 :</p></ion-col>
-            <ion-col width-90><p>{{item.item_Benefit | currency:'KRW':true}}</p></ion-col>
+            <ion-col width-90><p>{{detail.selected_Delivery_charge | currency:'KRW':true}}</p></ion-col>
           </ion-row>
         </ion-item>
     </ion-list>
 
     </ion-card-content>
   </ion-card>
-</div>
 
 <br><br>
 <!-- 리시버 물품 요약 정보-->
@@ -56,14 +56,14 @@
           <ion-row>
             <!--todo : 구매 가격 합산해서 넣기 -->
             <ion-col width-10><p>총 구매 가격 :</p></ion-col>
-            <ion-col width-90><p>{{totalPrice}}</p></ion-col>
+            <ion-col width-90><p>{{detail.selected_Price | currency:'KRW':true}}</p></ion-col>
           </ion-row>
         </ion-item>
 <!-- 기한 날짜 -->
         <ion-item>
           <ion-row>
             <ion-col width-10><p>기한 날짜 :</p></ion-col>
-            <ion-col width-90><p>{{dueDate}}</p></ion-col>
+            <ion-col width-90><p>{{detail.selected_Date|date:'20yy/MM/dd'}}</p></ion-col>
           </ion-row>
         </ion-item>
 <!--배달 장소-->
@@ -71,12 +71,16 @@
           <ion-row>
             <ion-col width-10><p>배달 장소 :</p></ion-col>
             <ion-col width-90>
-              <p>{{deliveryPlace}}</p>
+              <p>{{detail.selected_Country}},{{detail.selected_City}},{{detail.selected_Landmark}}</p>
             </ion-col>
           </ion-row>
            <ion-icon name="pin" item-right (click)="showMap()"></ion-icon>
         </ion-item>
   </ion-item-group>
+
+</div>
+
+
 
 </ion-content>
 

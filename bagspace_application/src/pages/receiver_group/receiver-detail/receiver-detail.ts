@@ -3,30 +3,32 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ChatRoomPage } from '../chat-room/chat-room';
 import { MoverApplyPage } from '../mover-apply/mover-apply';
-
+import {Http, Headers} from '@angular/http'
 @Component({
   selector: 'page-receiver-detail',
   templateUrl: 'receiver-detail.html'
 })
 export class ReceiverDetailPage {
-
+  selected_id: any;
   dueDate:any = '2017년 2월 3일'; //기한 날짜
   deliveryPlace:any = '한국';     //배달 장소
   totalPrice:any = '';            //총 구매 가격
-
+  item;
   data:any[] =
   [ 
     {item_Name: '', item_Picture: '', item_Link: '', item_Price: '', item_Benefit: ''},
     {item_Name: '', item_Picture: '', item_Link: '', item_Price: '', item_Benefit: ''}
   ]
   //통합 : 물품 목록, 날짜, 장소, 총 가격
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public http:Http) {
     this.test();
+    this.selected_id = navParams.get("id");
+    this.getItem();
   }
 
   //test
   test(){
-    this.data[0].item_Name = '노트북';
+    this.data[0].item_Name = '초콜릿';
     this.data[0].item_Picture = '../../assets/img/notebook_test.jpg';
     this.data[0].item_Link = 'www.notebook.com';
     this.data[0].item_Price = '2000000';
@@ -59,5 +61,16 @@ export class ReceiverDetailPage {
       });
     map.present();
   }
+getItem(){
+  this.http.get('/mongo_test/delivery/detail/'+this.selected_id)
+  .subscribe(
+    data=>{
+      this.item = data.json();
+      console.log(data.json());
+    },
+    error =>{
 
+    }
+  );
+}
 }

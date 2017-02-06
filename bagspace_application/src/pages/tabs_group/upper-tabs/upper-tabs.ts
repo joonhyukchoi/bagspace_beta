@@ -41,8 +41,9 @@ data;
   }
 
 
-  goDetailPage(){
-    this.navCtrl.push(ReceiverDetailPage);
+  goDetailPage(id:any){
+    this.navCtrl.push(ReceiverDetailPage,{id:id});
+    console.log(id);
   }
 
 
