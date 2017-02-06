@@ -127,7 +127,7 @@ export class ReceiverPlacePage {
     this.landmarks = this.blank;
 
     //date 페이지로 넘김
-    this.selected_Country = country;
+    this.selected_Country = country.name;
 
     switch(country.name){
       case "대한민국":
@@ -159,7 +159,7 @@ export class ReceiverPlacePage {
     this.city_Index = idx;
 
     //date 페이지로 넘김
-    this.selected_City = city;
+    this.selected_City = city.name;
 
     switch(city.name){
       case "서울":
@@ -187,7 +187,7 @@ export class ReceiverPlacePage {
     this.landmark_Index = idx;
 
     //date 페이지로 넘김
-    this.selected_Landmark = landmark;
+    this.selected_Landmark = landmark.name;
   }
 
   //다음 버튼

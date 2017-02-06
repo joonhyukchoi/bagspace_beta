@@ -20,6 +20,7 @@ export class GoodsRegistrationPage {
   selected_City: string;
   selected_Landmark: string;
   selected_Date : Date = null;
+  bagspace_url : string;
 //public goods_count: number = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
@@ -29,10 +30,7 @@ export class GoodsRegistrationPage {
     this.selected_Date = navParams.get("date");
   }
 
-  ionViewDidLoad() {
-    this.getList();
-    console.log('ionViewDidLoad GoodsRegistrationPage');
-  }
+
   ionViewWillEnter() {
  this.getList();
 }
@@ -68,4 +66,19 @@ getList(){
     }
   );
 }
+
+delete(id:string){
+
+     this.bagspace_url = '/mongo_test/delivery/'+id;
+     var headers = new Headers({'Content-Type': 'application/json'})
+     this.http.delete(this.bagspace_url, {headers: headers})
+    .subscribe(
+      data=> {
+        this.save_data = data.json();
+         this.getList();
+      }
+    )
+
+}
+
 }

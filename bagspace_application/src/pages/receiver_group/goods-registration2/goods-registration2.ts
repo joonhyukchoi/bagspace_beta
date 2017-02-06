@@ -52,7 +52,6 @@ goback(){
     .subscribe(
       data=> {
         this.data = data.json();
-        alert("등록되었습니다.");
         this.navCtrl.popTo( this.navCtrl.getByIndex(3));
       }
     )

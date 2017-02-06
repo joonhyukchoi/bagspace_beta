@@ -23,7 +23,7 @@
 </li>-->
 <div *ngFor="let item of data">
     <ion-card padding>
-       <button ion-button  clear >
+       <button ion-button  clear (click)="delete(item._id)">
             <ion-icon large name="close"></ion-icon>
             </button>
             <div>
