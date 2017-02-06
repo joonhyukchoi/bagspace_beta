@@ -19,12 +19,32 @@ page-chat-room {
 
     .chat-room_my-message > button{
         background-color: yellow !important;
-        color : black;
+        text-align: left;
+        color: black;
+        
+        width: auto;
+        height: auto;
+
+        max-width: 70%;
+
+        white-space: normal;
+        word-break: break-all;
+        line-height: 150%;
     }
 
     .chat-room_opponent-message > button{
         background-color: white !important;
-        color : black;
+        text-align: left;
+        color: black;
+        
+        width: auto;
+        height: auto;
+
+        max-width: 70%;
+
+        white-space: normal;
+        word-break: break-all;
+        line-height: 150%;
     }
 
     //Footer
@@ -58,7 +78,7 @@ page-chat-room {
     }
 
     .chat-room_sendButton{
-      margin-top: 5px;
-      margin-left: 0px;
+        width: 80%;
+        height: 70%
     }
 }
