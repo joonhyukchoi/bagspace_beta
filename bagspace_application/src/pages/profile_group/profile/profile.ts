@@ -36,14 +36,13 @@ export class ProfilePage {
   }
 
 
-   openPage(page) {
+  openPage(page) {
     this.nav.push(page);
   }
+  
   settings=SettingPage;
   invite=InvitePage;
   feedback=FeedbackPage;
   helper=HelperPage;
   mover=MoverPage;  
-
-
 }

@@ -4,6 +4,7 @@ import { LoginPage } from '../../login/login';
 import { ProfilePage } from '../../profile_group/profile/profile';
 import { CategoryPage } from '../../receiver_group/category/category';
 import { ReceiverPlacePage } from '../../receiver_group/receiver-place/receiver-place';
+import { HomePage } from '../../home/home';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class TabsPage {
   rootPage = TabsPage;
   profilePage = ProfilePage;
   loginpage=LoginPage;
+  homepage=HomePage;
   categoryPage = CategoryPage;
   receiver_place_page = ReceiverPlacePage;
 

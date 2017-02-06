@@ -1,8 +1,13 @@
 
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform, ViewController } from 'ionic-angular';
 import { Facebook, NativeStorage} from 'ionic-native';
 import { ProfilePage } from '../profile_group/profile/profile';
+import { Http, Headers, RequestOptions, Request, RequestMethod } from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+
+import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 declare var cordova: any
 declare var KakaoTalk: any
 /*
@@ -19,15 +24,14 @@ declare var KakaoTalk: any
 })
  
 export class LoginPage {
-
-
+    items : any;
     FB_APP_ID: number = 703053959855280;
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
-       Facebook.browserInit(this.FB_APP_ID, "v2.8");
-      
     
-  
+    static get parameters() { return [[Http]]; }
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public http:Http, public viewCtrl: ViewController ) {
+       Facebook.browserInit(this.FB_APP_ID, "v2.8");
+
       }
 
     doFbLogin(){
@@ -68,27 +72,40 @@ export class LoginPage {
     if (typeof cordova !== 'undefined') {
       KakaoTalk.login()
           .then(function (result) {
-            
-            NativeStorage.setItem('user',
-            {
-            name: result.id,
-            gender: result.nickname,
-            picture: result.profile_image
+           
           }),
-          function(){
-            nav.push(ProfilePage);
-          }, function (error) {
-            console.log(error);
-          }
-          },
           function (message) {
             console.log('Error logging in');
             console.log(message);
-          })
+          }
       }
     };   
   
-  naver(){window.open("http://thebagspace.com/login",  "_blank", "location=yes");}  
+  naver(){
+    
+   var status: boolean=false;
+   var count: number=0;
+   
+   while(count<1){
+    if(status==false){
+    window.open("http://thebagspace.com/login",  "_blank", "location=yes");
+    status=true;
+    }
+    else{
+       var requestOptions = new RequestOptions({
+         method: RequestMethod.Post,
+         url: 'https://thebagspace.com/login/profile'
+       });
+
+       var req = new Request(requestOptions);
+
+       console.log('req.method:', RequestMethod[req.method]);
+       console.log('requestOptions.url:', requestOptions.url);
+       count++;
+    }
+   }
+   
+   }
 }  
 
 
