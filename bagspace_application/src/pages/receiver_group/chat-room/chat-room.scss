@@ -9,12 +9,12 @@ page-chat-room {
         margin-top: 0px;
         border: 0px;
         background-color: lightskyblue;
+
+        height:100%;
+        overflow:scroll;
     }
-    
-    //Angular2AutoScroll를 이용하여 AutoScroll 적용
+
     .chat-room_messages{
-        overflow-y: auto;
-        height: 100%;
     }
 
     .chat-room_my-message > button{

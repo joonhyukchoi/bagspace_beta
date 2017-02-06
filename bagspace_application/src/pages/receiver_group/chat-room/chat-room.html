@@ -9,9 +9,8 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-content class="chat-room_content" id="messagesContent">
-  <div class="chat-room_messages" angular2-auto-scroll lock-y-offset="10" observe-attributes>
+<ion-content #test class="chat-room_content">
+  <div class="chat-room_messages">
  
     <div *ngFor="let message of data;">
         <div align="right" class="chat-room_my-message" *ngIf="message && myId==message.id">

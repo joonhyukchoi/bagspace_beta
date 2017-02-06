@@ -14,7 +14,7 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
   declarations: [
     MyApp, HomePage,
     LoginPage,
-    DatePicker,
+    DatePicker
   ],
   imports: [
     IonicModule.forRoot(MyApp), 

@@ -1,12 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewChecked, OnInit } from '@angular/core';
 import { NavController, NavParams, Content } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
+
 @Component({
   selector: 'page-chat-room',
   templateUrl: 'chat-room.html',
 })
-export class ChatRoomPage {
-@ViewChild(Content) content: Content;
+
+export class ChatRoomPage implements AfterViewChecked{
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   isClick : boolean = false;
 
@@ -25,14 +27,31 @@ export class ChatRoomPage {
   data;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:Http) {
-  
- }
- 
-   ionViewWillEnter() {
-    
-    this.getList();
+     
   }
-  
+ 
+  ionViewWillEnter() {
+    this.getList();
+    
+    //setTimeout(3000);
+    //console.log("setTimeout3000");
+   this.scrollToBottom();
+  }
+
+  ngOnInit() { 
+      this.scrollToBottom();
+  }
+
+  ngAfterViewChecked() {        
+      this.scrollToBottom();        
+  } 
+
+  scrollToBottom(): void {
+      try {
+          this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      } catch(err) { }                 
+  }
+
   send(){
     
     // 메시지 전송 시간 저장
@@ -55,21 +74,21 @@ export class ChatRoomPage {
         this.getList();
       }
     )
-    
   }
 
-getList(){
-    this.http.get('/mongo_test/chat')
-    .subscribe(
-      data=>{
-        this.data = data.json();
-        console.log(data.json());
-      },
-      error =>{
+  getList(){
+      this.http.get('/mongo_test/chat')
+      .subscribe(
+        data=>{
+          this.data = data.json();
+          //console.log(data.json());
+        },
+        error =>{
 
-      }
-    );
-  }
-
+        }
+      );
+      //console.log("AftergetList");
+      //this.content.scrollToBottom(300);
+    }
 
 }
