@@ -14,6 +14,7 @@ import { Camera } from 'ionic-native';
   templateUrl: 'goods-registration2.html'
 })
 export class GoodsRegistration2Page {
+  image_url;
   public base64Image: string;
   selected_Country: string;
   selected_City: string;
@@ -24,6 +25,7 @@ export class GoodsRegistration2Page {
   selected_Url : string; 
   selected_Delivery_charge : string; 
   selected_Price : string; 
+  image:any={image:''};
   data:any={selected_Country: '',selected_City:'',selected_Landmark: '',selected_Date : '',selected_Category:'',selected_Object_name : '',selected_Url : '',selected_Delivery_charge : '', selected_Price : '', selected_Picture: ''};
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http:Http) {
     this.selected_Landmark = navParams.get("landmark");
@@ -37,6 +39,14 @@ export class GoodsRegistration2Page {
     console.log('ionViewDidLoad GoodsRegistration2Page');
   }
 goback(){
+
+this.image.image = this.base64Image;
+  var headers = new Headers({'Content-Type': 'application/json'})
+    this.http.post('http://thebagspace.com/mongo_test/delivery/image', this.image,{headers: headers})
+    .subscribe(
+      data=> {
+        this.image_url = data.json();
+        
         this.data.selected_Country = this.selected_Country;
         this.data.selected_City=this.selected_City;
         this.data.selected_Landmark=this.selected_Landmark;
@@ -46,7 +56,7 @@ goback(){
         this.data.selected_Url=this.selected_Url;
         this.data.selected_Delivery_charge=this.selected_Delivery_charge;
         this.data.selected_Price=this.selected_Price;
-        this.data.selected_Picture = this.base64Image;
+        this.data.selected_Picture = this.image_url.Location;
      var headers = new Headers({'Content-Type': 'application/json'})
     this.http.post('http://thebagspace.com/mongo_test/delivery', this.data,{headers: headers})
     .subscribe(
@@ -55,6 +65,13 @@ goback(){
         this.navCtrl.popTo( this.navCtrl.getByIndex(3));
       }
     )
+
+
+      }
+    )
+ 
+
+        
  
   
 }
