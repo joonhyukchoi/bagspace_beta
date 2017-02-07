@@ -25,7 +25,7 @@ export class GoodsRegistration2Page {
   selected_Url : string; 
   selected_Delivery_charge : string; 
   selected_Price : string; 
-  image:any={image:''};
+  image:any={image:'',title:''};
   data:any={selected_Country: '',selected_City:'',selected_Landmark: '',selected_Date : '',selected_Category:'',selected_Object_name : '',selected_Url : '',selected_Delivery_charge : '', selected_Price : '', selected_Picture: ''};
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http:Http) {
     this.selected_Landmark = navParams.get("landmark");
@@ -41,6 +41,7 @@ export class GoodsRegistration2Page {
 goback(){
 
 this.image.image = this.base64Image;
+this.image.title = new Date().toString();
   var headers = new Headers({'Content-Type': 'application/json'})
     this.http.post('http://thebagspace.com/mongo_test/delivery/image', this.image,{headers: headers})
     .subscribe(
