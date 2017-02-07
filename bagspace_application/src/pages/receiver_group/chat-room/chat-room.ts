@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewChecked, OnInit } from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import { NavController, NavParams, Content } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 
@@ -7,8 +7,8 @@ import { Http, Headers } from '@angular/http';
   templateUrl: 'chat-room.html',
 })
 
-export class ChatRoomPage implements AfterViewChecked{
-  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+export class ChatRoomPage{
+@ViewChild(Content) content : Content;
 
   isClick : boolean = false;
 
@@ -22,41 +22,44 @@ export class ChatRoomPage implements AfterViewChecked{
 
   showMessage: string ='';
 
-  //데이터베이스 data
   save_data:any= { id:'',messageText: '', messageTime: ''}
   data;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:Http) {
-     
+    console.log("constructor");
   }
  
   ionViewWillEnter() {
+    console.log("ionViewWillEnter-getList");
     this.getList();
+  }
+
+  ionViewDidEnter(test){
+    //console.log("ionViewDidEnter-scroll");
+     //this.ScrollTo();
+  }
+
+  ionViewDidLoad(){
+    setTimeout(() => {
+      console.log("timeout");
+      this.ScrollTo();
+    }, 300);
+
+    console.log("ionViewDidLoad-scroll");
     
-    //setTimeout(3000);
-    //console.log("setTimeout3000");
-   this.scrollToBottom();
   }
 
-  ngOnInit() { 
-      this.scrollToBottom();
-  }
-
-  ngAfterViewChecked() {        
-      this.scrollToBottom();        
-  } 
-
-  scrollToBottom(): void {
-      try {
-          this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-      } catch(err) { }                 
+  ScrollTo(){
+    //this.content.scrollTo(0,500,200);
+    console.log("Scroll ACTIVE!");
+    this.content.scrollToBottom();
   }
 
   send(){
     
     // 메시지 전송 시간 저장
     this.inputMessageTime = new Date();
-    
+    console.log("MessageSend");
     //test
     //this.showMessage = this.inputMessage;
 
@@ -74,6 +77,10 @@ export class ChatRoomPage implements AfterViewChecked{
         this.getList();
       }
     )
+     setTimeout(() => {
+      console.log("send timeout");
+      this.ScrollTo();
+    }, 150);
   }
 
   getList(){
@@ -87,8 +94,6 @@ export class ChatRoomPage implements AfterViewChecked{
 
         }
       );
-      //console.log("AftergetList");
-      //this.content.scrollToBottom(300);
     }
 
 }
