@@ -78,9 +78,9 @@ export class ChatRoomPage{
       }
     )
      setTimeout(() => {
-      console.log("send timeout");
+      console.log("timeout");
       this.ScrollTo();
-    }, 150);
+    }, 200);
   }
 
   getList(){
