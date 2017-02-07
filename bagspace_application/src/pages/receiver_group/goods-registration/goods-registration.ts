@@ -43,7 +43,7 @@ goCategoryPage(){
 goback(){
    this.save_data.state = 1;
    var headers = new Headers({'Content-Type': 'application/json'})
-     this.http.put('/mongo_test/delivery/0', this.save_data,{headers: headers})
+     this.http.put('http://thebagspace.com/mongo_test/delivery/0', this.save_data,{headers: headers})
     .subscribe(
       data=> {
         this.save_data = data.json();
@@ -55,7 +55,7 @@ goback(){
 }
 
 getList(){
-  this.http.get('/mongo_test/delivery/register')
+  this.http.get('http://thebagspace.com/mongo_test/delivery/register')
   .subscribe(
     data=>{
       this.data = data.json();
@@ -69,7 +69,7 @@ getList(){
 
 delete(id:string){
 
-     this.bagspace_url = '/mongo_test/delivery/'+id;
+     this.bagspace_url = 'http://thebagspace.com/mongo_test/delivery/'+id;
      var headers = new Headers({'Content-Type': 'application/json'})
      this.http.delete(this.bagspace_url, {headers: headers})
     .subscribe(

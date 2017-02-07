@@ -70,7 +70,7 @@ export class ChatRoomPage{
     this.inputMessage = '';
     
     var headers = new Headers({'Content-Type': 'application/json'})
-    this.http.post('/mongo_test/chat', this.save_data,{headers: headers})
+    this.http.post('http://thebagspace.com/mongo_test/chat', this.save_data,{headers: headers})
     .subscribe(
       data=> {
         this.save_data = data.json();
@@ -83,14 +83,14 @@ export class ChatRoomPage{
     }, 200);
   }
 
-  getList(){
-      this.http.get('/mongo_test/chat')
-      .subscribe(
-        data=>{
-          this.data = data.json();
-          //console.log(data.json());
-        },
-        error =>{
+getList(){
+  this.http.get('http://thebagspace.com/mongo_test/chat')
+  .subscribe(
+    data=>{
+      this.data = data.json();
+      console.log(data.json());
+    },
+    error =>{
 
         }
       );

@@ -41,8 +41,9 @@ data;
   }
 
 
-  goDetailPage(){
-    this.navCtrl.push(ReceiverDetailPage);
+  goDetailPage(id:any){
+    this.navCtrl.push(ReceiverDetailPage,{id:id});
+    console.log(id);
   }
 
 
@@ -55,7 +56,7 @@ data;
     this.datePicker.showCalendar();
   }
   getList(){
-  this.http.get('/mongo_test/delivery/all')
+  this.http.get('http://thebagspace.com/mongo_test/delivery/all')
   .subscribe(
     data=>{
       this.data = data.json();
