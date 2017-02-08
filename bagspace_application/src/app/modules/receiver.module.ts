@@ -9,18 +9,19 @@ import { ReceiverPlacePage } from '../../pages/receiver_group/receiver-place/rec
 import { ReceiverDetailPage } from '../../pages/receiver_group/receiver-detail/receiver-detail';
 import { ChatRoomPage } from '../../pages/receiver_group/chat-room/chat-room';
 import { MoverApplyPage } from '../../pages/receiver_group/mover-apply/mover-apply';
+import { MapPage } from '../../pages/receiver_group/map/map';
 
 @NgModule({
   declarations: [
     CategoryPage, ChatRoomPage, MoverApplyPage,
     GoodsRegistrationPage, GoodsRegistration2Page,
-    ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage
+    ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage,MapPage
   ],
   imports: [IonicModule, CommonModule],
   entryComponents: [
     CategoryPage, ChatRoomPage, MoverApplyPage,
     GoodsRegistrationPage, GoodsRegistration2Page,
-    ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage
+    ReceiverDatePage, ReceiverPlacePage, ReceiverDetailPage,MapPage
     ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
