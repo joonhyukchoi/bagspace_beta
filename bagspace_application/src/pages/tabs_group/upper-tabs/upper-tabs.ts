@@ -56,7 +56,7 @@ data;
     this.datePicker.showCalendar();
   }
   getList(){
-  this.http.get('http://thebagspace.com/mongo_test/delivery/all')
+  this.http.get('/mongo_test/delivery/all')
   .subscribe(
     data=>{
       this.data = data.json();

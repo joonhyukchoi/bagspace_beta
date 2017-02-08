@@ -5,6 +5,7 @@ import { ProfilePage } from '../../profile_group/profile/profile';
 import { CategoryPage } from '../../receiver_group/category/category';
 import { ReceiverPlacePage } from '../../receiver_group/receiver-place/receiver-place';
 import { UpperTabsPage } from '../upper-tabs/upper-tabs';
+import { MapPage } from '../../receiver_group/map/map';
 
 
 
@@ -19,6 +20,7 @@ import { UpperTabsPage } from '../upper-tabs/upper-tabs';
   loginpage=LoginPage;
   categoryPage = CategoryPage;
   receiver_place_page = ReceiverPlacePage;
+  mapPage = MapPage;
 
   go_register_page(){
   this.navCtrl.push(ReceiverPlacePage);

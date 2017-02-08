@@ -4,6 +4,8 @@ import { AlertController } from 'ionic-angular';
 import { ChatRoomPage } from '../chat-room/chat-room';
 import { MoverApplyPage } from '../mover-apply/mover-apply';
 import {Http, Headers} from '@angular/http'
+import { MapPage } from '../map/map';
+
 @Component({
   selector: 'page-receiver-detail',
   templateUrl: 'receiver-detail.html'
@@ -37,6 +39,7 @@ export class ReceiverDetailPage {
 
   //todo : map 기능 추가
   showMap(){
+    /*
       let map = this.alertCtrl.create({
       title: 'todo: 나중에 map 기능 넣기!',
       message: '',
@@ -45,10 +48,12 @@ export class ReceiverDetailPage {
           text: 'OK',
         }]
       });
-    map.present();
+    map.present();*/
+   this.navCtrl.push(MapPage);
+
   }
 getItem(){
-  this.http.get('http://thebagspace.com/mongo_test/delivery/detail/'+this.selected_id)
+  this.http.get('/mongo_test/delivery/detail/'+this.selected_id)
   .subscribe(
     data=>{
       this.item = data.json();

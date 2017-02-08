@@ -8,11 +8,14 @@
 
   <ion-navbar>
     <ion-title>map</ion-title>
-  </ion-navbar>
+     <ion-buttons end>
+      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+    </ion-buttons>
+  </ion-navbar> 
 
 </ion-header>
 
 
 <ion-content padding>
-
+<div #map id="map"></div> 
 </ion-content>
