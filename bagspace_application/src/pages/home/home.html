@@ -7,14 +7,12 @@
 </ion-header>
 
 <ion-content class="home">
+  <p class="font_black">{{uuid}}</p>
   <ion-list>
     <ion-item *ngFor="let person of people">
-      <ion-avatar item-left>
-       <img src="{{person.response.profile_image}}">
-      </ion-avatar>
+   
       <p class="font_black">이름: {{person.response.email}}</p>
-        <p class="font_black">이름: {{person.response.name}}</p>
-          <p class="font_black">이름: {{person.response.nickname}}</p>
+       
     </ion-item>
   </ion-list>
 </ion-content>

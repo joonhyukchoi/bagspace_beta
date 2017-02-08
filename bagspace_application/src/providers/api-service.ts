@@ -9,22 +9,19 @@ export class ApiService {
     console.log('Hello ApiService Provider');
   }
 
-  load() {
+  loadAccess() {
     if (this.data1) {
       return Promise.resolve(this.data1);
     }
     // Dont have the data yet
     return new Promise(resolve => {
-      this.http.get('/login/profile')
-      //  /login/profile
-      //https://randomuser.me/api/?results=10
-      
+      this.http.get('/access')
         .subscribe(
-
           data => {
           this.data1 = data.json();
           resolve(this.data1);
         });
     });
+
   }  
 }

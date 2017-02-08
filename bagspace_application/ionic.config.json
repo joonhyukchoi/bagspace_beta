@@ -8,8 +8,8 @@
       "path": "/mongo_test",
       "proxyUrl": "http://thebagspace.com/mongo_test"
     },{
-      "path": "/login/profile",
-      "proxyUrl": "http://thebagspace.com/login/profile"
+      "path": "/access",
+      "proxyUrl": "http://thebagspace.com/login/access_token"
     }
-  ]
+  ] 
 }

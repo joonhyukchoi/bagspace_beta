@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
-import { PeopleSearch } from '../../providers/people-search';
 import { ApiService } from '../../providers/api-service';
+
+import { Device } from 'ionic-native';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -16,38 +17,16 @@ export class HomePage {
   data;
   public people: any;
   constructor(public navCtrl: NavController, public apiService: ApiService, public http: Http) {
-    //this.loadPeople();
+    this.loadPeople();
   }
-
-    ionViewDidLoad() {
-    this.getList();
-    console.log('ionViewDidLoad GoodsRegistrationPage');
-  }
-  ionViewWillEnter() {
- this.getList();
-}
-
-
-  getList(){
-  this.http.get('/login/profile')
-  .subscribe(
-    data=>{
-      this.people = data.json();
-      this.people = Array.of(this.people); 
-      alert(data.json());
-    },
-    error =>{
-
-    }
-  );
-}
-}
-/*
+  uuid=Device.uuid;
+  
   loadPeople() {
-    this.apiService.load()
+    this.apiService.loadAccess()
       .then(data1 => { 
         this.people = data1;
-         this.people = Array.of(this.people); 
-        alert(data1)
+        this.people = Array.of(this.people); 
+        console.log(this.people);
       });
-  } */
+  }
+}

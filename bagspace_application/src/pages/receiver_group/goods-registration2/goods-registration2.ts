@@ -31,9 +31,10 @@ export class GoodsRegistration2Page {
     this.selected_Category = navParams.get("category");
   }
 
-  ionViewDidLoad() {
+ionViewDidLoad(){
     console.log('ionViewDidLoad GoodsRegistration2Page');
-  }
+}
+
 goback(){
         this.data.selected_Country = this.selected_Country;
         this.data.selected_City=this.selected_City;
@@ -52,10 +53,9 @@ goback(){
         alert("등록되었습니다.");
         this.navCtrl.popTo( this.navCtrl.getByIndex(3));
       }
-    )
- 
-  
+    )  
 }
+
  Alert() {
     let alert = this.alertCtrl.create({
       title: '',

@@ -4,10 +4,8 @@
   <br><br>
   <div class="content_center">
     <button  (click)="doKtLogin()" ion-button large icon-left class="button_kakao"><ion-icon name="text"></ion-icon>카카톡 로그인</button>
-    <button ion-button large icon-left class="button_naver"><ion-icon name="school"></ion-icon>네이버 로그인&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <button (click)="open()" ion-button large icon-left class="button_naver"><ion-icon name="school"></ion-icon>네이버 로그인&nbsp;&nbsp;&nbsp;&nbsp;</button>
     <button  (click)="doFbLogin()" ion-button large icon-left class="button_facebook"><ion-icon name="logo-facebook"></ion-icon>페이스북 로그인</button>    
-    <button (click)="naver()" ion-button large icon-left class="button_google"><ion-icon name="logo-google"></ion-icon>구글 로그인</button>
- 
+    <button (click)="doNvLogin()" ion-button large icon-left class="button_google"><ion-icon name="logo-google"></ion-icon>구글 로그인</button>
   </div>
-  
 </ion-content>
