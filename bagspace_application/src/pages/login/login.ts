@@ -17,17 +17,15 @@ declare var KakaoTalk: any
 })
  
 export class LoginPage {
-   data1:any;
+    data1:any;
     FB_APP_ID: number = 703053959855280;
-    state=true;
+    browser;
+    state:boolean=true;
     access: any={access:''};
+    public people: any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public apiService: ApiService, public platform: Platform, public http:Http, public viewCtrl: ViewController ) {
        Facebook.browserInit(this.FB_APP_ID, "v2.8");   
-
-       if(this.state==false){
-         console.log("wow");
-       }
     }
 
     doFbLogin(){
@@ -78,40 +76,41 @@ export class LoginPage {
     };   
   
   doNvLogin(){
-    window.open("http://thebagspace.com/login",  "_blank", "location=yes");
-    console.log(this.state);
-    this.state=false;
-    console.log(this.state);
-    this.loadToken();
-    this.navCtrl.push(IntroPage);
-  }
-
-    loadToken() {
-    let token;
-    this.apiService.loadAccess()
-      .then(data1 => { 
-        this.access.access = data1;
-        console.log("wow")
-        console.log(this.access.access);
-      })  
-    }
-
-loadProfile(){
     
-     var headers = new Headers({'Content-Type': 'application/json'})
-    this.http.post('/login/profile', this.access,{headers: headers})
-    .subscribe(
-      data=> {
-        this.access = data.json();
-        alert("등록되었습니다.");
-      }
-    )  
+   this.browser=window.open("http://thebagspace.com/login",  "_blank", "location=yes");
+   this.browser.addEventListener('exit',  
+    () => {  
+      this.http.get('http://thebagspace.com/login/access_token')
+  .subscribe(
+    data=>{
+      this.data1 = data.json();
+     alert(this.data1.response.email);
+    },
+    error =>{}
+  );
+})
+          NativeStorage.setItem('user',
+          {
+            uuid: Device.uuid,
+            name: this.data1.response.name,
+            id: this.data1.response.id,
+            picture: this.data1.response.profile_image
+          })
+  }
+  
+  getList(){
+  this.http.get('/access')
+  .subscribe(
+    data=>{
+      this.data1 = data.json();
+      console.log(this.data1.response.email);
+    },
+    error =>{
+    }
+  );
 }
 
   open(){
-    console.log(this.state);
-    this.navCtrl.push(IntroPage);
+      this.navCtrl.push(IntroPage);
   }
 }  
-
-
