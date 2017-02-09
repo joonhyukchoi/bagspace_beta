@@ -10,6 +10,25 @@ import { TabModule } from './modules/tab.module';
 import { ReceiverModule } from './modules/receiver.module';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { ConnectivityService } from '../providers/connectivity-service';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '281230f2',
+  },
+  'push': {
+    'sender_id': '156866190196',
+    'pluginConfig': {
+      'ios': {
+        'badge': true,
+        'sound': true
+      },
+      'android': {
+        'iconColor': '#343434'
+      }
+    }
+  }
+};
 
 @NgModule({
   declarations: [
@@ -19,7 +38,9 @@ import { ConnectivityService } from '../providers/connectivity-service';
   ],
   imports: [
     IonicModule.forRoot(MyApp), 
-    ProfileModule, TabModule, ReceiverModule
+    ProfileModule, TabModule, ReceiverModule,
+    CloudModule.forRoot(cloudSettings)
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
