@@ -9,6 +9,7 @@ import { ProfileModule } from './modules/profile.module';
 import { TabModule } from './modules/tab.module';
 import { ReceiverModule } from './modules/receiver.module';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { ConnectivityService } from '../providers/connectivity-service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,6 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
     LoginPage,
     DatePicker,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},ConnectivityService]
 })
 export class AppModule {}
