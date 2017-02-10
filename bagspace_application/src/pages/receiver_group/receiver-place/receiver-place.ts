@@ -52,7 +52,11 @@ export class ReceiverPlacePage {
     { name: '서울' },
     { name: '대전' },
     { name: '부산' },
-    { name: '포항' }
+    { name: '포항' },
+    { name: '대구' },
+    { name: '수원' },
+    { name: '울산' },
+    { name: '여수' }
   ];
   
   //korea landmarks

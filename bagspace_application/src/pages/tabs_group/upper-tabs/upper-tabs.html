@@ -18,7 +18,7 @@
             <h1>Slide 3</h1>
         </ion-slide>
     </ion-slides>
-
+<!-- 예시 : Database에서 정보 안 가져옴-->
     <ion-card padding>
         <ion-item>
             <ion-icon name="ios-navigate" item-left large></ion-icon>
@@ -34,14 +34,11 @@
             <ion-icon large name="arrow-round-forward"></ion-icon>
             </button>
         </ion-item>
+<!--Database에서 물품 정보 가져옴-->
     </ion-card>
     <div *ngFor="let item of data">
-    <ion-card padding>
-     
-            <div>
-        <ion-item>
-        <h1 class="font_black">{{item.selected_Object_name}}</h1>
-        </ion-item>
+    <ion-card padding (click)="goDetailPage(item._id)">
+        <div>
         <ion-item>
             <ion-icon name="ios-navigate" item-left large></ion-icon>
             <h2 class="font_black">{{item.selected_Country}},{{item.selected_City}}</h2>
@@ -50,7 +47,7 @@
 
         <ion-item>
             <span item-left>Due:{{item.selected_Date|date:'20yy/MM/dd'}}</span>
-            <button ion-button icon-left clear item-right (click)="goDetailPage(item._id)">
+            <button ion-button icon-left clear item-right>
 
             <ion-icon large name="arrow-round-forward"></ion-icon>
             </button>
