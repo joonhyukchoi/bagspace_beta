@@ -5,10 +5,7 @@ import { Network } from 'ionic-native';
 declare var Connection;
 
 /*
-  Generated class for the ConnectivityService provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
+ type를 전부 connection으로 교체
 */
 @Injectable()
 export class ConnectivityService {
