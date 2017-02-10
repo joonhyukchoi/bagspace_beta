@@ -35,11 +35,7 @@ export class GoodsRegistration2Page {
     this.selected_Category = navParams.get("category");
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GoodsRegistration2Page');
-  }
 goback(){
-
 this.image.image = this.base64Image;
 this.image.title = new Date().toString();
   var headers = new Headers({'Content-Type': 'application/json'})
@@ -60,22 +56,14 @@ this.image.title = new Date().toString();
         this.data.selected_Picture = this.image_url.Location;
      var headers = new Headers({'Content-Type': 'application/json'})
     this.http.post('http://thebagspace.com/mongo_test/delivery', this.data,{headers: headers})
-    .subscribe(
-      data=> {
-        this.data = data.json();
-        this.navCtrl.popTo( this.navCtrl.getByIndex(3));
-      }
-    )
+        .subscribe(
+          data=> {
+            this.data = data.json();
+            this.navCtrl.popTo( this.navCtrl.getByIndex(3));
+          })
+     })
+ }
 
-
-      }
-    )
- 
-
-        
- 
-  
-}
  Alert() {
     let alert = this.alertCtrl.create({
       title: '',
@@ -84,6 +72,7 @@ this.image.title = new Date().toString();
     });
     alert.present();
   }
+
    takePicture(){
     Camera.getPicture({
         destinationType: Camera.DestinationType.DATA_URL,
@@ -99,3 +88,6 @@ this.image.title = new Date().toString();
     });
   }
 }
+
+
+
