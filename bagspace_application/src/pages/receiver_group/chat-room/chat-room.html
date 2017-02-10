@@ -1,0 +1,57 @@
+<ion-header class="chat-room_header">
+  <ion-navbar>
+    <ion-title>chatRoom</ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only clear>
+          <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
+        <!--button ion-button (click)="ScrollTo()">스크롤 맨 밑으로 내리기</button-->
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="chat-room_content">
+  <div class="chat-room_messages">
+ 
+    <div *ngFor="let message of data;">
+        <div align="right" class="chat-room_my-message" *ngIf="message && myId==message.id">
+        <span>{{message.messageTime | date:'shortTime'}}</span>
+        <button ion-button>{{message.messageText}}</button>
+      </div>
+    <div align="left" class="chat-room_opponent-message" *ngIf="message && myId!=message.id">
+        <button ion-button>{{message.messageText}}</button>
+        <span>{{message.messageTime | date:'shortTime'}}</span>
+      </div>
+    </div>
+    
+    <!--테스트용-->
+    <!--
+    <div align="left" class="chat-room_opponent-message" *ngIf="showMessage">
+          <button ion-button>{{showMessage}}</button>
+          <span>{{inputMessageTime | date:'shortTime'}}</span>
+    </div>
+
+     <div align="right" class="chat-room_my-message" *ngIf="showMessage">
+          <span>{{inputMessageTime | date:'shortTime'}}</span>
+          <button ion-button>{{showMessage}}</button>
+    </div>
+    -->
+
+  </div>
+  
+</ion-content>
+ 
+
+<ion-footer class="chat-room_footer">
+  <ion-navbar class="chat-room_footer-navbar">
+    <ion-row class="chat-room_footer-row">
+<!-- 메시지 입력 창 -->  
+      <ion-col class="chat-room_textarea" width-75>
+        <ion-textarea autosize type="text" [(ngModel)]="inputMessage" rows="2" placeholder="  메시지를 입력하세요"></ion-textarea>
+      </ion-col>
+      <ion-col class="chat-room_footer-width" width-25 >
+         <button class="chat-room_sendButton" *ngIf="inputMessage !=''" ion-button large (click)="send()"> 전송 </button>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-footer>
