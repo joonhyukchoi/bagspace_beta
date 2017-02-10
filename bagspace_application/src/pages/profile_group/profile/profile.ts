@@ -26,8 +26,9 @@ export class ProfilePage {
     NativeStorage.getItem('user')
     .then(function (data){
       env.user = {
+        uuid: data.uuid,
         name: data.name,
-        gender: data.gender,
+        id: data.id,
         picture: data.picture
       };
         console.log(data);
