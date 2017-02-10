@@ -5,7 +5,7 @@
      </ion-navbar>    
           <div class="tab_back"  [@Title]="search_click"  [@SlidMenu]="search_click">
           <div *ngIf="search_click=='open'" (click)="showCalendar()" class="cal-button"><ion-icon item-left large name="md-calendar"></ion-icon>날짜</div>  
-          <div *ngIf="search_click=='open'" class="dep-button"><ion-icon item-left name="md-globe"></ion-icon>도착지</div>
+          <div *ngIf="search_click=='open'" (click)="openModal(place)" class="dep-button"><ion-icon item-left name="md-globe"></ion-icon>도착지</div>
           </div>
     <ion-slides pager autoplay="3000" loop class="home_slide">
         <ion-slide>
