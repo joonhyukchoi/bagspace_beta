@@ -18,24 +18,7 @@
             <h1>Slide 3</h1>
         </ion-slide>
     </ion-slides>
-<!-- 예시 : Database에서 정보 안 가져옴-->
-    <ion-card padding>
-        <ion-item>
-            <ion-icon name="ios-navigate" item-left large></ion-icon>
-            <h2 class="font_black">France, Paris, WI 53703</h2>
-            <p>bagspace 민박</p>
-        </ion-item>
-
-        <ion-item>
-            <span item-left>Due: 2017/2/2</span>
-
-            <button ion-button icon-left clear item-right (click)="goDetailPage()">
-
-            <ion-icon large name="arrow-round-forward"></ion-icon>
-            </button>
-        </ion-item>
 <!--Database에서 물품 정보 가져옴-->
-    </ion-card>
     <div *ngFor="let item of data">
     <ion-card padding (click)="goDetailPage(item._id)">
         <div>
