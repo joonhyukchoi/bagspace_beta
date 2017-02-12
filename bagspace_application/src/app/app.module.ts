@@ -13,6 +13,7 @@ import { TabModule } from './modules/tab.module';
 import { ReceiverModule } from './modules/receiver.module';
 
 import { ConnectivityService } from '../providers/connectivity-service';
+import { Reverse } from '../pipes/reverse';
 
 
 @NgModule({

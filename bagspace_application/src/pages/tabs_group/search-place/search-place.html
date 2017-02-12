@@ -1,49 +1,17 @@
 <ion-content>
-  <ion-grid>
-<!-- 라벨 -->
-  <ion-label color="primary"class="font_black">국가와 도시를 선택해주세요</ion-label>
-<!-- 국가와 도시 -->
-  <ion-row style = "height : 50%">
-    <ion-col width-50>
-<!-- 국가 -->
-    <ion-list>
-    <ion-list-header class="receiver-place_header">국가 선택</ion-list-header>
-      <div *ngFor="let country of countries; let idx = index">
-        <button [class.active]="country['active']" ion-item detail-push 
-          (click)="countryClick(country, idx, countries)">
-        <p class="font_black"> {{ country.name }} </p>
-        </button>       
-      </div>
-    </ion-list>
-    </ion-col>
-<!-- 도시 -->
-    <ion-col width-50>
-    <ion-list>
-    <ion-list-header class="receiver-place_header">도시 선택</ion-list-header>
-      <div *ngFor="let city of cities; let idx = index">
-        <button [class.active]="city['active']" ion-item detail-push 
-        (click)="cityClick(city, idx, cities)">
-          <p class="font_black"> {{ city.name }} </p>
-        </button>
-      </div>  
-    </ion-list>
-    </ion-col>
-    </ion-row>
-<!-- 랜드 마크-->
-    <ion-label color="primary" class="font_black">랜드마크를 선택해주세요</ion-label>
-    <ion-row style="height: 50%">
-      <ion-list style="width:100%; text-align: center">
-      <ion-list-header class="receiver-place_header">랜드마크 선택</ion-list-header>
-        <div *ngFor="let landmark of landmarks; let idx = index">
-          <button [class.active]="landmark['active']" ion-item detail-push 
-          (click)="landmarkClick(landmark, idx, landmarks)">
-          <p class="font_black"> {{ landmark.name }} </p>
-          </button>
-        </div>  
-      </ion-list>
-    </ion-row>
-  </ion-grid>
-  
+
+<ion-label color="primary"><h4 class="content_center font_black">장소를 선택해주세요</h4></ion-label>
+
+ <ion-item-group>
+    <div *ngFor="let country of countries ">
+       {{country2(country.name)}}
+      <ion-item-divider color="light"><p class="content_left font_black">{{ country.name }} </p></ion-item-divider>
+      <div *ngFor="let city of cities">
+      <ion-item (click)="select(country.name, city.name)"><p class="content_left font_black">{{ city.name }}</p></ion-item>
+    </div>    
+    </div>
+ </ion-item-group>
+
 </ion-content>
 
 <ion-footer>

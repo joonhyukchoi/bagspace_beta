@@ -1,6 +1,7 @@
+
 <ion-content>
      <ion-navbar [color]="isAndroid ? 'danger' : 'primary'">
-          <ion-searchbar  *ngIf="search_click=='close'" (click)="search_click='open'" showCancelButton placeholder="어디로 가시나요?" value="{{date|date}}"></ion-searchbar>
+          <ion-searchbar  *ngIf="search_click=='close'" (click)="search_click='open'" showCancelButton placeholder="어디로 가시나요?" value="{{select_city}}"></ion-searchbar>
           <div *ngIf="search_click=='open'" (click)="search_click='close'" class="font_black content_center" ><ion-icon name="ios-arrow-up"></ion-icon></div>
      </ion-navbar>    
           <div class="tab_back"  [@Title]="search_click"  [@SlidMenu]="search_click">
