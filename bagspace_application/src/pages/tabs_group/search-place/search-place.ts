@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output} from '@angular/core';
+import { Component} from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 
 @Component({
@@ -8,8 +8,8 @@ import { NavController, NavParams, ViewController, AlertController } from 'ionic
 export class SearchPlacePage {
  select_country:string=null;
  select_city:string=null;
+
  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl:ViewController) {} 
- 
 
   blank = [
     { name: ' ' },
@@ -74,7 +74,6 @@ export class SearchPlacePage {
   }
 
   select(country, city){
-   
     this.select_country=country;
     this.select_city=city;
     console.log(this.select_city);
@@ -84,4 +83,9 @@ export class SearchPlacePage {
     this.viewCtrl.dismiss(data);
   }
   
+  dismiss(){
+    let data = { 'city': '',
+                 'country': ''};
+    this.viewCtrl.dismiss(data);
+  }
 }

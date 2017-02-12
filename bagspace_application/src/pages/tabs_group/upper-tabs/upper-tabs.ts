@@ -1,4 +1,4 @@
-import { Component, trigger, state, style, transition, animate, ViewChild,Input} from '@angular/core';
+import { Component, trigger, state, style, transition, animate} from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { ReceiverDetailPage } from '../../receiver_group/receiver-detail/receiver-detail';
@@ -35,7 +35,8 @@ data;
     this.datePicker.onDateSelected.subscribe( 
       (date) => {
         console.log(date);
-        this.date=new Date(date);   
+        this.date=new Date(date); 
+        this.getList();  
     });    
   }
 
@@ -62,7 +63,9 @@ data;
      modal.onDidDismiss(data => {
      this.select_city=data.city;
      this.select_country=data.country;
-   });
+     this.getList();
+   }
+   );
     modal.present();
   }
 
