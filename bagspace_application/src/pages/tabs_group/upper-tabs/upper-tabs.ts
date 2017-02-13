@@ -55,6 +55,7 @@ search_data:any={selected_Date: ''};
   }
 
   getList(){
+
   this.http.get(this.bagsapce_url+'/delivery/all')
   .subscribe(
     data=>{
@@ -74,6 +75,7 @@ search_data:any={selected_Date: ''};
       this.url = this.bagsapce_url+'/delivery/search_date/'+this.search_data.date;
     }
      this.http.get(this.url)
+
   .subscribe(
     data=>{
       this.data = data.json();

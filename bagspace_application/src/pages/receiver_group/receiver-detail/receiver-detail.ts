@@ -58,7 +58,9 @@ export class ReceiverDetailPage {
 
   }
 getItem(){
+
   this.http.get(this.bagsapce_url+'/delivery/detail/'+this.selected_id)
+
   .subscribe(
     data=>{
       this.item = data.json();

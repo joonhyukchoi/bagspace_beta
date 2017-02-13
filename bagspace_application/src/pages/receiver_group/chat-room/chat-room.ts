@@ -1,6 +1,7 @@
 import { Component, ViewChild} from '@angular/core';
-import { NavController, NavParams, Content } from 'ionic-angular';
+import { NavController, NavParams, Content, Platform } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
+import { Keyboard } from 'ionic-native';
 
 @Component({
   selector: 'page-chat-room',
@@ -10,7 +11,8 @@ import { Http, Headers } from '@angular/http';
 export class ChatRoomPage{
 @ViewChild(Content) content : Content;
 
-  isClick : boolean = false;
+  isClick: boolean = false;
+  isKeyboardUp: boolean = false;
 
   //기본 유저 정보
   myId:Number = 123;
@@ -19,41 +21,42 @@ export class ChatRoomPage{
   //메시지 
   inputMessage: string = '';
   inputMessageTime: Date = null;
+
   bagsapce_url;
   showMessage: string ='';
+
+
 
   save_data:any= { id:'',messageText: '', messageTime: ''}
   data;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http:Http) {
-     this.bagsapce_url ="http://thebagspace.com/mongo_test";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, 
+  platform: Platform){  
+      this.bagsapce_url ="http://thebagspace.com/mongo_test";
     //this.bagsapce_url ="/mongo_test";
-    console.log("constructor");
+//키보드 나타날 때, 메시지 맨 밑으로 내리기 : 키보드가 올라가면 대화가 가려지기 때문에,,,
+    platform.ready().then(() => {
+        Keyboard.onKeyboardShow().subscribe(() => {
+            this.ScrollTo();
+        });
+    });
+
   }
- 
+
+
   ionViewWillEnter() {
     console.log("ionViewWillEnter-getList");
     this.getList();
   }
 
-  ionViewDidEnter(test){
-    //console.log("ionViewDidEnter-scroll");
-     //this.ScrollTo();
-  }
-
   ionViewDidLoad(){
     setTimeout(() => {
-      console.log("timeout");
       this.ScrollTo();
     }, 300);
-
-    console.log("ionViewDidLoad-scroll");
-    
   }
 
   ScrollTo(){
-    //this.content.scrollTo(0,500,200);
-    console.log("Scroll ACTIVE!");
     this.content.scrollToBottom();
   }
 
@@ -61,15 +64,13 @@ export class ChatRoomPage{
     
     // 메시지 전송 시간 저장
     this.inputMessageTime = new Date();
-    console.log("MessageSend");
-    //test
-    //this.showMessage = this.inputMessage;
 
     this.save_data.id=123;
     this.save_data.messageText = this.inputMessage;
     this.save_data.messageTime = this.inputMessageTime;
     
     this.inputMessage = '';
+
     
     var headers = new Headers({'Content-Type': 'application/json'})
     this.http.post(this.bagsapce_url+'/chat', this.save_data,{headers: headers})
@@ -78,7 +79,7 @@ export class ChatRoomPage{
         this.save_data = data.json();
         this.getList();
       }
-    )
+    );
      setTimeout(() => {
       console.log("timeout");
       this.ScrollTo();

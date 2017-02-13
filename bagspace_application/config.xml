@@ -85,3 +85,4 @@
   <plugin name="cordova-plugin-nativestorage" spec="~2.2.0"/>
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
 </widget>
+
