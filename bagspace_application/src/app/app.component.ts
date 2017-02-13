@@ -13,7 +13,7 @@ import { ChatRoomPage } from '../pages/receiver_group/chat-room/chat-room';
 import { ReceiverDatePage } from '../pages/receiver_group/receiver-date/receiver-date';
 import { LoginPage } from '../pages/login/login';
 
-
+declare var navigator;
 @Component({
   templateUrl: 'app.html'
 })
@@ -37,11 +37,17 @@ export class MyApp {
         // user is previously logged and we have his data
         // we will let him access the app
        env.nav.push(IconPage);
-        Splashscreen.hide();
+        navigator.splashscreen.show();
+                setTimeout(function () {
+                    navigator.splashscreen.hide();
+                }, 500);
       }, function (error) {
         //we don't have the user data so we will ask him to log in
          env.nav.push(LoginPage);
-        Splashscreen.hide();
+        navigator.splashscreen.show();
+                setTimeout(function () {
+                    navigator.splashscreen.hide();
+                }, 500);
       });
 
       StatusBar.styleDefault();
@@ -71,6 +77,9 @@ export class MyApp {
     .subscribe((msg) => {
       this.nav.push(ReceiverDatePage);
       alert(msg.title + ': ' + msg.text);
+
+    });
+
     });*/
     
 

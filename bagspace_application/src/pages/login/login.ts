@@ -55,7 +55,7 @@ doFbLogin(){
             picture: user.picture
           })
           .then(function(){
-            nav.push(ProfilePage);
+            nav.push(IntroPage);
           }, function (error) {
             console.log(error);
           })
