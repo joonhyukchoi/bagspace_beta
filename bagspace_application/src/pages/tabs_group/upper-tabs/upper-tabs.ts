@@ -34,8 +34,8 @@ bagsapce_url;
 url;
 search_data:any={selected_Date: ''};
  constructor(public navCtrl: NavController, public navParams: NavParams,public datePicker: DatePicker, public http:Http, public modalCtrl:ModalController){
-   //this.bagsapce_url ="http://thebagspace.com/mongo_test";
-   this.bagsapce_url ="/mongo_test";
+   this.bagsapce_url ="http://thebagspace.com/mongo_test";
+   //this.bagsapce_url ="/mongo_test";
     this.datePicker.onDateSelected.subscribe( 
       (date) => {
         console.log(date);
@@ -46,7 +46,7 @@ search_data:any={selected_Date: ''};
   }
 
   
-  ionViewWillEnter() {this.getList();}
+  ionViewWillEnter() {this.getList();this.date=null;this.select_city=null;this.select_country=null;}
   showCalendar(){this.datePicker.showCalendar();}
 
   goDetailPage(id:any){
@@ -86,9 +86,14 @@ search_data:any={selected_Date: ''};
    openModal(page) {
     let modal = this.modalCtrl.create(page);
      modal.onDidDismiss(data => {
-     this.select_city=data.city;
+    if(data==null){
+
+    }else{
+      this.select_city=data.city;
      this.select_country=data.country;
      this.getList_filter();
+    }
+    
    }
    );
     modal.present();

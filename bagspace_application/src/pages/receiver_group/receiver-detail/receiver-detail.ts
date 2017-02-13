@@ -25,8 +25,8 @@ export class ReceiverDetailPage {
   //통합 : 물품 목록, 날짜, 장소, 총 가격
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public http:Http) {
     this.selected_id = navParams.get("id");
-    this.bagsapce_url ="/mongo_test";
-     //this.bagsapce_url ="http://thebagspace.com/mongo_test";
+    //this.bagsapce_url ="/mongo_test";
+     this.bagsapce_url ="http://thebagspace.com/mongo_test";
     
     this.getItem();
     
