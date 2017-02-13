@@ -40,7 +40,6 @@ data;
     
   }
 
-
   goDetailPage(id:any){
     this.navCtrl.push(ReceiverDetailPage,{id:id});
     console.log(id);
@@ -51,10 +50,10 @@ data;
     this.getList();
    }
    
-  
   showCalendar(){
     this.datePicker.showCalendar();
   }
+
   getList(){
   this.http.get('/mongo_test/delivery/all')
   .subscribe(
