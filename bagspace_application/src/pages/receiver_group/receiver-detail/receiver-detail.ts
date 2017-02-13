@@ -53,7 +53,7 @@ export class ReceiverDetailPage {
 
   }
 getItem(){
-  this.http.get('/mongo_test/delivery/detail/'+this.selected_id)
+  this.http.get('http://thebagspace.com/mongo_test/delivery/detail/'+this.selected_id)
   .subscribe(
     data=>{
       this.item = data.json();
