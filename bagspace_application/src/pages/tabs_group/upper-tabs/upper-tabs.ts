@@ -2,7 +2,7 @@ import { Component, trigger, state, style, transition, animate} from '@angular/c
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { ReceiverDetailPage } from '../../receiver_group/receiver-detail/receiver-detail';
-import {Http} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 import { SearchPlacePage } from '../search-place/search-place';
 
 
@@ -30,17 +30,22 @@ select_country;
 search_click:string='close';
 date:Date;
 data;
-
+bagsapce_url;
+url;
+search_data:any={selected_Date: ''};
  constructor(public navCtrl: NavController, public navParams: NavParams,public datePicker: DatePicker, public http:Http, public modalCtrl:ModalController){
+   //this.bagsapce_url ="http://thebagspace.com/mongo_test";
+   this.bagsapce_url ="/mongo_test";
     this.datePicker.onDateSelected.subscribe( 
       (date) => {
         console.log(date);
         this.date=new Date(date); 
-        this.getList();  
+        console.log(this.date.toLocaleDateString());
+        this.getList_filter();
     });    
   }
 
-  ionViewDidEnter() {this.getList(); }
+  
   ionViewWillEnter() {this.getList();}
   showCalendar(){this.datePicker.showCalendar();}
 
@@ -50,7 +55,27 @@ data;
   }
 
   getList(){
-  this.http.get('/mongo_test/delivery/all')
+
+  this.http.get(this.bagsapce_url+'/delivery/all')
+  .subscribe(
+    data=>{
+      this.data = data.json();
+      console.log(data.json());
+    },error =>{});
+  }
+  getList_filter(){
+   
+    if(this.select_city!=null&&this.search_data.date!=null){
+       this.search_data.date = this.date.toLocaleDateString();
+        this.url = this.bagsapce_url+'/delivery/search/'+this.search_data.date+'/'+this.select_city;
+    }else if(this.select_city!=null){
+      this.url = this.bagsapce_url+'/delivery/search_city/'+this.select_city;
+    }else{
+      this.search_data.date = this.date.toLocaleDateString();
+      this.url = this.bagsapce_url+'/delivery/search_date/'+this.search_data.date;
+    }
+     this.http.get(this.url)
+
   .subscribe(
     data=>{
       this.data = data.json();
@@ -63,7 +88,7 @@ data;
      modal.onDidDismiss(data => {
      this.select_city=data.city;
      this.select_country=data.country;
-     this.getList();
+     this.getList_filter();
    }
    );
     modal.present();

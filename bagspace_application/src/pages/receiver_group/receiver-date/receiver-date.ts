@@ -18,6 +18,7 @@ export class ReceiverDatePage {
   selected_Landmark: string;
 
   selected_Date : Date = null;
+  date;
   //달력 날짜 선택 확인
   isClick : boolean = false;
 
@@ -29,6 +30,7 @@ export class ReceiverDatePage {
      this.datePicker.onDateSelected.subscribe( 
       (date) => {
         this.selected_Date = new Date(date);
+        this.date = new Date(date).toLocaleDateString();
         //console.log(date);
         this.isDateSelect();
     });
@@ -51,7 +53,7 @@ export class ReceiverDatePage {
     if(this.isClick==false)
     this.calendarAlert();
   else
-  this.navCtrl.push(GoodsRegistrationPage,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark,date:this.selected_Date});
+  this.navCtrl.push(GoodsRegistrationPage,{city:this.selected_City,country:this.selected_Country,landmark:this.selected_Landmark,date:this.date});
   }
   calendarAlert() {
     let alert = this.alertCtrl.create({

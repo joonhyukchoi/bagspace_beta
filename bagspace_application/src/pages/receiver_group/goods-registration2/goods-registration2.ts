@@ -19,15 +19,18 @@ export class GoodsRegistration2Page {
   selected_Country: string;
   selected_City: string;
   selected_Landmark: string;
-  selected_Date : Date = null;
+  selected_Date : string;
   selected_Category:string;
   selected_Object_name : string; 
   selected_Url : string; 
   selected_Delivery_charge : string; 
   selected_Price : string; 
+  bagsapce_url;
   image:any={image:'',title:''};
   data:any={selected_Country: '',selected_City:'',selected_Landmark: '',selected_Date : '',selected_Category:'',selected_Object_name : '',selected_Url : '',selected_Delivery_charge : '', selected_Price : '', selected_Picture: ''};
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http:Http) {
+    this.bagsapce_url ="http://thebagspace.com/mongo_test";
+    //this.bagsapce_url ="/mongo_test";
     this.selected_Landmark = navParams.get("landmark");
     this.selected_Country = navParams.get("country");
     this.selected_City = navParams.get("city");
@@ -36,10 +39,30 @@ export class GoodsRegistration2Page {
   }
 
 goback(){
+  if(this.base64Image==null){
+        this.data.selected_Country = this.selected_Country;
+        this.data.selected_City=this.selected_City;
+        this.data.selected_Landmark=this.selected_Landmark;
+        this.data.selected_Date=this.selected_Date;
+        this.data.selected_Category=this.selected_Category;
+        this.data.selected_Object_name=this.selected_Object_name;
+        this.data.selected_Url=this.selected_Url;
+        this.data.selected_Delivery_charge=this.selected_Delivery_charge;
+        this.data.selected_Price=this.selected_Price;
+        this.data.selected_Picture = "";
+     var headers = new Headers({'Content-Type': 'application/json'})
+    this.http.post(this.bagsapce_url+'/delivery', this.data,{headers: headers})
+        .subscribe(
+          data=> {
+            this.data = data.json();
+            this.navCtrl.popTo( this.navCtrl.getByIndex(4));
+          })
+  }else{
 this.image.image = this.base64Image;
 this.image.title = new Date().toString();
   var headers = new Headers({'Content-Type': 'application/json'})
-    this.http.post('http://thebagspace.com/mongo_test/delivery/image', this.image,{headers: headers})
+
+    this.http.post(this.bagsapce_url+'/delivery/image', this.image,{headers: headers})
     .subscribe(
       data=> {
         this.image_url = data.json();
@@ -55,13 +78,15 @@ this.image.title = new Date().toString();
         this.data.selected_Price=this.selected_Price;
         this.data.selected_Picture = this.image_url.Location;
      var headers = new Headers({'Content-Type': 'application/json'})
-    this.http.post('http://thebagspace.com/mongo_test/delivery', this.data,{headers: headers})
+    this.http.post(this.bagsapce_url+'/delivery', this.data,{headers: headers})
         .subscribe(
           data=> {
             this.data = data.json();
-            this.navCtrl.popTo( this.navCtrl.getByIndex(3));
+            this.navCtrl.popTo( this.navCtrl.getByIndex(4));
           })
      })
+  }
+
  }
 
  Alert() {
