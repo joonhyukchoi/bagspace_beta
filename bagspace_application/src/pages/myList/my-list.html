@@ -1,12 +1,58 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>myList</ion-title>
   </ion-navbar>
-
+  <div padding>
+    <ion-segment>
+      <ion-segment-button value="waiting-list">
+        대기자 목록
+      </ion-segment-button>
+      <ion-segment-button value="delivery-list">
+        배달 목록
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 </ion-header>
 
 
 <ion-content padding>
+  <!-- div>  => todo : ngFor
+    <ion-card padding> => todo: (click) 후 상세페이지
+        <div>
+        <ion-item>
+            <ion-icon name="ios-navigate" item-left large></ion-icon>
+            <h2 class="font_black">한국,서울</h2>
+            <p>한국 찜질방</p>
+        </ion-item>
+
+        <ion-item>
+            <span item-left>Due: 2017-02-13</span>
+            <button ion-button icon-left clear item-right>
+
+            <ion-icon large name="arrow-round-forward"></ion-icon>
+            </button>
+        </ion-item>
+        </div>
+    </ion-card>
+  </div -->
+
+  <ion-list>
+  <ion-item>
+    <ion-avatar class="content_center" item-left>
+      <img src="http://cfile8.uf.tistory.com/image/2704BD4457193CBD027B3F">
+    </ion-avatar>
+
+    <p>도착일 : 2/5</p>
+    <div class="font_black">
+      <h2>이스라엘 -> 서울</h2>
+    </div>
+    <br>
+    <div class="font_black">
+      <h2>1/7 -> 2/7</h2>
+    </div>
+    
+    <button ion-button clear item-right>View</button>
+  </ion-item>
+</ion-list>
 
 </ion-content>
