@@ -8,7 +8,7 @@ import { ReceiverPlacePage } from '../../receiver_group/receiver-place/receiver-
 import { UpperTabsPage } from '../upper-tabs/upper-tabs';
 import { MapPage } from '../../receiver_group/map/map';
 import { HomePage } from '../../home/home';
-import { MyInfoPage } from '../../my-info/my-info';
+import { MyListPage } from '../../myList/my-list';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -31,7 +31,7 @@ import { MyInfoPage } from '../../my-info/my-info';
 
   rootPage = UpperTabsPage;
   profilePage = ProfilePage;
-  myPage = MyInfoPage;
+  myListPage = MyListPage;
   homepage = HomePage;
   categoryPage = CategoryPage;
   receiver_place_page = ReceiverPlacePage;
