@@ -25,7 +25,7 @@ export class MyApp {
   //data:any={device_id:''};
   data2:any={device_id:''};
   bagsapce_url;
-  constructor(platform: Platform,public http:Http) {
+  constructor(platform: Platform,public push:Push,public http:Http) {
   this.bagsapce_url ="http://thebagspace.com/mongo_test";
   //this.bagsapce_url = "/mongo_test"
  	platform.ready().then(() => {
@@ -54,7 +54,7 @@ export class MyApp {
 
     });
     
-    /*this.push.register().then((t: PushToken) => {
+    this.push.register().then((t: PushToken) => {
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
       console.log('Token saved:', t.token);
@@ -80,7 +80,7 @@ export class MyApp {
 
     });
 
-    });*/
+    
     
 
   }
