@@ -1,4 +1,3 @@
-
 <ion-content>
      <ion-navbar [color]="isAndroid ? 'danger' : 'primary'">
           <ion-searchbar  *ngIf="search_click=='close'" (click)="search_click='open'" showCancelButton placeholder="어디로 가시나요?" value="{{date|date}} {{select_city}} {{select_country}}"></ion-searchbar>
@@ -28,11 +27,9 @@
             <h2 class="font_black">{{item.selected_Country}},{{item.selected_City}}</h2>
             <p>{{item.selected_Landmark}}</p>
         </ion-item>
-
         <ion-item>
             <span item-left>Due:{{item.selected_Date|date:'20yy/MM/dd'}}</span>
             <button ion-button icon-left clear item-right>
-
             <ion-icon large name="arrow-round-forward"></ion-icon>
             </button>
         </ion-item>
