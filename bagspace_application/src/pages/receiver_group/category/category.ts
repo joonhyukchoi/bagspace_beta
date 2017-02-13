@@ -18,7 +18,7 @@ export class CategoryPage {
   selected_Country: string;
   selected_City: string;
   selected_Landmark: string;
-  selected_Date : Date = null;
+  selected_Date : string;
   selected_Category:string;
   cosmetics=["스킨","로션","수분크림"];
   daily_supplies=["과자","물","쌀"];

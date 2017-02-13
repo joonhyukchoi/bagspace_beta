@@ -24,7 +24,10 @@ export class MyApp {
  rootPage:any;
   //data:any={device_id:''};
   data2:any={device_id:''};
-  constructor(platform: Platform, public push: Push, public http:Http) {
+  bagsapce_url;
+  constructor(platform: Platform,public http:Http) {
+  this.bagsapce_url ="http://thebagspace.com/mongo_test";
+  //this.bagsapce_url = "/mongo_test"
  	platform.ready().then(() => {
       // Here we will check if the user is already logged in
       // because we don't want to ask users to log in each time they open the app
@@ -45,7 +48,7 @@ export class MyApp {
 
     });
     
-    this.push.register().then((t: PushToken) => {
+    /*this.push.register().then((t: PushToken) => {
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
       console.log('Token saved:', t.token);
@@ -55,7 +58,7 @@ export class MyApp {
       
      this.data2.device_id=t.token;
      var headers = new Headers({'Content-Type': 'application/json'});
-      this.http.post('http://thebagspace.com/mongo_test/device_id', this.data2,{headers: headers}).subscribe(
+      this.http.post(this.bagsapce_url+'/device_id', this.data2,{headers: headers}).subscribe(
       data=> {
         console.log(data.json());
        
@@ -68,7 +71,7 @@ export class MyApp {
     .subscribe((msg) => {
       this.nav.push(ReceiverDatePage);
       alert(msg.title + ': ' + msg.text);
-    });
+    });*/
     
 
   }

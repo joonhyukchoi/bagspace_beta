@@ -19,13 +19,15 @@ export class ChatRoomPage{
   //메시지 
   inputMessage: string = '';
   inputMessageTime: Date = null;
-
+  bagsapce_url;
   showMessage: string ='';
 
   save_data:any= { id:'',messageText: '', messageTime: ''}
   data;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:Http) {
+     this.bagsapce_url ="http://thebagspace.com/mongo_test";
+    //this.bagsapce_url ="/mongo_test";
     console.log("constructor");
   }
  
@@ -70,7 +72,7 @@ export class ChatRoomPage{
     this.inputMessage = '';
     
     var headers = new Headers({'Content-Type': 'application/json'})
-    this.http.post('http://thebagspace.com/mongo_test/chat', this.save_data,{headers: headers})
+    this.http.post(this.bagsapce_url+'/chat', this.save_data,{headers: headers})
     .subscribe(
       data=> {
         this.save_data = data.json();
@@ -84,7 +86,7 @@ export class ChatRoomPage{
   }
 
 getList(){
-  this.http.get('http://thebagspace.com/mongo_test/chat')
+  this.http.get(this.bagsapce_url+'/chat')
   .subscribe(
     data=>{
       this.data = data.json();
