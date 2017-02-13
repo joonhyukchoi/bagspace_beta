@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { ReceiverDatePage } from '../receiver-date/receiver-date';
-import { AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-receiver-place',
-  templateUrl: 'receiver-place.html',
-  styles: []
+  selector: 'page-search-place',
+  templateUrl: 'search-place.html'
 })
-export class ReceiverPlacePage {
+export class SearchPlacePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
+ constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl:ViewController) {}
 
   country_Index : number = -1;
   city_Index : number = -1;
@@ -52,11 +49,7 @@ export class ReceiverPlacePage {
     { name: '서울' },
     { name: '대전' },
     { name: '부산' },
-    { name: '포항' },
-    { name: '대구' },
-    { name: '수원' },
-    { name: '울산' },
-    { name: '여수' }
+    { name: '포항' }
   ];
   
   //korea landmarks
@@ -194,20 +187,6 @@ export class ReceiverPlacePage {
     this.selected_Landmark = landmark.name;
   }
 
-  //다음 버튼
-  moveDate(){
-
-    if( (this.city_Index != -1) && (this.landmark_Index != -1) )
-      this.navCtrl.push(ReceiverDatePage, {city:this.selected_City,country:this.selected_Country
-        ,landmark:this.selected_Landmark});
-    else if(this.city_Index != -1){
-      this.landmarkAlert();
-    }
-    else{
-      this.cityAlert();
-    }
-  }
-
   cityAlert() {
     let alert = this.alertCtrl.create({
       title: '',
@@ -226,4 +205,7 @@ export class ReceiverPlacePage {
     alert.present();
   }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }

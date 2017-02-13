@@ -7,6 +7,12 @@
     {
       "path": "/mongo_test",
       "proxyUrl": "http://thebagspace.com/mongo_test"
+    },{
+      "path": "/access",
+      "proxyUrl": "http://thebagspace.com/login/access_token"
+    },{
+      "path": "/profile",
+      "proxyUrl": "http://thebagspace.com/login/profile"
     }
-  ]
+  ] 
 }

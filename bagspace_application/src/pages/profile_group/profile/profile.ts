@@ -1,3 +1,5 @@
+
+
 import { Component } from '@angular/core';
 import {  NavController,  NavParams } from 'ionic-angular';
 import { NativeStorage } from 'ionic-native';
@@ -24,8 +26,9 @@ export class ProfilePage {
     NativeStorage.getItem('user')
     .then(function (data){
       env.user = {
+        uuid: data.uuid,
         name: data.name,
-        gender: data.gender,
+        id: data.id,
         picture: data.picture
       };
         console.log(data);
@@ -36,14 +39,13 @@ export class ProfilePage {
   }
 
 
-   openPage(page) {
+  openPage(page) {
     this.nav.push(page);
   }
+  
   settings=SettingPage;
   invite=InvitePage;
   feedback=FeedbackPage;
   helper=HelperPage;
   mover=MoverPage;  
-
-
 }
