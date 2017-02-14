@@ -16,15 +16,20 @@ export class ReceiverDetailPage {
   deliveryPlace:any = '한국';     //배달 장소
   totalPrice:any = '';            //총 구매 가격
   item;
+  bagsapce_url;
   data:any[] =
   [ 
     {item_Name: '', item_Picture: '', item_Link: '', item_Price: '', item_Benefit: ''},
     {item_Name: '', item_Picture: '', item_Link: '', item_Price: '', item_Benefit: ''}
-  ]
+  ];
   //통합 : 물품 목록, 날짜, 장소, 총 가격
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public http:Http) {
     this.selected_id = navParams.get("id");
+    //this.bagsapce_url ="/mongo_test";
+     this.bagsapce_url ="http://thebagspace.com/mongo_test";
+    
     this.getItem();
+    
   }
 
  
@@ -53,7 +58,9 @@ export class ReceiverDetailPage {
 
   }
 getItem(){
-  this.http.get('http://thebagspace.com/mongo_test/delivery/detail/'+this.selected_id)
+
+  this.http.get(this.bagsapce_url+'/delivery/detail/'+this.selected_id)
+
   .subscribe(
     data=>{
       this.item = data.json();

@@ -22,18 +22,26 @@ export class ChatRoomPage{
   inputMessage: string = '';
   inputMessageTime: Date = null;
 
+  bagsapce_url;
+  showMessage: string ='';
+
+
+
   save_data:any= { id:'',messageText: '', messageTime: ''}
   data;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, 
   platform: Platform){  
-    
+      this.bagsapce_url ="http://thebagspace.com/mongo_test";
+    //this.bagsapce_url ="/mongo_test";
 //키보드 나타날 때, 메시지 맨 밑으로 내리기 : 키보드가 올라가면 대화가 가려지기 때문에,,,
     platform.ready().then(() => {
         Keyboard.onKeyboardShow().subscribe(() => {
             this.ScrollTo();
         });
     });
+
   }
 
 
@@ -65,7 +73,7 @@ export class ChatRoomPage{
 
     
     var headers = new Headers({'Content-Type': 'application/json'})
-    this.http.post('http://thebagspace.com/mongo_test/chat', this.save_data,{headers: headers})
+    this.http.post(this.bagsapce_url+'/chat', this.save_data,{headers: headers})
     .subscribe(
       data=> {
         this.save_data = data.json();
@@ -79,7 +87,7 @@ export class ChatRoomPage{
   }
 
 getList(){
-  this.http.get('http://thebagspace.com/mongo_test/chat')
+  this.http.get(this.bagsapce_url+'/chat')
   .subscribe(
     data=>{
       this.data = data.json();

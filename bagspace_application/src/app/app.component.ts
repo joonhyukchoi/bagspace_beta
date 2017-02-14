@@ -13,7 +13,7 @@ import { ChatRoomPage } from '../pages/receiver_group/chat-room/chat-room';
 import { ReceiverDatePage } from '../pages/receiver_group/receiver-date/receiver-date';
 import { LoginPage } from '../pages/login/login';
 
-
+declare var navigator;
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,7 +24,10 @@ export class MyApp {
  rootPage:any;
   //data:any={device_id:''};
   data2:any={device_id:''};
-  constructor(platform: Platform, public push: Push, public http:Http) {
+  bagsapce_url;
+  constructor(platform: Platform,public push:Push,public http:Http) {
+  this.bagsapce_url ="http://thebagspace.com/mongo_test";
+  //this.bagsapce_url = "/mongo_test"
  	platform.ready().then(() => {
       // Here we will check if the user is already logged in
       // because we don't want to ask users to log in each time they open the app
@@ -34,11 +37,17 @@ export class MyApp {
         // user is previously logged and we have his data
         // we will let him access the app
        env.nav.push(IconPage);
-        Splashscreen.hide();
+        navigator.splashscreen.show();
+                setTimeout(function () {
+                    navigator.splashscreen.hide();
+                }, 500);
       }, function (error) {
         //we don't have the user data so we will ask him to log in
          env.nav.push(LoginPage);
-        Splashscreen.hide();
+        navigator.splashscreen.show();
+                setTimeout(function () {
+                    navigator.splashscreen.hide();
+                }, 500);
       });
 
       StatusBar.styleDefault();
@@ -55,7 +64,7 @@ export class MyApp {
       
      this.data2.device_id=t.token;
      var headers = new Headers({'Content-Type': 'application/json'});
-      this.http.post('http://thebagspace.com/mongo_test/device_id', this.data2,{headers: headers}).subscribe(
+      this.http.post(this.bagsapce_url+'/device_id', this.data2,{headers: headers}).subscribe(
       data=> {
         console.log(data.json());
        
@@ -68,8 +77,10 @@ export class MyApp {
     .subscribe((msg) => {
       this.nav.push(ReceiverDatePage);
       alert(msg.title + ': ' + msg.text);
+
     });
-    
+
+
 
   }
 }

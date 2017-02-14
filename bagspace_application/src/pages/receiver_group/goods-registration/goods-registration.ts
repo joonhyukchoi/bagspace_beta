@@ -19,11 +19,14 @@ export class GoodsRegistrationPage {
   selected_Country: string;
   selected_City: string;
   selected_Landmark: string;
-  selected_Date : Date = null;
+  selected_Date : string;
   bagspace_url : string;
+  bagsapce_url;
 //public goods_count: number = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
+     this.bagsapce_url ="http://thebagspace.com/mongo_test";
+     // this.bagsapce_url ="/mongo_test";
     this.selected_Landmark = navParams.get("landmark");
     this.selected_Country = navParams.get("country");
     this.selected_City = navParams.get("city");
@@ -43,19 +46,19 @@ goCategoryPage(){
 goback(){
    this.save_data.state = 1;
    var headers = new Headers({'Content-Type': 'application/json'})
-     this.http.put('http://thebagspace.com/mongo_test/delivery/0', this.save_data,{headers: headers})
+     this.http.put( this.bagsapce_url+'/delivery/0', this.save_data,{headers: headers})
     .subscribe(
       data=> {
         this.save_data = data.json();
         alert("등록되었습니다.");
-        this.navCtrl.popToRoot();
+        this.navCtrl.popTo( this.navCtrl.getByIndex(1));
       }
     )
    
 }
 
 getList(){
-  this.http.get('http://thebagspace.com/mongo_test/delivery/register')
+  this.http.get(this.bagsapce_url+'/delivery/register')
   .subscribe(
     data=>{
       this.data = data.json();
@@ -69,7 +72,7 @@ getList(){
 
 delete(id:string){
 
-     this.bagspace_url = 'http://thebagspace.com/mongo_test/delivery/'+id;
+     this.bagspace_url = this.bagsapce_url+'/delivery/'+id;
      var headers = new Headers({'Content-Type': 'application/json'})
      this.http.delete(this.bagspace_url, {headers: headers})
     .subscribe(
