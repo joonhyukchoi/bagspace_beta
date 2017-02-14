@@ -12,6 +12,8 @@ import { IconPage } from '../pages/tabs_group/tabs/tabs';
 import { ChatRoomPage } from '../pages/receiver_group/chat-room/chat-room';
 import { ReceiverDatePage } from '../pages/receiver_group/receiver-date/receiver-date';
 import { LoginPage } from '../pages/login/login';
+//test
+import { MyListPage } from '../pages/myList/my-list';
 
 
 @Component({
@@ -21,7 +23,8 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
 
   @ViewChild(Nav) nav : Nav;
- rootPage:any;
+  rootPage:any;
+
   //data:any={device_id:''};
   data2:any={device_id:''};
   constructor(platform: Platform, public push: Push, public http:Http) {
@@ -69,7 +72,7 @@ export class MyApp {
       this.nav.push(ReceiverDatePage);
       alert(msg.title + ': ' + msg.text);
     });
-    
+   
 
   }
 }

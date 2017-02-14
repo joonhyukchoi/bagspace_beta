@@ -3,12 +3,15 @@
     <ion-title>myList</ion-title>
   </ion-navbar>
   <div padding>
-    <ion-segment>
-      <ion-segment-button value="waiting-list">
+    <ion-segment [(ngModel)]="list_Type">
+      <ion-segment-button value="waiting_List">
         대기자 목록
       </ion-segment-button>
-      <ion-segment-button value="delivery-list">
-        배달 목록
+      <ion-segment-button value="deliver_List">
+        내 배달자 목록
+      </ion-segment-button>
+      <ion-segment-button value="delivery_List">
+        내 수령인 목록
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -16,43 +19,112 @@
 
 
 <ion-content padding>
-  <!-- div>  => todo : ngFor
-    <ion-card padding> => todo: (click) 후 상세페이지
-        <div>
-        <ion-item>
-            <ion-icon name="ios-navigate" item-left large></ion-icon>
-            <h2 class="font_black">한국,서울</h2>
-            <p>한국 찜질방</p>
-        </ion-item>
+    <div [ngSwitch]="list_Type">
+<!-- ***대기자 리스트*** -->
+    <ion-list *ngSwitchCase="'waiting_List'">
 
-        <ion-item>
-            <span item-left>Due: 2017-02-13</span>
-            <button ion-button icon-left clear item-right>
+      <ion-item class="content_center">
+        <ion-avatar item-left (click)="goWaiter()">
+          <div align="center">
+          <img src="http://cfile8.uf.tistory.com/image/2704BD4457193CBD027B3F">
+          <p>Twice_Sana</p>
+          </div>
+        </ion-avatar>
 
-            <ion-icon large name="arrow-round-forward"></ion-icon>
-            </button>
-        </ion-item>
+        <div class="font_black content_center">
+<!-- 여행 장소-->
+          <ion-row>
+            <ion-col width-40>
+              <h3>이스라엘</h3>
+            </ion-col>
+            <ion-col width-20>
+              <h3>-></h3>
+            </ion-col>
+            <ion-col width-40>
+              <h3>서울</h3>
+            </ion-col>
+          </ion-row>
+<!-- 여행 기간 -->
+          <ion-row>
+            <ion-col width-40>
+              <h3>02/01</h3>
+            </ion-col>
+            <ion-col width-20>
+              <h3>-></h3>
+            </ion-col>
+            <ion-col width-40>
+              <h3>02/28</h3>
+            </ion-col>
+          </ion-row>
+<!--도착일-->
+          <h3>도착일 : 2/5</h3>
         </div>
-    </ion-card>
-  </div -->
+<!--신청버튼-->
+        <button ion-button clear item-right (click)="apply()">신청</button>
+      </ion-item>
+    </ion-list>
 
-  <ion-list>
-  <ion-item>
-    <ion-avatar class="content_center" item-left>
-      <img src="http://cfile8.uf.tistory.com/image/2704BD4457193CBD027B3F">
-    </ion-avatar>
 
-    <p>도착일 : 2/5</p>
-    <div class="font_black">
-      <h2>이스라엘 -> 서울</h2>
+<!-- ***배달자 목록*** -->
+    <ion-list  *ngSwitchCase="'deliver_List'">
+      <ion-item class="content_center">
+        <ion-avatar item-left (click)="goWaiter()">
+          <div align="center">
+          <img src="http://ext.fmkorea.com/files/attach/new/20160206/3655109/27799179/307469765/b317970813ee5c5887a4d1bf087aec8d.png">
+          <p>Twice_Momo</p>
+          </div>
+        </ion-avatar>
+
+        <div class="font_black content_center">
+<!-- 여행 장소-->
+          <ion-row>
+            <ion-col width-40>
+              <h3>이스라엘</h3>
+            </ion-col>
+            <ion-col width-20>
+              <h3>-></h3>
+            </ion-col>
+            <ion-col width-40>
+              <h3>서울</h3>
+            </ion-col>
+          </ion-row>
+<!-- 여행 기간 -->
+          <ion-row>
+            <ion-col width-40>
+              <h3>02/01</h3>
+            </ion-col>
+            <ion-col width-20>
+              <h3>-></h3>
+            </ion-col>
+            <ion-col width-40>
+              <h3>02/28</h3>
+            </ion-col>
+          </ion-row>
+<!--도착일-->
+          <h3>도착일 : 2/5</h3>
+        </div>
+<!--신청버튼-->
+        <button ion-button clear item-right>배달중</button>
+      </ion-item>
+    </ion-list>
+
+
+<!-- ***수령인 리스트*** -->
+    <ion-list *ngSwitchCase="'delivery_List'">
+      <ion-item class="content_center">
+        <ion-avatar item-left (click)="goWaiter()">
+          <div align="center">
+          <img src="http://i2.imgtong.com/1511/ef2c126f3e95cd950e3901d272c93f9a_QmLjjMWVF.jpg">
+          <p>Twice_Tzuyu</p>
+          </div>
+        </ion-avatar>
+        <div class="font_black content_center">
+          <h3>서울에서 수령 예정</h3><br>
+          <h3>수령일 : 2/5</h3>
+        </div>
+        <button ion-button clear item-right>진행중</button>
+      </ion-item>
+    </ion-list>
+
     </div>
-    <br>
-    <div class="font_black">
-      <h2>1/7 -> 2/7</h2>
-    </div>
-    
-    <button ion-button clear item-right>View</button>
-  </ion-item>
-</ion-list>
-
 </ion-content>
