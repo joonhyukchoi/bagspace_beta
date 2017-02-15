@@ -29,6 +29,7 @@ export class LoginPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public apiService: ApiService, public platform: Platform, public http:Http, public viewCtrl: ViewController ) {
        Facebook.browserInit(this.FB_APP_ID, "v2.8");   
+       
     }
 
 doFbLogin(){
@@ -107,7 +108,16 @@ doFbLogin(){
     }) 
   }
   open(){
-      this.navCtrl.push(IconPage);
+     NativeStorage.setItem('id',
+          {
+            uuid: Device.uuid,
+            id: "12"
+            
+          }).then(
+          ()=>this.navCtrl.push(IconPage))
+
+
+      
   }
 
 }  

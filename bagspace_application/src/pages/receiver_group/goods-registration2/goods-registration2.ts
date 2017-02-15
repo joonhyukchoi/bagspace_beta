@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
-import { Camera } from 'ionic-native';
+import { Camera,NativeStorage } from 'ionic-native';
 /*
   Generated class for the GoodsRegistration2 page.
 
@@ -27,7 +27,9 @@ export class GoodsRegistration2Page {
   selected_Price : string; 
   bagsapce_url;
   image:any={image:'',title:''};
-  data:any={selected_Country: '',selected_City:'',selected_Landmark: '',selected_Date : '',selected_Category:'',selected_Object_name : '',selected_Url : '',selected_Delivery_charge : '', selected_Price : '', selected_Picture: ''};
+  id;
+  device_id;
+  data:any={selected_Country: '',selected_City:'',selected_Landmark: '',selected_Date : '',selected_Category:'',selected_Object_name : '',selected_Url : '',selected_Delivery_charge : '', selected_Price : '', selected_Picture: '',id:'',device_id:''};
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http:Http) {
     this.bagsapce_url ="http://thebagspace.com/mongo_test";
     //this.bagsapce_url ="/mongo_test";
@@ -36,6 +38,8 @@ export class GoodsRegistration2Page {
     this.selected_City = navParams.get("city");
     this.selected_Date = navParams.get("date");
     this.selected_Category = navParams.get("category");
+     NativeStorage.getItem('id')
+    .then(data=> {this.id = data.id ;this.device_id=data.uuid;});  
   }
 
 goback(){
@@ -50,6 +54,8 @@ goback(){
         this.data.selected_Delivery_charge=this.selected_Delivery_charge;
         this.data.selected_Price=this.selected_Price;
         this.data.selected_Picture = "";
+        this.data.id = this.id;
+        this.data.device_id = this.device_id;
      var headers = new Headers({'Content-Type': 'application/json'})
     this.http.post(this.bagsapce_url+'/delivery', this.data,{headers: headers})
         .subscribe(
@@ -59,7 +65,7 @@ goback(){
           })
   }else{
 this.image.image = this.base64Image;
-this.image.title = new Date().toString();
+this.image.title = this.id+new Date().toString();
   var headers = new Headers({'Content-Type': 'application/json'})
 
     this.http.post(this.bagsapce_url+'/delivery/image', this.image,{headers: headers})
@@ -77,6 +83,8 @@ this.image.title = new Date().toString();
         this.data.selected_Delivery_charge=this.selected_Delivery_charge;
         this.data.selected_Price=this.selected_Price;
         this.data.selected_Picture = this.image_url.Location;
+         this.data.id = this.id;
+        this.data.device_id = this.device_id;
      var headers = new Headers({'Content-Type': 'application/json'})
     this.http.post(this.bagsapce_url+'/delivery', this.data,{headers: headers})
         .subscribe(

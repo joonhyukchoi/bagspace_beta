@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { Http, Headers } from '@angular/http';
-import { NativeStorage } from 'ionic-native';
+import { NativeStorage, Device } from 'ionic-native';
 import {
   Push,
   PushToken
@@ -37,7 +37,14 @@ export class MyApp {
       .then( function (data) {
         // user is previously logged and we have his data
         // we will let him access the app
-       env.nav.push(IconPage);
+         NativeStorage.setItem('id',
+          {
+            uuid: Device.uuid,
+            id: "12"
+            
+          }).then(
+          ()=>this.navCtrl.push(IconPage))
+      
         navigator.splashscreen.show();
                 setTimeout(function () {
                     navigator.splashscreen.hide();

@@ -4,7 +4,7 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { ReceiverDetailPage } from '../../receiver_group/receiver-detail/receiver-detail';
 import {Http, Headers} from '@angular/http';
 import { SearchPlacePage } from '../search-place/search-place';
-
+import { NativeStorage } from 'ionic-native';
 
 @Component({
   selector: 'page-upper-tabs',
@@ -32,6 +32,8 @@ date:Date;
 data;
 bagsapce_url;
 url;
+id;
+device_id;
 search_data:any={selected_Date: ''};
  constructor(public navCtrl: NavController, public navParams: NavParams,public datePicker: DatePicker, public http:Http, public modalCtrl:ModalController){
    this.bagsapce_url ="http://thebagspace.com/mongo_test";
@@ -42,7 +44,9 @@ search_data:any={selected_Date: ''};
         this.date=new Date(date); 
         console.log(this.date.toLocaleDateString());
         this.getList_filter();
-    });    
+    });  
+  NativeStorage.getItem('id')
+    .then(data=> {this.id = data.id ;this.device_id=data.uuid;alert(this.device_id)});  
   }
 
   
@@ -50,6 +54,7 @@ search_data:any={selected_Date: ''};
   showCalendar(){this.datePicker.showCalendar();}
 
   goDetailPage(id:any){
+    
     this.navCtrl.push(ReceiverDetailPage,{id:id});
     console.log(id);
   }

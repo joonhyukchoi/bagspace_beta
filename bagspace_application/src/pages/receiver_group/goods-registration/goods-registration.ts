@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CategoryPage } from '../category/category';
 import {Http, Headers} from '@angular/http'
-
+import { NativeStorage } from 'ionic-native';
 /*
   Generated class for the GoodsRegistration page.
 
@@ -22,6 +22,8 @@ export class GoodsRegistrationPage {
   selected_Date : string;
   bagspace_url : string;
   bagsapce_url;
+  id;
+  device_id;
 //public goods_count: number = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
@@ -31,6 +33,8 @@ export class GoodsRegistrationPage {
     this.selected_Country = navParams.get("country");
     this.selected_City = navParams.get("city");
     this.selected_Date = navParams.get("date");
+     NativeStorage.getItem('id')
+    .then(data=> {this.id = data.id ;this.device_id=data.uuid;});  
   }
 
 
@@ -58,7 +62,7 @@ goback(){
 }
 
 getList(){
-  this.http.get(this.bagsapce_url+'/delivery/register')
+  this.http.get(this.bagsapce_url+'/delivery/register/'+this.id)
   .subscribe(
     data=>{
       this.data = data.json();
