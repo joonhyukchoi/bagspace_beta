@@ -21,7 +21,8 @@ declare var navigator;
 export class MyApp {
 
   @ViewChild(Nav) nav : Nav;
- rootPage:any;
+  rootPage:any;
+
   //data:any={device_id:''};
   data2:any={device_id:''};
   bagsapce_url;
@@ -79,8 +80,5 @@ export class MyApp {
       alert(msg.title + ': ' + msg.text);
 
     });
-
-
-
   }
 }
