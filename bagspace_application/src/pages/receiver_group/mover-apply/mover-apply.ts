@@ -18,6 +18,8 @@ export class MoverApplyPage {
   //달력 날짜 선택 확인
   isClick : boolean = false;
 
+  apply_success : boolean;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
   public alertCtrl: AlertController) {
     
@@ -58,14 +60,14 @@ export class MoverApplyPage {
           message: '',
           buttons: [
             {
-              text: '참여하기',
+              text: '취소',
               handler: () => {
-                this.successMessage();
               }
             },
             {
-              text: '취소',
+              text: '참여하기',
               handler: () => {
+                this.successMessage();
               }
             }
           ]
@@ -76,7 +78,16 @@ export class MoverApplyPage {
   successMessage(){
       let success = this.alertCtrl.create({
       title: '신청되었습니다.',
-      message: ''
+      message: '',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+          this.navCtrl.popToRoot();
+          }
+        }
+      ]
+
       });
     success.present();
   }

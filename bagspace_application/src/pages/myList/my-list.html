@@ -8,10 +8,13 @@
         대기자 목록
       </ion-segment-button>
       <ion-segment-button value="deliver_List">
-        내 배달자 목록
+        배달자 목록
       </ion-segment-button>
       <ion-segment-button value="delivery_List">
-        내 수령인 목록
+        수령인 목록
+      </ion-segment-button>
+      <ion-segment-button value="myItem_List">
+        내 물품 목록
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -60,8 +63,49 @@
           <h3>도착일 : 2/5</h3>
         </div>
 <!--신청버튼-->
-        <button ion-button clear item-right (click)="apply()">신청</button>
+        <button ion-button clear item-right (click)="apply()">신청하기</button>
       </ion-item>
+
+      <ion-item class="content_center">
+        <ion-avatar item-left (click)="goWaiter()">
+          <div align="center">
+          <img src="http://cfile8.uf.tistory.com/image/2704BD4457193CBD027B3F">
+          <p>Twice_Sana</p>
+          </div>
+        </ion-avatar>
+
+        <div class="font_black content_center">
+<!-- 여행 장소-->
+          <ion-row>
+            <ion-col width-40>
+              <h3>이스라엘</h3>
+            </ion-col>
+            <ion-col width-20>
+              <h3>-></h3>
+            </ion-col>
+            <ion-col width-40>
+              <h3>서울</h3>
+            </ion-col>
+          </ion-row>
+<!-- 여행 기간 -->
+          <ion-row>
+            <ion-col width-40>
+              <h3>02/01</h3>
+            </ion-col>
+            <ion-col width-20>
+              <h3>-></h3>
+            </ion-col>
+            <ion-col width-40>
+              <h3>02/28</h3>
+            </ion-col>
+          </ion-row>
+<!--도착일-->
+          <h3>도착일 : 2/5</h3>
+        </div>
+<!--신청버튼-->
+        <button ion-button clear item-right (click)="apply()">신청하기</button>
+      </ion-item>
+
     </ion-list>
 
 
@@ -119,12 +163,33 @@
           </div>
         </ion-avatar>
         <div class="font_black content_center">
-          <h3>서울에서 수령 예정</h3><br>
-          <h3>수령일 : 2/5</h3>
+          <br><h3>서울에서 수령 예정</h3>
+          <br><h3>수령일 : 2/5</h3>
         </div>
         <button ion-button clear item-right>진행중</button>
       </ion-item>
     </ion-list>
 
-    </div>
+<!-- ***내 목록 리스트*** -->
+    <ion-list *ngSwitchCase="'myItem_List'">
+      <div *ngFor="let item of data">
+        <ion-card padding (click)="goDetailPage(item._id)">
+            <div>
+            <ion-item>
+                <ion-icon name="ios-navigate" item-left large></ion-icon>
+                <h2 class="font_black">{{item.selected_Country}},{{item.selected_City}}</h2>
+                <p>{{item.selected_Landmark}}</p>
+            </ion-item>
+            <ion-item>
+                <span item-left>Due:{{item.selected_Date|date:'20yy/MM/dd'}}</span>
+                <button ion-button icon-left clear item-right>
+                <ion-icon large name="arrow-round-forward"></ion-icon>
+                </button>
+            </ion-item>
+            </div>
+        </ion-card>
+        </div>
+    </ion-list>
+
+    </div> <!--ngSwitch 속성을 가진 div-->
 </ion-content>

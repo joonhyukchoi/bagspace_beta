@@ -1,18 +1,20 @@
 {
   "name": "bagspace_application",
-  "app_id": "281230f2",
+  "app_id": "c37d9a2c",
   "v2": true,
   "typescript": true,
   "proxies": [
     {
       "path": "/mongo_test",
       "proxyUrl": "http://thebagspace.com/mongo_test"
-    },{
+    },
+    {
       "path": "/access",
       "proxyUrl": "http://thebagspace.com/login/access_token"
-    },{
+    },
+    {
       "path": "/profile",
       "proxyUrl": "http://thebagspace.com/login/profile"
     }
-  ] 
+  ]
 }

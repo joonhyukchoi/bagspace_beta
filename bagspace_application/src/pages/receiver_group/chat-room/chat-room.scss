@@ -14,9 +14,6 @@ page-chat-room {
         overflow:scroll;
     }
 
-    .chat-room_messages{
-    }
-
     .chat-room_my-message > button{
         background-color: yellow !important;
         text-align: left;
@@ -32,6 +29,10 @@ page-chat-room {
         line-height: 150%;
     }
 
+    .chat-room_my-message-span{
+        font-size: 10px;
+    }
+
     .chat-room_opponent-message > button{
         background-color: white !important;
         text-align: left;
@@ -45,6 +46,10 @@ page-chat-room {
         white-space: normal;
         word-break: break-all;
         line-height: 150%;
+    }
+
+    .chat-room_opponent-message-span{
+        font-size: 10px;
     }
 
     //Footer

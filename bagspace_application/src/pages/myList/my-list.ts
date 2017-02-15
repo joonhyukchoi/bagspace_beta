@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { WaiterDetailPage } from './waiter-detail/waiter-detail';
+import { ReceiverDetailPage } from '../receiver_group/receiver-detail/receiver-detail';
 
 @Component({
   selector: 'page-my-list',
@@ -8,12 +9,23 @@ import { WaiterDetailPage } from './waiter-detail/waiter-detail';
 })
 export class MyListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
-
   list_Type : string = "waiting_List";
+  bagspace_url;
+  data;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    //this.bagspace_url ="http://thebagspace.com/mongo_test";
+    this.bagspace_url ="/mongo_test";
+  }
+
 
   goWaiter(){
     this.navCtrl.push(WaiterDetailPage);
+  }
+
+  goDetailPage(id:any){
+    this.navCtrl.push(ReceiverDetailPage,{id:id});
+    console.log(id);
   }
 
   apply(){

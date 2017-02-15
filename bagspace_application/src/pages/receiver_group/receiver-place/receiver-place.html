@@ -6,12 +6,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid class="receiver-place-overflow-y">
 <!-- 라벨 -->
   <ion-label color="primary"class="font_black">국가와 도시를 선택해주세요</ion-label>
 <!-- 국가와 도시 -->
-  <ion-row style = "height : 50%">
-    <ion-col width-50>
+  <ion-row style>
+    <ion-col style = "max-height:275px; overflow:auto" width-50>
 <!-- 국가 -->
     <ion-list>
     <ion-list-header class="receiver-place_header">국가 선택</ion-list-header>
@@ -24,21 +24,21 @@
     </ion-list>
     </ion-col>
 <!-- 도시 -->
-    <ion-col width-50>
+    <ion-col style = "max-height:275px; overflow:scroll" width-50>
     <ion-list>
     <ion-list-header class="receiver-place_header">도시 선택</ion-list-header>
-      <div *ngFor="let city of cities; let idx = index">
-        <button [class.active]="city['active']" ion-item detail-push 
-        (click)="cityClick(city, idx, cities)">
-          <p class="font_black"> {{ city.name }} </p>
-        </button>
-      </div>  
+        <div *ngFor="let city of cities; let idx = index">
+          <button [class.active]="city['active']" ion-item detail-push 
+          (click)="cityClick(city, idx, cities)">
+            <p class="font_black"> {{ city.name }} </p>
+          </button>
+        </div>
     </ion-list>
     </ion-col>
-    </ion-row>
+  </ion-row>
 <!-- 랜드 마크-->
     <ion-label color="primary" class="font_black">랜드마크를 선택해주세요</ion-label>
-    <ion-row style="height: 50%">
+    <ion-row>
       <ion-list style="width:100%; text-align: center">
       <ion-list-header class="receiver-place_header">랜드마크 선택</ion-list-header>
         <div *ngFor="let landmark of landmarks; let idx = index">
