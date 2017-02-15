@@ -9,9 +9,12 @@ import {
 } from '@ionic/cloud-angular';
 
 import { IconPage } from '../pages/tabs_group/tabs/tabs';
-import { ChatRoomPage } from '../pages/receiver_group/chat-room/chat-room';
+//import { ChatRoomPage } from '../pages/receiver_group/chat-room/chat-room';
 import { ReceiverDatePage } from '../pages/receiver_group/receiver-date/receiver-date';
 import { LoginPage } from '../pages/login/login';
+//import { ReceiverPlacePage } from '../pages/receiver_group/receiver-place/receiver-place';
+//import { MyListPage } from '../pages/myList/my-list';
+//import { ReceiverDetailPage } from '../pages/receiver_group/receiver-detail/receiver-detail';
 
 declare var navigator;
 @Component({
@@ -21,14 +24,15 @@ declare var navigator;
 export class MyApp {
 
   @ViewChild(Nav) nav : Nav;
+  
   rootPage:any;
 
   //data:any={device_id:''};
   data2:any={device_id:''};
-  bagsapce_url;
+  bagspace_url;
   constructor(platform: Platform,public push:Push,public http:Http) {
-  this.bagsapce_url ="http://thebagspace.com/mongo_test";
-  //this.bagsapce_url = "/mongo_test"
+  this.bagspace_url ="http://thebagspace.com/mongo_test";
+  //this.bagspace_url = "/mongo_test"
  	platform.ready().then(() => {
       // Here we will check if the user is already logged in
       // because we don't want to ask users to log in each time they open the app
@@ -72,7 +76,7 @@ export class MyApp {
       
      this.data2.device_id=t.token;
      var headers = new Headers({'Content-Type': 'application/json'});
-      this.http.post(this.bagsapce_url+'/device_id', this.data2,{headers: headers}).subscribe(
+      this.http.post(this.bagspace_url+'/device_id', this.data2,{headers: headers}).subscribe(
       data=> {
         console.log(data.json());
        
@@ -88,4 +92,5 @@ export class MyApp {
 
     });
   }
+  
 }

@@ -35,10 +35,12 @@ export class ChatRoomPage{
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, 
   platform: Platform){  
       this.bagsapce_url ="http://thebagspace.com/mongo_test";
-      NativeStorage.getItem('id')
-      .then(data=> {this. myId = data.id ;this.device_id=data.uuid;});  
-    //this.bagsapce_url ="/mongo_test";
-//키보드 나타날 때, 메시지 맨 밑으로 내리기 : 키보드가 올라가면 대화가 가려지기 때문에,,,
+
+  NativeStorage.getItem('id')
+  .then(data=> {this. myId = data.id ;this.device_id=data.uuid;});  
+  //this.bagsapce_url ="/mongo_test";
+
+//키보드 나타날 때, 메시지 맨 밑으로 내리기 : 키보드가 올라가면 대화가 가려지기 때문에
     platform.ready().then(() => {
         Keyboard.onKeyboardShow().subscribe(() => {
             this.ScrollTo();
