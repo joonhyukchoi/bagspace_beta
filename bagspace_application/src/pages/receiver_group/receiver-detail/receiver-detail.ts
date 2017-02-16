@@ -35,11 +35,12 @@ export class ReceiverDetailPage {
  
 
   goChatRoom(){
-    this.navCtrl.push(ChatRoomPage);
+    
+    this.navCtrl.push(ChatRoomPage,{goods_id:this.selected_id});
   } 
 
   join() {
-     this.navCtrl.push(MoverApplyPage);
+     this.navCtrl.push(MoverApplyPage,{id:this.selected_id});
   }
 
   //todo : map 기능 추가

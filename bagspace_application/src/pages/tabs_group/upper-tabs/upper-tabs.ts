@@ -46,7 +46,7 @@ search_data:any={selected_Date: ''};
         this.getList_filter();
     });  
   NativeStorage.getItem('id')
-    .then(data=> {this.id = data.id ;this.device_id=data.uuid;alert(this.device_id)});  
+    .then(data=> {this.id = data.id ;this.device_id=data.uuid;alert(this.id+","+this.device_id)});  
   }
 
   

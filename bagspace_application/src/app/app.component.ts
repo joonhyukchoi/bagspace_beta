@@ -41,13 +41,7 @@ export class MyApp {
       .then( function (data) {
         // user is previously logged and we have his data
         // we will let him access the app
-         NativeStorage.setItem('id',
-          {
-            uuid: Device.uuid,
-            id: "12"
-            
-          }).then(
-          ()=>this.navCtrl.push(IconPage))
+       env.nav.push(IconPage);
       
         navigator.splashscreen.show();
                 setTimeout(function () {

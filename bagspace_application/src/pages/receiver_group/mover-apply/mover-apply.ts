@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
-
+import { NativeStorage } from 'ionic-native';
+import { Http, Headers } from '@angular/http';
 @Component({
   selector: 'page-mover-apply',
   templateUrl: 'mover-apply.html',
@@ -10,22 +11,27 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 })
 export class MoverApplyPage {
 
-  selected_Country: string;
-  selected_City: string;
-  selected_Landmark: string;
-
+ 
+  save_data:any= { goods_id:'',id: '', device_id: '',date:''}
+ 
   selected_Date : Date = null;
+
+  bagsapce_url;
   //달력 날짜 선택 확인
   isClick : boolean = false;
 
   apply_success : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
-  public alertCtrl: AlertController) {
-    
+  public alertCtrl: AlertController,public http:Http) {
+     this.bagsapce_url ="http://thebagspace.com/matching";
+     NativeStorage.getItem('id')
+    .then(data=> {this.save_data.id = data.id ;this.save_data.device_id=data.uuid;});  
+     this.save_data.goods_id = navParams.get("id");
      this.datePicker.onDateSelected.subscribe( 
       (date) => {
         this.selected_Date = new Date(date);
+        this.save_data.date = new Date(date).toLocaleDateString();
         this.isDateSelect();
     });
 
@@ -67,7 +73,15 @@ export class MoverApplyPage {
             {
               text: '참여하기',
               handler: () => {
-                this.successMessage();
+                 var headers = new Headers({'Content-Type': 'application/json'})
+                 this.http.post(this.bagsapce_url+'/waiting_list', this.save_data,{headers: headers})
+                  .subscribe(
+                    data=> {
+                    this.successMessage();
+                  }
+                );
+
+                
               }
             }
           ]

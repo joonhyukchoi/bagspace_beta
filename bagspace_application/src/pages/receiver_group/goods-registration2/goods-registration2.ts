@@ -61,7 +61,7 @@ goback(){
         .subscribe(
           data=> {
             this.data = data.json();
-            this.navCtrl.popTo( this.navCtrl.getByIndex(4));
+            this.navCtrl.popTo( this.navCtrl.getByIndex(this.navCtrl.length()-3));
           })
   }else{
 this.image.image = this.base64Image;
@@ -90,7 +90,7 @@ this.image.title = this.id+new Date().toString();
         .subscribe(
           data=> {
             this.data = data.json();
-            this.navCtrl.popTo( this.navCtrl.getByIndex(4));
+            this.navCtrl.popTo( this.navCtrl.getByIndex(this.navCtrl.length()-3));
           })
      })
   }

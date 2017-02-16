@@ -12,12 +12,12 @@
 <ion-content class="chat-room_content" fullscreen="true">
   <div class="chat-room_messages">
     <div *ngFor="let message of data;">
-        <div align="right" class="chat-room_my-message" *ngIf="message && myId==message.id">
+        <div align="right" class="chat-room_my-message" *ngIf="message && myId==message.writer">
           <span class="chat-room_my-message-span">{{message.messageTime | date:'M월 dd일'}} {{message.messageTime | date:'shortTime'}}</span>
           <button ion-button>{{message.messageText}}</button>
         </div>
 
-        <div align="left" class="chat-room_opponent-message" *ngIf="message && myId!=message.id">
+        <div align="left" class="chat-room_opponent-message" *ngIf="message && myId!=message.writer">
           <button ion-button>{{message.messageText}}</button>
           <span class="chat-room_opponent-message-span">{{message.messageTime | date:'M월 dd일'}} {{message.messageTime | date:'shortTime'}}</span>
         </div>
