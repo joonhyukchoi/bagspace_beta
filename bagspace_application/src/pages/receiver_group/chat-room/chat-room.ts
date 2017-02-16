@@ -1,7 +1,7 @@
 import { Component, ViewChild} from '@angular/core';
 import { NavController, NavParams, Content, Platform } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
-import { Keyboard,NativeStorage } from 'ionic-native';
+//import { Keyboard,NativeStorage } from 'ionic-native';
 
 @Component({
   selector: 'page-chat-room',
@@ -36,6 +36,8 @@ export class ChatRoomPage{
   platform: Platform){  
       this.bagsapce_url ="http://thebagspace.com/mongo_test";
 
+  /*
+
   NativeStorage.getItem('id')
   .then(data=> {this. myId = data.id ;this.device_id=data.uuid;});  
   //this.bagsapce_url ="/mongo_test";
@@ -49,7 +51,8 @@ export class ChatRoomPage{
 
   }
 
-
+  */
+  }
   ionViewWillEnter() {
     console.log("ionViewWillEnter-getList");
     this.getList();

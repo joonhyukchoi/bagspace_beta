@@ -3,12 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import { Camera,NativeStorage } from 'ionic-native';
-/*
-  Generated class for the GoodsRegistration2 page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-goods-registration2',
   templateUrl: 'goods-registration2.html'
@@ -90,7 +86,7 @@ this.image.title = this.id+new Date().toString();
         .subscribe(
           data=> {
             this.data = data.json();
-            this.navCtrl.popTo( this.navCtrl.getByIndex(4));
+            this.navCtrl.popTo( this.navCtrl.getByIndex(3));
           })
      })
   }

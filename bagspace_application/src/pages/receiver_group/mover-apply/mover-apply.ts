@@ -15,28 +15,46 @@ export class MoverApplyPage {
   selected_Landmark: string;
 
   selected_Date : Date = null;
+  selected_Departure : Date = null; //출발일
+  selected_Arrival : Date = null;   //도착일
+
+  departure_Place : string;         //출발 장소
+
   //달력 날짜 선택 확인
   isClick : boolean = false;
+  isClickDeparture : boolean = false;
+  isClickArrival : boolean = false;
 
   apply_success : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
   public alertCtrl: AlertController) {
-    
-     this.datePicker.onDateSelected.subscribe( 
-      (date) => {
-        this.selected_Date = new Date(date);
-        this.isDateSelect();
-    });
-
+       
+       this.datePicker.onDateSelected.subscribe( 
+            (date) => {
+              this.selected_Date = new Date(date);
+      });
   }
 
-  showCalendar(){
+  test(){
+    console.log(this.departure_Place);
+  }
+
+  departureClick(){
     this.datePicker.showCalendar();
+    //this.isClickDeparture = true;
+    console.log(this.selected_Date);
+    
   }
+
+  arrivalClick(){
+    this.datePicker.showCalendar();
+     console.log(this.selected_Date);
+  }  
+        
 
   isDateSelect(){
-    if(this.selected_Date != null){
+    if( (this.selected_Departure != null) && (this.selected_Arrival != null) ){
       this.isClick = true;
     }
   }

@@ -4,7 +4,7 @@ import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { ReceiverDetailPage } from '../../receiver_group/receiver-detail/receiver-detail';
 import {Http, Headers} from '@angular/http';
 import { SearchPlacePage } from '../search-place/search-place';
-import { NativeStorage } from 'ionic-native';
+//import { NativeStorage } from 'ionic-native';
 
 @Component({
   selector: 'page-upper-tabs',
@@ -45,9 +45,9 @@ search_data:any={selected_Date: ''};
         console.log(this.date.toLocaleDateString());
         this.getList_filter();
     });  
-  NativeStorage.getItem('id')
-    .then(data=> {this.id = data.id ;this.device_id=data.uuid;alert(this.device_id)});  
-  }
+  // NativeStorage.getItem('id')
+  //   .then(data=> {this.id = data.id ;this.device_id=data.uuid;alert(this.device_id)});  
+   }
 
   
   ionViewWillEnter() {this.getList();this.date=null;this.select_city=null;this.select_country=null;}
