@@ -49,25 +49,6 @@ export class MyApp {
       // because we don't want to ask users to log in each time they open the app
       let env = this;
       NativeStorage.getItem('user')
-<<<<<<< HEAD
-      .then( function (data) {
-        // user is previously logged and we have his data
-        // we will let him access the app
-       env.nav.push(IconPage);
-      
-        navigator.splashscreen.show();
-                setTimeout(function () {
-                    navigator.splashscreen.hide();
-                }, 500);
-      }, function (error) {
-        //we don't have the user data so we will ask him to log in
-         env.nav.push(LoginPage);
-        navigator.splashscreen.show();
-                setTimeout(function () {
-                    navigator.splashscreen.hide();
-                }, 500);
-      });
-=======
         .then(function (data) {
           // user is previously logged and we have his data
           // we will let him access the app
@@ -91,7 +72,6 @@ export class MyApp {
             navigator.splashscreen.hide();
           }, 500);
         });
->>>>>>> feedback
 
       StatusBar.styleDefault();
 
