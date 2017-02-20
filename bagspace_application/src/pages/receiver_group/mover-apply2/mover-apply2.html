@@ -1,0 +1,33 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>mover-apply2</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-grid>
+<!-- 라벨 -->
+  <ion-label color="primary" class="mover-apply2-label">장소를 설정하세요</ion-label>
+<!--출발 장소-->
+    <ion-list>
+      <ion-list-header class="mover-apply2-header">출발 장소</ion-list-header>
+      <ion-item>
+        <ion-label class="mover-apply2-label2">국가 선택</ion-label>
+        <ion-select placeholder="선택하세요">
+          <div *ngFor="let country of countries">
+            <ion-option>{{ country.name }}</ion-option>
+          </div>
+        </ion-select>   
+      </ion-item>
+    </ion-list>
+</ion-grid>
+</ion-content>
+
+<ion-footer>
+  <!--다음 버튼-->
+  <button ion-button full class="mover-apply2-next" medium color="light" (click)="join()">신청하기</button>
+</ion-footer>

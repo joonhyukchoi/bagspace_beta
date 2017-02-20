@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { MoverApply2Page } from '../mover-apply2/mover-apply2';
 
 @Component({
   selector: 'page-mover-apply',
@@ -18,8 +19,6 @@ export class MoverApplyPage {
   selected_Departure : Date = null; //출발일
   selected_Arrival : Date = null;   //도착일
 
-  departure_Place : string;         //출발 장소
-
   //달력 날짜 선택 확인
   isClick : boolean = false;
   isClickDeparture : boolean = false;
@@ -29,27 +28,26 @@ export class MoverApplyPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
   public alertCtrl: AlertController) {
-       
-       this.datePicker.onDateSelected.subscribe( 
-            (date) => {
-              this.selected_Date = new Date(date);
-      });
+     
+     this.datePicker.onDateSelected.subscribe( 
+      (date) => {
+          this.selected_Date = new Date(date);
+        }
+     );
+     
   }
 
-  test(){
-    console.log(this.departure_Place);
-  }
 
   departureClick(){
     this.datePicker.showCalendar();
-    //this.isClickDeparture = true;
-    console.log(this.selected_Date);
-    
-  }
+    this.selected_Departure = this.selected_Date;
+    this.isDateSelect();
+    }
 
   arrivalClick(){
     this.datePicker.showCalendar();
-     console.log(this.selected_Date);
+    this.selected_Arrival = this.selected_Date;
+    this.isDateSelect();
   }  
         
 
@@ -69,45 +67,12 @@ export class MoverApplyPage {
   }
 
   //신청하기 버튼
-  join() {
+  next() {
     if(this.isClick==false)
       this.calendarAlert();
     else{
-        let confirm = this.alertCtrl.create({
-          title: '정말 참여하시겠습니까?',
-          message: '',
-          buttons: [
-            {
-              text: '취소',
-              handler: () => {
-              }
-            },
-            {
-              text: '참여하기',
-              handler: () => {
-                this.successMessage();
-              }
-            }
-          ]
-        });
-        confirm.present();
+       this.navCtrl.push(MoverApply2Page, this.selected_Departure, this.selected_Arrival);
       }
     }
-  successMessage(){
-      let success = this.alertCtrl.create({
-      title: '신청되었습니다.',
-      message: '',
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {
-          this.navCtrl.popToRoot();
-          }
-        }
-      ]
-
-      });
-    success.present();
-  }
-
+ 
 }

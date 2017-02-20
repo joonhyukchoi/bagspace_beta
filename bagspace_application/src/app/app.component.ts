@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-//import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar, Splashscreen } from 'ionic-native';
 import { Http, Headers } from '@angular/http';
-//import { NativeStorage, Device } from 'ionic-native';
+import { NativeStorage, Device } from 'ionic-native';
 import {
   Push,
   PushToken
@@ -18,6 +18,7 @@ import { LoginPage } from '../pages/login/login';
 import { GoodsRegistrationPage } from '../pages/receiver_group/goods-registration/goods-registration';
 import { GoodsRegistration2Page } from '../pages/receiver_group/goods-registration2/goods-registration2';
 import { MoverApplyPage } from '../pages/receiver_group/mover-apply/mover-apply';
+import { MoverApply2Page } from '../pages/receiver_group/mover-apply2/mover-apply2';
 
 declare var navigator;
 @Component({
@@ -28,10 +29,12 @@ export class MyApp {
 
   @ViewChild(Nav) nav : Nav;
   
+  /*
+
    rootPage = MoverApplyPage;
    constructor(platform: Platform, public http: Http) {}
-  
- /*
+  */
+ 
   rootPage: any;
 
   //data:any={device_id:''};
@@ -100,6 +103,5 @@ export class MyApp {
 
       });
   }
-  */
 
 }

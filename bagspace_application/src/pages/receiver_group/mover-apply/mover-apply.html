@@ -6,6 +6,8 @@
 
 <ion-content padding>
    <ion-grid>
+<!-- 라벨 -->
+  <ion-label color="primary" class="mover-apply-font_black">날짜를 설정하세요</ion-label>
 <!--출발일-->
     <ion-list>
       <ion-list-header class="mover-apply-header">출발 날짜</ion-list-header>
@@ -30,19 +32,11 @@
       </ion-item>
     </ion-list>
     <br>
-
-<!--출발 장소-->
-    <ion-list>
-      <ion-list-header class="mover-apply-header">출발 장소</ion-list-header>
-      <ion-item (click)="test()">
-        <ion-input type="text" placeholder="출발 장소를 입력하세요"  [(ngModel)]="departure_Place"></ion-input>
-      </ion-item>
-    </ion-list>
    </ion-grid>
    
 </ion-content>
 
 <ion-footer>
   <!--다음 버튼-->
-  <button ion-button full class="mover-apply-next" medium color="light" (click)="join()">신청하기</button>
+  <button ion-button full class="mover-apply-next" medium color="light" (click)="next()">다음</button>
 </ion-footer>
