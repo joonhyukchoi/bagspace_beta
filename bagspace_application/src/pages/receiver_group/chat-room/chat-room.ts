@@ -38,7 +38,7 @@ export class ChatRoomPage{
   this.save_data.goods_id = navParams.get("goods_id");
   this.save_data.receiver_id = navParams.get("receiver_id");
   this.save_data.receiver_device_id = navParams.get("receiver_device_id");
-  this.getItem();
+  
  
   //this.bagsapce_url ="/mongo_test";
 
@@ -52,11 +52,10 @@ export class ChatRoomPage{
   }
 
 
-  ionViewWillEnter() {
-    console.log("ionViewWillEnter-getList");
-    this.getList();
-  }
+     ionViewWillEnter() {
+     this.getItem();
 
+     }
   ionViewDidLoad(){
     setTimeout(() => {
       this.ScrollTo();
@@ -88,8 +87,8 @@ export class ChatRoomPage{
     this.http.post(this.bagsapce_url+'/chat', this.save_data,{headers: headers})
     .subscribe(
       data=> {
-        this.save_data = data.json();
-        this.getList();
+       
+        this.getItem();
       }
     );
      setTimeout(() => {
@@ -100,7 +99,7 @@ export class ChatRoomPage{
 
 getList(){
   
-  this.http.get(this.bagsapce_url+'/chat'+'/'+ this.save_data.goods_id+'/'+this.item[0].id+'/'+this.item[0].receiver_id)
+  this.http.get(this.bagsapce_url+'/chat'+'/'+ this.save_data.goods_id+'/'+this.item[0].id+'/'+this.save_data.receiver_id)
   .subscribe(
     data=>{
       this.data = data.json();
@@ -115,18 +114,22 @@ getList(){
 getItem(){
 
   this.http.get(this.bagsapce_url+'/delivery/detail/'+this.save_data.goods_id)
-
   .subscribe(
     data=>{
       this.item = data.json();
       console.log(data.json());
+
       NativeStorage.getItem('id')
       .then(data=> {this. myId = data.id ;this.device_id=data.uuid;
-      if(this.myId ==this.item[0].id){
+         if(this.save_data.receiver_id==null){
+        this.save_data.receiver_id = this.myId;
+       }
+      if(this.save_data.receiver_id ==this.item[0].id){
          alert(this.myId+"내가 등록한 상품입니다."+this.item[0].id);
          this.navCtrl.pop();
 
        }
+     this.getList();
       });  
      
     },
