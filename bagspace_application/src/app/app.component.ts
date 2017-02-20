@@ -1,13 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
 import { Http, Headers } from '@angular/http';
+/*
+import { StatusBar, Splashscreen } from 'ionic-native';
 import { NativeStorage, Device } from 'ionic-native';
 import {
   Push,
   PushToken
 } from '@ionic/cloud-angular';
-
+*/
 import { IconPage } from '../pages/tabs_group/tabs/tabs';
 import { ChatRoomPage } from '../pages/receiver_group/chat-room/chat-room';
 import { ReceiverDatePage } from '../pages/receiver_group/receiver-date/receiver-date';
@@ -19,6 +20,7 @@ import { GoodsRegistrationPage } from '../pages/receiver_group/goods-registratio
 import { GoodsRegistration2Page } from '../pages/receiver_group/goods-registration2/goods-registration2';
 import { MoverApplyPage } from '../pages/receiver_group/mover-apply/mover-apply';
 import { MoverApply2Page } from '../pages/receiver_group/mover-apply2/mover-apply2';
+import { MessagePage } from '../pages/message/message';
 
 declare var navigator;
 @Component({
@@ -29,12 +31,14 @@ export class MyApp {
 
   @ViewChild(Nav) nav : Nav;
   
+  
+
+   rootPage = MessagePage;
+   constructor(platform: Platform, public http: Http) {}
+  
+  
   /*
 
-   rootPage = MoverApplyPage;
-   constructor(platform: Platform, public http: Http) {}
-  */
- 
   rootPage: any;
 
   //data:any={device_id:''};
@@ -103,5 +107,6 @@ export class MyApp {
 
       });
   }
+  */
 
 }

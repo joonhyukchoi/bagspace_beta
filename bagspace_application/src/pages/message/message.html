@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>message</ion-title>
+  </ion-navbar>
+  <ion-grid>
+    <ion-row>
+     <ion-segment [(ngModel)]="list_Type">
+      <ion-segment-button value="waiting_List">
+        대기자 목록
+      </ion-segment-button>
+      <ion-segment-button value="deliver_List">
+        배달자 목록
+      </ion-segment-button>
+    </ion-segment>
+    <ion-select>
+      <ion-option>리시버일때</ion-option>
+      <ion-option>배달자일때</ion-option>
+    </ion-select>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+
+<ion-content padding>
+    <div [ngSwitch]="list_Type">
+<!-- ***문의자 리스트*** -->
+    <ion-list *ngSwitchCase="'waiting_List'">
+      <ion-item class="content_center">
+        <ion-avatar item-left (click)="goWaiter()">
+          <div align="center">
+          <img src="http://cfile8.uf.tistory.com/image/2704BD4457193CBD027B3F">
+          </div>
+        </ion-avatar>
+
+        <div class="font_black content_center">
+<!-- 여행 장소-->
+          <ion-row>
+            <p>Twice_Sana</p>
+          </ion-row>
+        </div>
+<!--신청버튼-->
+        <button ion-button clear item-right (click)="apply()">신청</button>
+      </ion-item>
+    </ion-list>
+
+    </div> <!--ngSwitch 속성을 가진 div-->
+</ion-content>

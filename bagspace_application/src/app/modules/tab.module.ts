@@ -7,11 +7,12 @@ import { SearchPlacePage } from '../../pages/tabs_group/search-place/search-plac
 import { Reverse } from '../../pipes/reverse';
 import { MyListPage } from '../../pages/myList/my-list';
 import { WaiterDetailPage } from '../../pages/myList/waiter-detail/waiter-detail';
+import { MessagePage } from '../../pages/message/message';
 
 @NgModule({
-  declarations: [UpperTabsPage,  IconPage, SearchPlacePage, Reverse, MyListPage, WaiterDetailPage],
+  declarations: [UpperTabsPage,  IconPage, SearchPlacePage, Reverse, MyListPage, WaiterDetailPage, MessagePage],
   imports: [IonicModule, CommonModule],
-  entryComponents: [UpperTabsPage,  IconPage, SearchPlacePage, MyListPage, WaiterDetailPage],
+  entryComponents: [UpperTabsPage,  IconPage, SearchPlacePage, MyListPage, WaiterDetailPage, MessagePage],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class TabModule {}
