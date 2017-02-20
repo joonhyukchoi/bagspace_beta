@@ -1,11 +1,12 @@
 body.keyboard-is-open .tabbar{
   display: none;
+  margin-bottom: 0 !important;
 }
 
 body.keyboard-is-open .special-fab-bottom{
   display: none;
 }
 
-body.keyboard-is-open .scroll-content {
-  margin-bottom: 0 !important;
+body.keyboard-is-open .goods-registration2-footer{
+  display: none;
 }

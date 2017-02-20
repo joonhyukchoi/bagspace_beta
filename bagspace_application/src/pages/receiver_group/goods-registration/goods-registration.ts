@@ -3,12 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CategoryPage } from '../category/category';
 import {Http, Headers} from '@angular/http'
 import { NativeStorage } from 'ionic-native';
-/*
-  Generated class for the GoodsRegistration page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-goods-registration',
   templateUrl: 'goods-registration.html'

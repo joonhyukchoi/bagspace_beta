@@ -35,12 +35,15 @@ export class ChatRoomPage{
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, 
   platform: Platform){  
       this.bagsapce_url ="http://thebagspace.com/mongo_test";
+       //this.bagsapce_url ="/mongo_test";
+
   this.save_data.goods_id = navParams.get("goods_id");
   this.save_data.receiver_id = navParams.get("receiver_id");
   this.save_data.receiver_device_id = navParams.get("receiver_device_id");
   this.getItem();
- 
-  //this.bagsapce_url ="/mongo_test";
+
+  NativeStorage.getItem('id')
+  .then(data=> {this. myId = data.id ;this.device_id=data.uuid;});  
 
 //키보드 나타날 때, 메시지 맨 밑으로 내리기 : 키보드가 올라가면 대화가 가려지기 때문에
     platform.ready().then(() => {
@@ -50,7 +53,6 @@ export class ChatRoomPage{
     });
 
   }
-
 
   ionViewWillEnter() {
     console.log("ionViewWillEnter-getList");
