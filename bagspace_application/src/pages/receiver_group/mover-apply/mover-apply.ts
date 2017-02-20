@@ -4,6 +4,8 @@ import { AlertController } from 'ionic-angular';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { NativeStorage } from 'ionic-native';
 import { Http, Headers } from '@angular/http';
+import { MoverApply2Page } from '../mover-apply2/mover-apply2';
+
 @Component({
   selector: 'page-mover-apply',
   templateUrl: 'mover-apply.html',
@@ -17,13 +19,21 @@ export class MoverApplyPage {
   selected_Date : Date = null;
 
   bagsapce_url;
+
+  selected_Departure : Date = null; //출발일
+  selected_Arrival : Date = null;   //도착일
+
   //달력 날짜 선택 확인
   isClick : boolean = false;
+  isClickDeparture : boolean = false;
+  isClickArrival : boolean = false;
 
   apply_success : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
+
   public alertCtrl: AlertController,public http:Http) {
+      
      this.bagsapce_url ="http://thebagspace.com/matching";
      NativeStorage.getItem('id')
     .then(data=> {this.save_data.id = data.id ;this.save_data.device_id=data.uuid;});  
@@ -37,12 +47,21 @@ export class MoverApplyPage {
 
   }
 
-  showCalendar(){
+  departureClick(){
     this.datePicker.showCalendar();
-  }
+    this.selected_Departure = this.selected_Date;
+    this.isDateSelect();
+    }
+
+  arrivalClick(){
+    this.datePicker.showCalendar();
+    this.selected_Arrival = this.selected_Date;
+    this.isDateSelect();
+  }  
+        
 
   isDateSelect(){
-    if(this.selected_Date != null){
+    if( (this.selected_Departure != null) && (this.selected_Arrival != null) ){
       this.isClick = true;
     }
   }
@@ -57,53 +76,12 @@ export class MoverApplyPage {
   }
 
   //신청하기 버튼
-  join() {
+  next() {
     if(this.isClick==false)
       this.calendarAlert();
     else{
-        let confirm = this.alertCtrl.create({
-          title: '정말 참여하시겠습니까?',
-          message: '',
-          buttons: [
-            {
-              text: '취소',
-              handler: () => {
-              }
-            },
-            {
-              text: '참여하기',
-              handler: () => {
-                 var headers = new Headers({'Content-Type': 'application/json'})
-                 this.http.post(this.bagsapce_url+'/waiting_list', this.save_data,{headers: headers})
-                  .subscribe(
-                    data=> {
-                    this.successMessage();
-                  }
-                );
-
-                
-              }
-            }
-          ]
-        });
-        confirm.present();
+       this.navCtrl.push(MoverApply2Page, this.selected_Departure, this.selected_Arrival);
       }
     }
-  successMessage(){
-      let success = this.alertCtrl.create({
-      title: '신청되었습니다.',
-      message: '',
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {
-          this.navCtrl.popToRoot();
-          }
-        }
-      ]
-
-      });
-    success.present();
-  }
-
+ 
 }

@@ -17,6 +17,7 @@ import { MyListPage } from '../../myList/my-list';
  export class IconPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
 
+  
     //채팅방에서 키보드가 보일 때, 탭 바(Tabbar) display : none 처리
     platform.ready().then(() => {
           Keyboard.onKeyboardShow().subscribe(() => {
@@ -27,6 +28,7 @@ import { MyListPage } from '../../myList/my-list';
               document.body.classList.remove('keyboard-is-open');
           });
     });
+  
   }
 
   rootPage = UpperTabsPage;

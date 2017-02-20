@@ -5,6 +5,7 @@ import { ChatRoomPage } from '../chat-room/chat-room';
 import { MoverApplyPage } from '../mover-apply/mover-apply';
 import {Http, Headers} from '@angular/http'
 import { MapPage } from '../map/map';
+import { NativeStorage,Device } from 'ionic-native';
 
 @Component({
   selector: 'page-receiver-detail',
@@ -24,6 +25,8 @@ export class ReceiverDetailPage {
   ];
   //통합 : 물품 목록, 날짜, 장소, 총 가격
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public http:Http) {
+    NativeStorage.getItem('id')
+    .then(data=> {alert(data.id)}); 
     this.selected_id = navParams.get("id");
     //this.bagsapce_url ="/mongo_test";
      this.bagsapce_url ="http://thebagspace.com/mongo_test";

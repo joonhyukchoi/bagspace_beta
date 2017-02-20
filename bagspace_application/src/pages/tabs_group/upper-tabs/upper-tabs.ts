@@ -35,7 +35,8 @@ url;
 id;
 device_id;
 search_data:any={selected_Date: ''};
- constructor(public navCtrl: NavController, public navParams: NavParams,public datePicker: DatePicker, public http:Http, public modalCtrl:ModalController){
+ constructor(public navCtrl: NavController, public navParams: NavParams,public datePicker: DatePicker,
+  public http:Http, public modalCtrl:ModalController){
    this.bagsapce_url ="http://thebagspace.com/mongo_test";
    //this.bagsapce_url ="/mongo_test";
     this.datePicker.onDateSelected.subscribe( 
@@ -45,7 +46,8 @@ search_data:any={selected_Date: ''};
         console.log(this.date.toLocaleDateString());
         this.getList_filter();
     });  
-   NativeStorage.setItem('id',
+
+         NativeStorage.setItem('id',
           {
             uuid: Device.uuid,
             id: "34"
@@ -54,6 +56,7 @@ search_data:any={selected_Date: ''};
           )
   
   }
+
 
   
   ionViewWillEnter() {this.getList();this.date=null;this.select_city=null;this.select_country=null;}
