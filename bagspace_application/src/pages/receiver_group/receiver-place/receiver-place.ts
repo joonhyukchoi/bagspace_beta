@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform, Nav } from 'ionic-angular';
 import { ReceiverDatePage } from '../receiver-date/receiver-date';
 import { AlertController } from 'ionic-angular';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
 @Component({
   selector: 'page-receiver-place',
@@ -10,7 +11,13 @@ import { AlertController } from 'ionic-angular';
 })
 export class ReceiverPlacePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+  public platform: Platform, public nav: Nav) {
+     this.initializeApp(); 
+  }
+
+  showedAlert: boolean;
+  confirmAlert;
 
   country_Index : number = -1;
   city_Index : number = -1;
@@ -110,6 +117,55 @@ export class ReceiverPlacePage {
     { name: '하이파' },
     { name: '에일라트' }
   ];
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        StatusBar.styleDefault();
+        Splashscreen.hide();
+        this.showedAlert = false;
+
+        // Confirm exit
+        this.platform.registerBackButtonAction(() => {
+            if (this.nav.length() == 2) {
+                if (!this.showedAlert) {
+                    this.confirmExitApp();
+                } else {
+                    this.showedAlert = false;
+                    this.confirmAlert.dismiss();
+                }
+            }
+
+            this.nav.pop();
+        });
+
+    });
+}
+
+confirmExitApp() {
+    this.showedAlert = true;
+    this.confirmAlert = this.alertCtrl.create({
+        title: "Salir",
+        message: "¿ Esta seguro que desea salir de la aplicación ?",
+        buttons: [
+            {
+                text: 'Cancelar',
+                handler: () => {
+                    this.showedAlert = false;
+                    return;
+                }
+            },
+            {
+                text: 'Aceptar',
+                handler: () => {
+                    this.platform.exitApp();
+                }
+            }
+        ]
+    });
+    this.confirmAlert.present();
+}
 
   //국가 클릭 시
   countryClick(country, idx, countries){
