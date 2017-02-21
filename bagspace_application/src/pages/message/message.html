@@ -4,42 +4,120 @@
   </ion-navbar>
   <ion-grid>
     <ion-row>
-     <ion-segment [(ngModel)]="list_Type">
-      <ion-segment-button value="waiting_List">
-        대기자 목록
-      </ion-segment-button>
-      <ion-segment-button value="deliver_List">
-        배달자 목록
-      </ion-segment-button>
-    </ion-segment>
-    <ion-select>
-      <ion-option>리시버일때</ion-option>
-      <ion-option>배달자일때</ion-option>
-    </ion-select>
+      <ion-col width-67>
+<!-- receiver_List-->
+        <div *ngIf="selected_Mode == receiver_Option">
+          <ion-segment [(ngModel)]="receiver_List">     
+            <ion-segment-button value="inquiry_List">
+              문의 채팅
+            </ion-segment-button>
+            <ion-segment-button value="matching_List">
+              매칭된 채팅
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+<!--mover_List-->
+        <div *ngIf="selected_Mode == mover_Option">
+          <ion-segment [(ngModel)]="mover_List">     
+            <ion-segment-button value="inquiry_List">
+              문의 채팅
+            </ion-segment-button>
+            <ion-segment-button value="matching_List">
+              매칭된 채팅
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-item no-lines>
+        <ion-select [(ngModel)]="selected_Mode" class="message_select">
+          <ion-option selected="true">{{receiver_Option}}</ion-option>
+          <ion-option>{{mover_Option}}</ion-option>
+        </ion-select>
+        </ion-item>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-header>
 
 
 <ion-content padding>
-    <div [ngSwitch]="list_Type">
-<!-- ***문의자 리스트*** -->
-    <ion-list *ngSwitchCase="'waiting_List'">
+
+<!-- ***** 리시버일때 ***** -->  
+    <div *ngIf="selected_Mode == receiver_Option" [ngSwitch]="receiver_List">
+<!-- 문의 리스트 -->
+    <ion-list *ngSwitchCase="'inquiry_List'"> <!--todo: ngFor -> receiver_Inquiry-->
       <ion-item class="content_center">
-        <ion-avatar item-left (click)="goWaiter()">
+        <ion-avatar item-left>
           <div align="center">
           <img src="http://cfile8.uf.tistory.com/image/2704BD4457193CBD027B3F">
           </div>
         </ion-avatar>
 
-        <div class="font_black content_center">
-<!-- 여행 장소-->
+        <div class="font_black">
           <ion-row>
             <p>Twice_Sana</p>
           </ion-row>
         </div>
-<!--신청버튼-->
-        <button ion-button clear item-right (click)="apply()">신청</button>
+        <button ion-button clear item-right>대화하기</button>
+      </ion-item>
+    </ion-list>
+
+<!-- 매칭 리스트 -->
+    <ion-list *ngSwitchCase="'matching_List'"> <!--todo: ngFor -> receiver_Matching-->
+      <ion-item class="content_center">
+        <ion-avatar item-left>
+          <div align="center">
+          <img src="http://file2.instiz.net/data/file2/2016/09/11/8/8/c/88cb7bbb6b5d7b14db3e24e9dbe66a21.jpg">
+          </div>
+        </ion-avatar>
+
+        <div class="font_black">
+          <ion-row>
+            <p>IOI_Jung Chaeyeon</p>
+          </ion-row>
+        </div>
+        <button ion-button clear item-right>대화하기</button>
+      </ion-item>
+    </ion-list>
+
+    </div>
+
+<!-- ***** 배달자일때 ***** -->  
+    <div *ngIf="selected_Mode == mover_Option" [ngSwitch]="mover_List">
+<!-- 문의 리스트 -->
+    <ion-list *ngSwitchCase="'inquiry_List'"> <!--todo: ngFor -> mover_Inquiry-->
+      <ion-item class="content_center">
+        <ion-avatar item-left>
+          <div align="center">
+          <img src="http://cfile3.uf.tistory.com/image/2343ED4C572EE549062774">
+          </div>
+        </ion-avatar>
+
+        <div class="font_black">
+          <ion-row>
+            <p>IOI_Zhōu Jiéqióng</p>
+          </ion-row>
+        </div>
+        <button ion-button clear item-right>대화하기</button>
+      </ion-item>
+    </ion-list>
+
+<!-- 매칭 리스트 -->
+    <ion-list *ngSwitchCase="'matching_List'"> <!--todo: ngFor -> mover_Matching-->
+      <ion-item class="content_center">
+        <ion-avatar item-left>
+          <div align="center">
+          <img src="http://pds.joins.com/news/component/htmlphoto_mmdata/201603/09/htm_2016030984452546343.jpg">
+          </div>
+        </ion-avatar>
+
+        <div class="font_black">
+          <ion-row>
+            <p>IOI_KimSejeong</p>
+          </ion-row>
+        </div>
+        <button ion-button clear item-right>대화하기</button>
       </ion-item>
     </ion-list>
 
