@@ -9,6 +9,7 @@ import { UpperTabsPage } from '../upper-tabs/upper-tabs';
 import { MapPage } from '../../receiver_group/map/map';
 import { HomePage } from '../../home/home';
 import { MyListPage } from '../../myList/my-list';
+import { MessagePage } from '../../message/message';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -37,7 +38,7 @@ import { MyListPage } from '../../myList/my-list';
   homepage = HomePage;
   categoryPage = CategoryPage;
   receiver_place_page = ReceiverPlacePage;
-  mapPage = MapPage;
+  messagePage = MessagePage;
 
   go_register_page(){
   this.navCtrl.push(ReceiverPlacePage);
