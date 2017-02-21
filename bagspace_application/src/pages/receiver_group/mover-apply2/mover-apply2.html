@@ -17,7 +17,7 @@
       <ion-list-header class="mover-apply2-header">출발 장소</ion-list-header>
       <ion-item>
         <ion-label class="mover-apply2-label2">국가 선택</ion-label>
-        <ion-select placeholder="선택하세요">
+        <ion-select [(ngModel)]="departure_Place" placeholder="선택하세요">
           <div *ngFor="let country of countries">
             <ion-option>{{ country.name }}</ion-option>
           </div>

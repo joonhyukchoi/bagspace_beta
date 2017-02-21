@@ -58,7 +58,7 @@ export class MyApp {
               id: "12"
 
             }).then(
-            () => this.navCtrl.push(IconPage))
+            () => env.nav.push(IconPage))
 
           navigator.splashscreen.show();
           setTimeout(function () {

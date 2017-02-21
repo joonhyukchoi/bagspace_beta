@@ -17,6 +17,7 @@ export class ReceiverDetailPage {
   deliveryPlace:any = '한국';     //배달 장소
   totalPrice:any = '';            //총 구매 가격
   item;
+  myid;
   bagsapce_url;
   data:any[] =
   [ 
@@ -26,7 +27,7 @@ export class ReceiverDetailPage {
   //통합 : 물품 목록, 날짜, 장소, 총 가격
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public http:Http) {
     NativeStorage.getItem('id')
-    .then(data=> {alert(data.id)}); 
+    .then(data=> {this.myid=data.id}); 
     this.selected_id = navParams.get("id");
     //this.bagsapce_url ="/mongo_test";
      this.bagsapce_url ="http://thebagspace.com/mongo_test";
@@ -43,7 +44,13 @@ export class ReceiverDetailPage {
   } 
 
   join() {
-     this.navCtrl.push(MoverApplyPage,{id:this.selected_id});
+     if(this.myid==this.item[0].id)
+     alert("내가 등록한 상품입니다.")
+     else{
+       alert(this.myid+this.item.id);
+      this.navCtrl.push(MoverApplyPage,{id:this.selected_id});
+     } 
+     
   }
 
   //todo : map 기능 추가

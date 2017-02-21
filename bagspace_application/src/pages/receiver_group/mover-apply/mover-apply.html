@@ -12,7 +12,7 @@
     <ion-list>
       <ion-list-header class="mover-apply-header">출발 날짜</ion-list-header>
       <ion-item (click)="departureClick()">
-      <div *ngIf="!isClick">
+      <div *ngIf="!isClick2">
         <ion-note>출발일을 선택해주세요</ion-note>
       </div>
       <ion-icon name="calendar" item-right large></ion-icon>
@@ -24,7 +24,7 @@
     <ion-list>
       <ion-list-header class="mover-apply-header">도착 날짜</ion-list-header>
       <ion-item (click)="arrivalClick()">
-      <div *ngIf="!isClick">
+      <div *ngIf="!isClick3">
       <ion-note>도착일을 선택해주세요</ion-note>
       </div>
       <ion-icon name="calendar" item-right large></ion-icon>

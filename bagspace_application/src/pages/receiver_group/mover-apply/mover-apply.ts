@@ -22,14 +22,17 @@ export class MoverApplyPage {
 
   selected_Departure : Date = null; //출발일
   selected_Arrival : Date = null;   //도착일
-
+  departure_date;
+  arrival_date;
   //달력 날짜 선택 확인
   isClick : boolean = false;
+  isClick2 : boolean = false;
+  isClick3 : boolean = false;
   isClickDeparture : boolean = false;
   isClickArrival : boolean = false;
 
   apply_success : boolean;
-
+  date_case;
   constructor(public navCtrl: NavController, public navParams: NavParams, public datePicker: DatePicker, 
 
   public alertCtrl: AlertController,public http:Http) {
@@ -40,7 +43,15 @@ export class MoverApplyPage {
      this.save_data.goods_id = navParams.get("id");
      this.datePicker.onDateSelected.subscribe( 
       (date) => {
-        this.selected_Date = new Date(date);
+        if(this.date_case==1){
+        this.selected_Departure = new Date(date);
+        this.departure_date = new Date(date).toLocaleDateString();  
+        }
+        else{
+        this.selected_Arrival = new Date(date);
+        this.arrival_date = new Date(date).toLocaleDateString();  
+        }
+       
         this.save_data.date = new Date(date).toLocaleDateString();
         this.isDateSelect();
     });
@@ -48,14 +59,16 @@ export class MoverApplyPage {
   }
 
   departureClick(){
+    this.date_case=1;
     this.datePicker.showCalendar();
-    this.selected_Departure = this.selected_Date;
+    this.isClick2=true;
     this.isDateSelect();
     }
 
   arrivalClick(){
+    this.date_case=2;
     this.datePicker.showCalendar();
-    this.selected_Arrival = this.selected_Date;
+    this.isClick3=true;
     this.isDateSelect();
   }  
         
@@ -80,7 +93,7 @@ export class MoverApplyPage {
     if(this.isClick==false)
       this.calendarAlert();
     else{
-       this.navCtrl.push(MoverApply2Page, this.selected_Departure, this.selected_Arrival);
+       this.navCtrl.push(MoverApply2Page,{goods_id:this.save_data.goods_id,departure_date:this.departure_date,arrival_date:this.arrival_date});
       }
     }
  
