@@ -57,7 +57,7 @@
 
         <div class="font_black">
           <ion-row>
-            <p>Twice_Sana{{item._id.receiver_id}}</p>
+            <p>{{item._id.receiver_id}}</p>
           </ion-row>
         </div>
         <button ion-button clear item-right  (click)="goChatRoom(item._id.goods_id,item._id.receiver_id,item._id.receiver_device_id)">대화하기</button>
@@ -89,7 +89,7 @@
     <div *ngIf="selected_Mode == mover_Option" [ngSwitch]="mover_List">
 <!-- 문의 리스트 -->
     <ion-list *ngSwitchCase="'inquiry_List'"> <!--todo: ngFor -> mover_Inquiry-->
-      <ion-item class="content_center">
+      <ion-item *ngFor="let item of receiver_chat2" class="content_center">
         <ion-avatar item-left>
           <div align="center">
           <img src="http://cfile3.uf.tistory.com/image/2343ED4C572EE549062774">
@@ -98,10 +98,10 @@
 
         <div class="font_black">
           <ion-row>
-            <p>IOI_Zhōu Jiéqióng</p>
+            <p>{{item._id.id}}</p>
           </ion-row>
         </div>
-        <button ion-button clear item-right>대화하기</button>
+        <button ion-button clear item-right (click)="goChatRoom2(item._id.goods_id)">대화하기</button>
       </ion-item>
     </ion-list>
 

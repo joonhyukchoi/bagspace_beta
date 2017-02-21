@@ -25,11 +25,12 @@ export class MessagePage {
   mover_Inquiry;
   mover_Matching;
   receiver_chat1;
+  receiver_chat2;
   myid;
   bagspace_url;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
     NativeStorage.getItem('id')
-    .then(data=> {this.myid=data.id;this.bagspace_url="http://thebagspace.com/mongo_test/chat/";this.getList();}); 
+    .then(data=> {this.myid=data.id;this.bagspace_url="http://thebagspace.com/mongo_test/chat/";this.getList();this.getList();}); 
   }
 
   
@@ -37,19 +38,32 @@ export class MessagePage {
 
   ionViewDidLoad() {
   }
-ionViewWillEnter() {this.getList();}
+ionViewWillEnter() {this.getList();this.getList2();}
    getList(){
 
-  this.http.get(this.bagspace_url+this.myid)
+  this.http.get(this.bagspace_url+"1/"+this.myid)
   .subscribe(
     data=>{
       this.receiver_chat1 = data.json();
       console.log(data.json());
     },error =>{});
   }
+   getList2(){
+
+  this.http.get(this.bagspace_url+"2/"+this.myid)
+  .subscribe(
+    data=>{
+      this.receiver_chat2 = data.json();
+      console.log(data.json());
+    },error =>{});
+  }
   goChatRoom(goods_id:any,receiver_id:any,receiver_device_id:any){
     
     this.navCtrl.push(ChatRoomPage,{goods_id:goods_id,receiver_id:receiver_id,receiver_device_id:receiver_device_id});
-  } 
+  }
+    goChatRoom2(goods_id:any){
+    
+    this.navCtrl.push(ChatRoomPage,{goods_id:goods_id});
+  }  
 
 }
