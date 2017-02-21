@@ -57,10 +57,10 @@
 
         <div class="font_black">
           <ion-row>
-            <p>Twice_Sana{{item.receiver_id}}</p>
+            <p>Twice_Sana{{item._id.receiver_id}}</p>
           </ion-row>
         </div>
-        <button ion-button clear item-right  (click)="goChatRoom(item.goods_id,item.receiver_id,item.receiver_device_id)">대화하기</button>
+        <button ion-button clear item-right  (click)="goChatRoom(item._id.goods_id,item._id.receiver_id,item._id.receiver_device_id)">대화하기</button>
       </ion-item>
 
     </ion-list>
