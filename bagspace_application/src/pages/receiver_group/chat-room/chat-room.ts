@@ -36,11 +36,11 @@ export class ChatRoomPage{
   platform: Platform){  
       this.bagsapce_url ="http://thebagspace.com/mongo_test";
        //this.bagsapce_url ="/mongo_test";
-
   this.save_data.goods_id = navParams.get("goods_id");
   this.save_data.receiver_id = navParams.get("receiver_id");
   this.save_data.receiver_device_id = navParams.get("receiver_device_id");
-
+  this.getItem();
+  
   
  
   //this.bagsapce_url ="/mongo_test";
@@ -56,11 +56,7 @@ export class ChatRoomPage{
 
 
 
-     ionViewWillEnter() {
-     this.getItem();
-
-
-     }
+    
   ionViewDidLoad(){
     setTimeout(() => {
       this.ScrollTo();

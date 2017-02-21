@@ -47,7 +47,8 @@
     <div *ngIf="selected_Mode == receiver_Option" [ngSwitch]="receiver_List">
 <!-- 문의 리스트 -->
     <ion-list *ngSwitchCase="'inquiry_List'"> <!--todo: ngFor -> receiver_Inquiry-->
-      <ion-item class="content_center">
+      
+      <ion-item *ngFor="let item of receiver_chat1"   class="content_center">
         <ion-avatar item-left>
           <div align="center">
           <img src="http://cfile8.uf.tistory.com/image/2704BD4457193CBD027B3F">
@@ -56,11 +57,12 @@
 
         <div class="font_black">
           <ion-row>
-            <p>Twice_Sana</p>
+            <p>Twice_Sana{{item.receiver_id}}</p>
           </ion-row>
         </div>
-        <button ion-button clear item-right>대화하기</button>
+        <button ion-button clear item-right  (click)="goChatRoom(item.goods_id,item.receiver_id,item.receiver_device_id)">대화하기</button>
       </ion-item>
+
     </ion-list>
 
 <!-- 매칭 리스트 -->

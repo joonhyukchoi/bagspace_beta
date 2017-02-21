@@ -50,7 +50,7 @@ search_data:any={selected_Date: ''};
          NativeStorage.setItem('id',
           {
             uuid: Device.uuid,
-            id: "34"
+            id: "12"
             
           }).then(
           )

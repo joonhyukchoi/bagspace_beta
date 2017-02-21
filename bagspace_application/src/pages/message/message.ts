@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {Http, Headers} from '@angular/http';
+import { NativeStorage,Device } from 'ionic-native';
+import { ChatRoomPage } from '../receiver_group/chat-room/chat-room';
 
 @Component({
   selector: 'page-message',
@@ -21,13 +24,32 @@ export class MessagePage {
   receiver_Matching = { image : '', id: ''}
   mover_Inquiry;
   mover_Matching;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  receiver_chat1;
+  myid;
+  bagspace_url;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
+    NativeStorage.getItem('id')
+    .then(data=> {this.myid=data.id;this.bagspace_url="http://thebagspace.com/mongo_test/chat/";this.getList();}); 
+  }
 
   
 
 
   ionViewDidLoad() {
   }
+ionViewWillEnter() {this.getList();}
+   getList(){
+
+  this.http.get(this.bagspace_url+this.myid)
+  .subscribe(
+    data=>{
+      this.receiver_chat1 = data.json();
+      console.log(data.json());
+    },error =>{});
+  }
+  goChatRoom(goods_id:any,receiver_id:any,receiver_device_id:any){
+    
+    this.navCtrl.push(ChatRoomPage,{goods_id:goods_id,receiver_id:receiver_id,receiver_device_id:receiver_device_id});
+  } 
 
 }
