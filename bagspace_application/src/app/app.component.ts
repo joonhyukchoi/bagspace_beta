@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, AlertController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { NativeStorage, Device } from 'ionic-native';
@@ -26,13 +26,16 @@ export class MyApp {
    constructor(platform: Platform, public http: Http) {}
   */
   
+  showedAlert: boolean;
+  confirmAlert; //??
+
   rootPage: any;
 
   //data:any={device_id:''};
   data2: any = { device_id: '' };
   
   bagspace_url;
-  constructor(platform: Platform, public push: Push, public http: Http) {
+  constructor(public platform: Platform, public push: Push, public http: Http, public alertCtrl: AlertController) {
     this.bagspace_url = "http://thebagspace.com/mongo_test";
     //this.bagspace_url = "/mongo_test"
     platform.ready().then(() => {
@@ -59,6 +62,23 @@ export class MyApp {
         });
 
       StatusBar.styleDefault();
+
+      this.showedAlert = false;
+
+        // Confirm exit
+        this.platform.registerBackButtonAction(() => {
+            if (this.nav.length() == 1) {
+                if (!this.showedAlert) {
+                    this.confirmExitApp();
+                } else {
+                    this.showedAlert = false;
+                    //this.confirmAlert.dismiss();
+                }
+            }
+
+            this.nav.pop();
+        });
+
 
     });
 
@@ -88,5 +108,31 @@ export class MyApp {
 
       });
   }
+
+  //맨 처음화면에서 앱 종료시 확인 Alert창 띄우기
+  confirmExitApp() {
+    this.showedAlert = true;
+    this.confirmAlert = this.alertCtrl.create({
+        title: "종료 확인",
+        message: "앱을 종료하시겠습니까?",
+        buttons: [
+            {
+                text: 'Cancel',
+                handler: () => {
+                    this.showedAlert = false;
+                    return;
+                }
+            },
+            {
+                text: 'Ok',
+                handler: () => {
+                    this.platform.exitApp();
+                }
+            }
+        ]
+    });
+    this.confirmAlert.present();
+}
+
 
 }

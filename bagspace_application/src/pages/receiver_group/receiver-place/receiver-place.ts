@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform, Nav } from 'ionic-angular';
 import { ReceiverDatePage } from '../receiver-date/receiver-date';
 import { AlertController } from 'ionic-angular';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
 @Component({
   selector: 'page-receiver-place',
@@ -10,8 +11,9 @@ import { AlertController } from 'ionic-angular';
 })
 export class ReceiverPlacePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+  public nav: Nav) {}
+  
   country_Index : number = -1;
   city_Index : number = -1;
   landmark_Index : number = -1;
