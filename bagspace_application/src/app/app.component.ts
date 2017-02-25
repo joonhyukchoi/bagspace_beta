@@ -109,21 +109,22 @@ export class MyApp {
       });
   }
 
+  //맨 처음화면에서 앱 종료시 확인 Alert창 띄우기
   confirmExitApp() {
     this.showedAlert = true;
     this.confirmAlert = this.alertCtrl.create({
-        title: "Salir",
-        message: "¿ Esta seguro que desea salir de la aplicación ?",
+        title: "종료 확인",
+        message: "앱을 종료하시겠습니까?",
         buttons: [
             {
-                text: 'Cancelar',
+                text: 'Cancel',
                 handler: () => {
                     this.showedAlert = false;
                     return;
                 }
             },
             {
-                text: 'Aceptar',
+                text: 'Ok',
                 handler: () => {
                     this.platform.exitApp();
                 }

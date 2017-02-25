@@ -12,13 +12,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 export class ReceiverPlacePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
-  public platform: Platform, public nav: Nav) {
-     this.initializeApp(); 
-  }
-
-  showedAlert: boolean;
-  confirmAlert;
-
+  public nav: Nav) {}
+  
   country_Index : number = -1;
   city_Index : number = -1;
   landmark_Index : number = -1;
@@ -117,55 +112,6 @@ export class ReceiverPlacePage {
     { name: '하이파' },
     { name: '에일라트' }
   ];
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-        // Okay, so the platform is ready and our plugins are available.
-        // Here you can do any higher level native things you might need.
-        StatusBar.styleDefault();
-        Splashscreen.hide();
-        this.showedAlert = false;
-
-        // Confirm exit
-        this.platform.registerBackButtonAction(() => {
-            if (this.nav.length() == 2) {
-                if (!this.showedAlert) {
-                    this.confirmExitApp();
-                } else {
-                    this.showedAlert = false;
-                    this.confirmAlert.dismiss();
-                }
-            }
-
-            this.nav.pop();
-        });
-
-    });
-}
-
-confirmExitApp() {
-    this.showedAlert = true;
-    this.confirmAlert = this.alertCtrl.create({
-        title: "Salir",
-        message: "¿ Esta seguro que desea salir de la aplicación ?",
-        buttons: [
-            {
-                text: 'Cancelar',
-                handler: () => {
-                    this.showedAlert = false;
-                    return;
-                }
-            },
-            {
-                text: 'Aceptar',
-                handler: () => {
-                    this.platform.exitApp();
-                }
-            }
-        ]
-    });
-    this.confirmAlert.present();
-}
 
   //국가 클릭 시
   countryClick(country, idx, countries){
