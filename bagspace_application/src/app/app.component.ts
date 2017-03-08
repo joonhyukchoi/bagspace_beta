@@ -26,6 +26,8 @@ export class MyApp {
    constructor(platform: Platform, public http: Http) {}
   */
   
+  //test
+
   showedAlert: boolean;
   confirmAlert; //??
 
